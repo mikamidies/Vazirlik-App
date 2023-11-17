@@ -1,8 +1,10 @@
 <template>
   <div class="master">
-    <div class="container">
-      <p>Hello World</p>
-    </div>
+    <DesktopHeader />
+    <HomeHero />
+    <HomeAbout />
+    <HomeList />
+    <DesktopFooter />
   </div>
 </template>
 
