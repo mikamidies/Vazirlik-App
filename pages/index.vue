@@ -1,10 +1,8 @@
 <template>
   <div class="master">
-    <DesktopHeader />
     <HomeHero />
     <HomeAbout />
     <HomeList />
-    <DesktopFooter />
   </div>
 </template>
 

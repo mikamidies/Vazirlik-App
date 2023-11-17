@@ -2,14 +2,14 @@
   <div class="wrap">
     <div class="container">
       <div class="left">
-        <h4 class="title">
+        <NuxtLink to="/" class="title">
           Oilaviy mehmon <br />
           <span>uylari ro‘yxati</span>
-        </h4>
+        </NuxtLink>
       </div>
       <div class="mid">
         <NuxtLink to="/"> Bosh sahifa </NuxtLink>
-        <NuxtLink to="/"> Mehmon uylari ro‘yxati </NuxtLink>
+        <NuxtLink to="/list"> Mehmon uylari ro‘yxati </NuxtLink>
       </div>
       <div class="right">
         <button>

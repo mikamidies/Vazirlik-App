@@ -1,7 +1,8 @@
 <template>
-  <div class="wrap">
+  <div class="master">
+    <SiteTop />
+
     <div class="container">
-      <h4 class="title">Oilaviy mehmon uylari ro‘yxati</h4>
       <table>
         <tr>
           <th>Reyestr raqami</th>
@@ -48,9 +49,6 @@
           <td><p class="num">+998 93 251-56-36</p></td>
         </tr>
       </table>
-      <div class="link">
-        <NuxtLink to="/list"> Barchasini ko’rish </NuxtLink>
-      </div>
     </div>
   </div>
 </template>
@@ -61,39 +59,7 @@ export default {};
 
 <style scoped>
 @import url(@/assets/css/table.css);
-.wrap {
-  padding-bottom: 112px;
-}
-.title {
-  color: var(--Blue-dark, #002856);
-  text-align: center;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 120%; /* 57.6px */
-  margin-bottom: 32px;
-  font-family: var(--medium);
-}
-.link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
-.link a {
-  color: var(--Agro-Blue, #3c4bdc);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 140%; /* 19.6px */
-  font-family: var(--medium);
-  border-radius: 16px;
-  border: 1px solid var(--Agro-Blue, #3c4bdc);
-  padding: 18px 50px;
-  transition: 0.4s;
-}
-.link a:hover {
-  background: #3c4bdc;
-  color: white;
+.container {
+  margin: 40px auto 112px auto;
 }
 </style>
