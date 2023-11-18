@@ -1,0 +1,200 @@
+<template>
+  <div class="master">
+    <SiteTop :title="title" />
+    <div class="container">
+      <table>
+        <tr>
+          <th>Ariza raqami</th>
+          <th>Holati</th>
+          <th>Yuborilgan sanasi</th>
+          <th>Yakunlangan sanasi</th>
+          <th>Reyestrdan ko‘chirma</th>
+          <th>Amallar</th>
+        </tr>
+        <tr>
+          <td>
+            <p class="strong">#987712</p>
+          </td>
+          <td>
+            <p class="status waiting">
+              2-bosqich (Hujjatlar ko‘rib chiqilmoqda)
+            </p>
+          </td>
+          <td>
+            <p class="weak">15.10.2023 - 14:37</p>
+          </td>
+          <td>
+            <p class="weak">21.10.2023 - 14:37</p>
+          </td>
+          <td>
+            <p class="strong">000368</p>
+          </td>
+          <td>
+            <div class="button">
+              <button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M6 8L8 10M8 10L10 8M8 10L8 2"
+                    stroke="#00A7AE"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5 6V6C3.34315 6 2 7.34315 2 9L2 11C2 12.6569 3.34315 14 5 14L11 14C12.6569 14 14 12.6569 14 11L14 9C14 7.34315 12.6569 6 11 6V6"
+                    stroke="#00A7AE"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="strong">#987712</p>
+          </td>
+          <td>
+            <p class="status active">
+              So‘nggi bosqich (Muvaffaqiyatli yakunlangan)
+            </p>
+          </td>
+          <td>
+            <p class="weak">15.10.2023 - 14:37</p>
+          </td>
+          <td>
+            <p class="weak">21.10.2023 - 14:37</p>
+          </td>
+          <td>
+            <p class="strong">000368</p>
+          </td>
+          <td>
+            <div class="button">
+              <button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M6 8L8 10M8 10L10 8M8 10L8 2"
+                    stroke="#00A7AE"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5 6V6C3.34315 6 2 7.34315 2 9L2 11C2 12.6569 3.34315 14 5 14L11 14C12.6569 14 14 12.6569 14 11L14 9C14 7.34315 12.6569 6 11 6V6"
+                    stroke="#00A7AE"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p class="strong">#987712</p>
+          </td>
+          <td>
+            <p class="status passive">So‘nggi bosqich (Rad etildi)</p>
+          </td>
+          <td>
+            <p class="weak">15.10.2023 - 14:37</p>
+          </td>
+          <td>
+            <p class="weak">21.10.2023 - 14:37</p>
+          </td>
+          <td>
+            <p class="strong">000368</p>
+          </td>
+          <td>
+            <div class="button">
+              <button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M6 8L8 10M8 10L10 8M8 10L8 2"
+                    stroke="#00A7AE"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M5 6V6C3.34315 6 2 7.34315 2 9L2 11C2 12.6569 3.34315 14 5 14L11 14C12.6569 14 14 12.6569 14 11L14 9C14 7.34315 12.6569 6 11 6V6"
+                    stroke="#00A7AE"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="link">
+        <NuxtLink to="/applications/new"> Yangi ariza yuborish </NuxtLink>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: "Arizalar",
+    };
+  },
+};
+</script>
+
+<style scoped>
+@import url(@/assets/css/table.css);
+.container {
+  padding: 40px 0 112px 0;
+}
+.status {
+  max-width: max-content !important;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.link {
+  display: flex;
+  justify-content: center;
+  padding: 58px 0 0 0;
+}
+.link a {
+  padding: 18px 50px;
+  border-radius: 16px;
+  border: 1px solid var(--Agro-Blue, #3c4bdc);
+  color: var(--Agro-Blue, #3c4bdc);
+  font-family: var(--semi);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 19.6px */
+  transition: 0.4s;
+  display: inline-flex;
+}
+.link a:hover {
+  background: #3c4bdc;
+  color: white;
+}
+</style>

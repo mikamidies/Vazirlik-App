@@ -61,6 +61,20 @@ table tr:nth-child(odd) {
   max-width: 120px;
   margin: 0 auto;
 }
+.status.waiting {
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
+  border-radius: 62px;
+  padding: 6px 22px;
+  max-width: max-content;
+  border-radius: 62px;
+  background: #fdefe2;
+  margin: 0 auto;
+  color: #f2994a;
+}
 .num {
   color: var(--Agro-Blue, #3c4bdc);
   font-size: 14px;
@@ -68,4 +82,10 @@ table tr:nth-child(odd) {
   font-weight: 400;
   line-height: 150%; /* 21px */
   text-decoration-line: underline;
+}
+button {
+  border: 0;
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
 }
