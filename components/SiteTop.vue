@@ -4,7 +4,7 @@
       <div class="cardo">
         <img src="@/assets/img/vector-left.png" alt="" class="vector-left" />
         <div class="content">
-          <h4 class="title">Oilaviy mehmon uylari ro‘yxati</h4>
+          <h4 class="title">{{ title }}</h4>
           <div class="crumbs">
             <ol>
               <li>
@@ -29,7 +29,7 @@
                 </svg>
               </li>
               <li>
-                <p class="current">Oilaviy mehmon uylari ro‘yxati</p>
+                <p class="current">{{ title }}</p>
               </li>
             </ol>
           </div>
@@ -41,7 +41,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["title"],
+};
 </script>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <template>
   <div class="master">
-    <SiteTop />
+    <SiteTop :title="title" />
 
     <div class="container">
       <table>
@@ -54,7 +54,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      title: "Oilaviy mehmon uylari ro‘yxati",
+    };
+  },
+};
 </script>
 
 <style scoped>
