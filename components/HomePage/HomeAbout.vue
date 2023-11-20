@@ -65,4 +65,24 @@ export default {};
   padding-left: 8px;
   border-left: 4px solid #3c4bdc;
 }
+.pic {
+  width: 100%;
+}
+@media screen and (max-width: 1024px) {
+  .wrap {
+    padding: 0;
+  }
+  .container {
+    padding: 40px 24px;
+    display: block;
+  }
+  .title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    margin-bottom: 24px;
+    max-width: 60%;
+  }
+}
 </style>

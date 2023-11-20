@@ -112,4 +112,40 @@ export default {
   font-weight: 400;
   line-height: 150%; /* 27px */
 }
+@media screen and (max-width: 1024px) {
+  .cardo {
+    min-height: 238px;
+    border-radius: 20px;
+  }
+  .cardo::after {
+    border-radius: 20px;
+  }
+  .title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    margin: 0 auto;
+  }
+  .last,
+  .current {
+    font-size: 14px;
+  }
+  .crumbs ol {
+    gap: 4px;
+  }
+  .vector-left {
+    top: 0;
+    left: 0;
+    width: 120px;
+  }
+  .vector-right {
+    display: none;
+  }
+  .current {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
 </style>

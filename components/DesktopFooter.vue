@@ -307,4 +307,66 @@ ul {
 .tel span {
   color: #00cd69;
 }
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+    margin-top: 24px;
+    padding: 0 24px;
+  }
+  .col:nth-child(2) {
+    display: none;
+  }
+  .title {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+  .title span {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    transform: translateY(-4px);
+  }
+  .cardo {
+    padding: 24px 0;
+    border-radius: 20px;
+  }
+  .sup {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin-bottom: 16px;
+  }
+  .link,
+  .con,
+  .tel {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  ul {
+    gap: 16px;
+  }
+  .vector-left {
+    width: 120px;
+    top: 0;
+    transform: translateY(0);
+  }
+  .vector-right {
+    width: 120px;
+    bottom: 0;
+    transform: translateY(100%);
+  }
+  .con {
+    gap: 8px;
+  }
+  .wrap {
+    padding-bottom: 40px;
+  }
+}
 </style>

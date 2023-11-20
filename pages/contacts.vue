@@ -188,4 +188,36 @@ export default {
   height: 642px;
   border-radius: 32px;
 }
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 40px 16px;
+  }
+  .items {
+    grid-template-columns: repeat(1, 1fr);
+    margin-bottom: 40px;
+  }
+  .sup {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    margin-bottom: 4px;
+  }
+  .text,
+  .link {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    gap: 8px;
+  }
+  .item {
+    padding: 16px;
+    border-radius: 10px;
+  }
+  .map iframe {
+    height: 366px;
+    border-radius: 20px;
+  }
+}
 </style>

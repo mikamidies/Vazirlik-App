@@ -2,52 +2,54 @@
   <div class="wrap">
     <div class="container">
       <h4 class="title">Oilaviy mehmon uylari ro‘yxati</h4>
-      <table>
-        <tr>
-          <th>Reyestr raqami</th>
-          <th>Mehmon uyi nomi</th>
-          <th>Mehmon uyi joylashgan hudud</th>
-          <th>Mehmon uyi manzili</th>
-          <th>Mehmon uyi holati</th>
-          <th>Mehmon uyi telefon raqami</th>
-        </tr>
-        <tr>
-          <td><p class="strong">000368</p></td>
-          <td><p class="strong">Lux Family Guesthouse</p></td>
-          <td><p class="weak">Toshkent shahri</p></td>
-          <td>
-            <p class="weak">
-              Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
-            </p>
-          </td>
-          <td><p class="status active">Aktiv</p></td>
-          <td><p class="num">+998 93 251-56-36</p></td>
-        </tr>
-        <tr>
-          <td><p class="strong">000368</p></td>
-          <td><p class="strong">Lux Family Guesthouse</p></td>
-          <td><p class="weak">Toshkent shahri</p></td>
-          <td>
-            <p class="weak">
-              Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
-            </p>
-          </td>
-          <td><p class="status passive">To‘xtatilgan</p></td>
-          <td><p class="num">+998 93 251-56-36</p></td>
-        </tr>
-        <tr>
-          <td><p class="strong">000368</p></td>
-          <td><p class="strong">Lux Family Guesthouse</p></td>
-          <td><p class="weak">Toshkent shahri</p></td>
-          <td>
-            <p class="weak">
-              Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
-            </p>
-          </td>
-          <td><p class="status active">Aktiv</p></td>
-          <td><p class="num">+998 93 251-56-36</p></td>
-        </tr>
-      </table>
+      <div class="tabler">
+        <table>
+          <tr>
+            <th>Reyestr raqami</th>
+            <th>Mehmon uyi nomi</th>
+            <th>Mehmon uyi joylashgan hudud</th>
+            <th>Mehmon uyi manzili</th>
+            <th>Mehmon uyi holati</th>
+            <th>Mehmon uyi telefon raqami</th>
+          </tr>
+          <tr>
+            <td><p class="strong">000368</p></td>
+            <td><p class="strong">Lux Family Guesthouse</p></td>
+            <td><p class="weak">Toshkent shahri</p></td>
+            <td>
+              <p class="weak">
+                Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
+              </p>
+            </td>
+            <td><p class="status active">Aktiv</p></td>
+            <td><p class="num">+998 93 251-56-36</p></td>
+          </tr>
+          <tr>
+            <td><p class="strong">000368</p></td>
+            <td><p class="strong">Lux Family Guesthouse</p></td>
+            <td><p class="weak">Toshkent shahri</p></td>
+            <td>
+              <p class="weak">
+                Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
+              </p>
+            </td>
+            <td><p class="status passive">To‘xtatilgan</p></td>
+            <td><p class="num">+998 93 251-56-36</p></td>
+          </tr>
+          <tr>
+            <td><p class="strong">000368</p></td>
+            <td><p class="strong">Lux Family Guesthouse</p></td>
+            <td><p class="weak">Toshkent shahri</p></td>
+            <td>
+              <p class="weak">
+                Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
+              </p>
+            </td>
+            <td><p class="status active">Aktiv</p></td>
+            <td><p class="num">+998 93 251-56-36</p></td>
+          </tr>
+        </table>
+      </div>
       <div class="link">
         <NuxtLink to="/list"> Barchasini ko’rish </NuxtLink>
       </div>
@@ -95,5 +97,24 @@ export default {};
 .link a:hover {
   background: #3c4bdc;
   color: white;
+}
+@media screen and (max-width: 1024px) {
+  .wrap {
+    overflow: hidden;
+  }
+  .title {
+    margin: 0 auto 24px auto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+  }
+  .link {
+    margin-top: 24px;
+  }
+  .link a {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

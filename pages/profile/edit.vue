@@ -295,4 +295,39 @@ form :deep(.ant-select-selection-selected-value) {
   background: var(--Agro-blue, #3c4bdc);
   border: 1px solid #3c4bdc;
 }
+@media screen and (max-width: 1024px) {
+  .items {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+  }
+  .cardo {
+    padding: 16px 16px 40px 16px;
+  }
+  .sup {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin-bottom: 8px;
+  }
+  .item input {
+    padding: 12px 24px;
+    border-radius: 10px;
+  }
+  form :deep(.ant-select-selection) {
+    height: 50px;
+  }
+  .drag {
+    margin-top: 24px;
+  }
+  .buttons {
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .cancel,
+  .confirm {
+    width: 100%;
+  }
+}
 </style>

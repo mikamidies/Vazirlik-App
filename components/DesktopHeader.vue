@@ -150,4 +150,25 @@ export default {};
   justify-content: center;
   border: 0;
 }
+@media screen and (max-width: 1024px) {
+  .right,
+  .mid {
+    display: none;
+  }
+  .title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+  .title span {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+  .container {
+    padding: 24px;
+  }
+}
 </style>

@@ -136,4 +136,14 @@ export default {
   background: #3c4bdc;
   color: white;
 }
+@media screen and (max-width: 1024px) {
+  .container {
+    overflow: hidden;
+    padding: 40px 16px;
+  }
+  .body img {
+    height: 198px;
+    border-radius: 20px;
+  }
+}
 </style>

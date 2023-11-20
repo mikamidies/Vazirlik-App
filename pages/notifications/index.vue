@@ -146,4 +146,10 @@ export default {
   font-weight: 500;
   line-height: 140%; /* 19.6px */
 }
+@media screen and (max-width: 1024px) {
+  .container {
+    overflow: hidden;
+    padding: 40px 16px;
+  }
+}
 </style>

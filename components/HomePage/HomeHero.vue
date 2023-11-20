@@ -55,4 +55,25 @@ export default {};
   max-width: 745px;
   letter-spacing: 1px;
 }
+@media screen and (max-width: 1024px) {
+  .cardo {
+    border-radius: 20px;
+    min-height: 238px;
+  }
+  .cardo::after {
+    border-radius: 20px;
+  }
+  .title {
+    max-width: 90%;
+    margin: 0 auto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+  }
+  .vector {
+    width: 95px;
+    height: 95px;
+  }
+}
 </style>

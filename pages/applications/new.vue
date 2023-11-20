@@ -237,4 +237,42 @@ form :deep(.ant-select-selection-selected-value) {
   font-weight: 500;
   line-height: 150%;
 }
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 40px 16px;
+  }
+  form :deep(.ant-select-selection) {
+    height: 50px;
+    border-radius: 10px;
+  }
+  form :deep(.ant-select-selection__rendered) {
+    margin: 0 24px 0 0 !important;
+    display: flex;
+    align-items: center;
+  }
+  form :deep(.ant-select-selection-selected-value),
+  form
+    :deep(
+      .ant-select-selection__placeholder,
+      .ant-select-search__field__placeholder
+    ) {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 8px;
+    padding-top: 24px;
+  }
+  .link {
+    padding-top: 24px;
+  }
+  .link a {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
 </style>

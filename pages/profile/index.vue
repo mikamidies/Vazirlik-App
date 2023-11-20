@@ -135,4 +135,46 @@ export default {
   background: #3c4bdc;
   color: white;
 }
+@media screen and (max-width: 1024px) {
+  .flexer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .pic {
+    width: 80px;
+    height: 80px;
+  }
+  .left {
+    display: flex;
+    justify-content: center;
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .cardo {
+    padding: 16px 16px 40px 16px;
+  }
+  .sup {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    margin-bottom: 8px;
+  }
+  .name {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+  }
+  .link {
+    padding-top: 24px;
+  }
+  .container {
+    padding: 40px 16px;
+  }
+}
 </style>

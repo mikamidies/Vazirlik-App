@@ -61,4 +61,19 @@ export default {
   display: flex;
   justify-content: center;
 }
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 40px 16px;
+  }
+  .title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+  }
+  .link {
+    border-radius: 8px;
+    border: 1px solid var(--Agro-Blue, #3c4bdc);
+  }
+}
 </style>
