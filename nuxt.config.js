@@ -24,6 +24,10 @@ export default {
   modules: ["@nuxtjs/axios"],
 
   axios: {
+    credentials: false,
+    init(axios) {
+      axios.defaults.withCredentials = true;
+    },
     baseURL: process.env.BASE_URL,
   },
 

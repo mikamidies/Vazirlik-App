@@ -1,14 +1,14 @@
 export default {
-  async getHotels(axios) {
+  async getHotels(axios, params) {
     try {
       let res;
 
       if (axios) {
         res = await axios.get("/hotels", {
-          //   ...params,
+          ...params,
         });
       }
-      return res.data.results;
+      return res.data.data;
     } catch (e) {
       console.log(e);
     }

@@ -2,7 +2,7 @@
   <div class="master">
     <HomeHero />
     <HomeAbout />
-    <HomeList />
+    <HomeList :hotels="hotels" />
   </div>
 </template>
 
@@ -10,14 +10,23 @@
 import hotelsApi from "@/api/hotels";
 
 export default {
-  async asyncData({ $axios }) {
-    const hotels = await hotelsApi.getHotels($axios);
+  data() {
+    return {
+      hotels: [],
+    };
+  },
+
+  async mounted() {
+    const hotels = await hotelsApi.getHotels(this.$axios, {
+      params: {},
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    });
+
+    this.hotels = hotels;
 
     console.log(hotels);
-
-    return {
-      hotels,
-    };
   },
 };
 </script>

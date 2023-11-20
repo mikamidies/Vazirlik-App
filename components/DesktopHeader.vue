@@ -86,12 +86,52 @@
           </svg>
         </button>
       </div>
+
+      <div>
+        <form @submit.prevent="onSubmit">
+          <input type="text" v-model="username" />
+          <input type="number" v-model="password" />
+
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import authApi from "@/api/auth.js";
+
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+    };
+  },
+  methods: {
+    async onSubmit() {
+      const formData = {
+        username: this.username,
+        password: this.password,
+      };
+
+      this.handleAuth(formData);
+    },
+
+    async handleAuth(formData) {
+      try {
+        const res = await authApi.handleAuth(formData);
+
+        localStorage.setItem("authToken", res.data.data.token);
+
+        console.log(res);
+      } catch (error) {
+        console.log("error");
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>

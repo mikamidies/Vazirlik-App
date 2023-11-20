@@ -12,41 +12,30 @@
             <th>Mehmon uyi holati</th>
             <th>Mehmon uyi telefon raqami</th>
           </tr>
-          <tr>
-            <td><p class="strong">000368</p></td>
-            <td><p class="strong">Lux Family Guesthouse</p></td>
-            <td><p class="weak">Toshkent shahri</p></td>
+          <tr v-for="item in hotels.data" :key="item.id">
+            <td>
+              <p class="strong">{{ item.register_number }}</p>
+            </td>
+            <td>
+              <p class="strong">{{ item.name }}</p>
+            </td>
+            <td>
+              <p class="weak">{{ item.region.name }}</p>
+            </td>
             <td>
               <p class="weak">
-                Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
+                {{ item.address }}
               </p>
             </td>
-            <td><p class="status active">Aktiv</p></td>
-            <td><p class="num">+998 93 251-56-36</p></td>
-          </tr>
-          <tr>
-            <td><p class="strong">000368</p></td>
-            <td><p class="strong">Lux Family Guesthouse</p></td>
-            <td><p class="weak">Toshkent shahri</p></td>
             <td>
-              <p class="weak">
-                Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
+              <p v-show="item.status == 1" class="status active">Aktiv</p>
+              <p v-show="item.status == 0" class="status passive">
+                To'xtatilgan
               </p>
             </td>
-            <td><p class="status passive">To‘xtatilgan</p></td>
-            <td><p class="num">+998 93 251-56-36</p></td>
-          </tr>
-          <tr>
-            <td><p class="strong">000368</p></td>
-            <td><p class="strong">Lux Family Guesthouse</p></td>
-            <td><p class="weak">Toshkent shahri</p></td>
             <td>
-              <p class="weak">
-                Toshkent sh, Mirobod tumani, O‘zbekiston ko‘ch, 2-uy
-              </p>
+              <p class="num">{{ item.phone_number }}</p>
             </td>
-            <td><p class="status active">Aktiv</p></td>
-            <td><p class="num">+998 93 251-56-36</p></td>
           </tr>
         </table>
       </div>
@@ -58,7 +47,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["hotels"],
+};
 </script>
 
 <style scoped>
