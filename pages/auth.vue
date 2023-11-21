@@ -4,12 +4,12 @@
     <div class="container">
       <div class="content">
         <h4 class="title">
-          Oilaviy mehmon uyini Oilaviy Mehmon Uylari Yagona Reyestriga kiritish
-          uchun ariza yuborishdan avval OneID Yagona Identifikatsiya Tizimi
-          orqali avtorizatsiyadan o‘tishingiz zarur
+          Oilaviy mehmon uyini Oilaviy Mehmon Uylari Yagona Reyestriga kiritish uchun
+          ariza yuborishdan avval OneID Yagona Identifikatsiya Tizimi orqali
+          avtorizatsiyadan o‘tishingiz zarur
         </h4>
         <div class="flex">
-          <a href="#" class="link">
+          <a :href="link" class="link">
             <img src="@/assets/img/oneid.svg" alt="" />
             Avtorizatsiyadan o‘tish
           </a>
@@ -20,11 +20,17 @@
 </template>
 
 <script>
+import authApi from "@/api/auth";
 export default {
   data() {
     return {
       title: "Royxattan o'tish",
+      link: ""
     };
+  },
+  async fetch() {
+    const linkData = await authApi.getLink(this.$axios);
+    this.link = linkData?.data?.data;
   },
 };
 </script>

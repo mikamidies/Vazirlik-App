@@ -43,7 +43,7 @@
             />
           </svg>
         </button>
-        <button>
+        <button @click="$router.push($store.state.auth ? '/profile' : '/auth')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -143,8 +143,8 @@
                   stroke-width="1.5"
                 />
               </svg>
-              Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
-              ko‘chasi, 2-uy
+              Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston ko‘chasi,
+              2-uy
             </p>
             <NuxtLink to="/">
               <svg

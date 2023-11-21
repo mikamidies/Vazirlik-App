@@ -41,7 +41,12 @@
                 <p class="sup">
                   Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:
                 </p>
-                <input type="text"   v-mask="'+998 ## ### ## ##'" v-model="form.phone_number1" placeholder="+998" />
+                <input
+                  type="text"
+                  v-mask="'+998 ## ### ## ##'"
+                  v-model="form.phone_number1"
+                  placeholder="+998"
+                />
               </a-form-model-item>
             </div>
             <div class="item">
@@ -119,7 +124,7 @@
               <div class="dropbox">
                 <ClientOnly fallback-tag="span" fallback="Loading comments...">
                   <a-upload-dragger
-                    :class="{ disabled: fileList.length > 0 }"
+                    :class="{ uploadDis: fileList.length > 0 }"
                     :headers="headers"
                     v-decorator="['dragger']"
                     name="file"
@@ -279,6 +284,10 @@ export default {
 </script>
 
 <style scoped>
+.uploadDis :deep(.ant-upload.ant-upload-drag){
+  pointer-events: none !important;
+  opacity: .5 !important;
+}
 .disabled {
   pointer-events: none;
 }
