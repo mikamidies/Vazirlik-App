@@ -25,7 +25,15 @@ export default {
 
   buildModules: [],
 
-  modules: ["@nuxtjs/axios"],
+  modules: ["@nuxtjs/axios", "@nuxtjs/i18n"],
+
+  i18n: {
+    locales: ["uz", "ru"],
+    defaultLocale: "uz",
+    vueI18n: {
+      fallbackLocale: "uz",
+    },
+  },
 
   axios: {
     credentials: false,

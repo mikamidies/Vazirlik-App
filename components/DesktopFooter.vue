@@ -12,24 +12,32 @@
           </div>
           <div class="grid">
             <div class="col">
-              <p class="sup">Foydali havolalar</p>
+              <p class="sup">
+                {{ $store.state.translations["usefull_links"] }}
+              </p>
               <ul>
                 <li>
-                  <a href="#" class="link"> Turizm qo‘mitasi </a>
+                  <a href="#" class="link">
+                    {{ $store.state.translations["tourism_agency"] }}</a
+                  >
                 </li>
                 <li>
                   <a href="#" class="link">
-                    O‘zbekiston Respublikasi Prezidenti virtual qabulxonasi
+                    {{ $store.state.translations["president_reseption"] }}
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="link"> Davlat Xizmatlari Marzaki </a>
+                  <a href="#" class="link">
+                    {{ $store.state.translations["services_center"] }}
+                  </a>
                 </li>
               </ul>
             </div>
             <div class="col"></div>
             <div class="col">
-              <p class="sup">Aloqala uchun</p>
+              <p class="sup">
+                {{ $store.state.translations["contacts"] }}
+              </p>
               <ul>
                 <li>
                   <a href="#" class="con">
@@ -111,7 +119,7 @@
               </ul>
             </div>
             <div class="col">
-              <p class="sup">Telefon raqamlar</p>
+              <p class="sup">{{ $store.state.translations["phone_num"] }}</p>
               <ul>
                 <li>
                   <a href="#" class="tel">

@@ -8,23 +8,27 @@
           <div class="right">
             <div class="items">
               <div class="item">
-                <p class="sup">F.I.O</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_owner"] }}
+                </p>
                 <p class="name">Ismoilov Akmal Bahodirovich</p>
               </div>
               <div class="item">
-                <p class="sup">JSHSHIR</p>
+                <p class="sup">{{ $store.state.translations["jshshir"] }}</p>
                 <p class="name">32001986500022</p>
               </div>
               <div class="item">
-                <p class="sup">Pasport seriyasi va raqami</p>
+                <p class="sup">{{ $store.state.translations["passport"] }}</p>
                 <p class="name">AD3665673</p>
               </div>
               <div class="item">
-                <p class="sup">Tug‘ilgan sanasi</p>
+                <p class="sup">{{ $store.state.translations["date_birth"] }}</p>
                 <p class="name">1998-01-20</p>
               </div>
               <div class="item">
-                <p class="sup">Адрес по прописке</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_address"] }}
+                </p>
                 <p class="name">
                   ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
                 </p>
@@ -36,8 +40,8 @@
 
       <div class="add cardo" v-if="hotels.length < 1">
         <div class="mid">
-          <h4>Mehmon uyi</h4>
-          <p>Mehmon uyi qo’shilmagan</p>
+          <h4>{{ $store.state.translations["hostel"] }}</h4>
+          <p>{{ $store.state.translations["no_added"] }}</p>
           <NuxtLink to="/profile/add">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +58,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            Mehmon uyi qo‘shish
+            {{ $store.state.translations["add_hostel"] }}
           </NuxtLink>
         </div>
       </div>
@@ -71,38 +75,48 @@
           <div class="right">
             <div class="items">
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi nomi:</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_name"] }}
+                </p>
                 <p class="name">{{ hotel?.name || "------" }}</p>
               </div>
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi telefon raqami</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_phone"] }}
+                </p>
                 <p class="name">
                   {{ hotel?.phone_number || "------" }},
                   {{ hotel?.phone_number2 }}
                 </p>
               </div>
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi veb sayti</p>
+                <p class="sup">{{ $store.state.translations["website"] }}</p>
                 <p class="name">{{ hotel?.website || "------" }}</p>
               </div>
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi elektron manzili</p>
+                <p class="sup">
+                  {{ $store.state.translations["email"] }}
+                </p>
                 <p class="name">{{ hotel?.email || "------" }}</p>
               </div>
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi joylashgan hudud</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_region"] }}
+                </p>
                 <p class="name">{{ hotel?.region?.name || "------" }}</p>
               </div>
               <div class="item">
-                <p class="sup">Tashkilot yuridik nomi</p>
+                <p class="sup">{{ $store.state.translations["legal_name"] }}</p>
                 <p class="name">{{ hotel?.legal_name || "------" }}</p>
               </div>
               <div class="item">
-                <p class="sup">STIR</p>
+                <p class="sup">{{ $store.state.translations["stir_num"] }}</p>
                 <p class="name">{{ hotel?.tin || "------" }}</p>
               </div>
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi egasi</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_owner"] }}
+                </p>
                 <p class="name">
                   {{ hotel?.director_surname || "------" }}
                   {{ hotel?.director_name }}
@@ -110,7 +124,9 @@
                 </p>
               </div>
               <div class="item">
-                <p class="sup">Oilaviy mehmon uyi manzili</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_address"] }}
+                </p>
                 <p class="name">
                   {{ hotel?.address || "----" }}
                 </p>
@@ -120,7 +136,7 @@
         </div>
         <div class="link">
           <NuxtLink :to="`/profile/${hotel?.id}`">
-            Ma‘lumotlarni yangilash
+            {{ $store.state.translations["update_data"] }}
           </NuxtLink>
           <NuxtLink class="app" to="/applications/new">
             <svg
@@ -138,7 +154,7 @@
                 stroke-linejoin="round"
               />
             </svg>
-            Ariza jo‘natish
+            {{ $store.state.translations["send_it"] }}
           </NuxtLink>
         </div>
       </div>

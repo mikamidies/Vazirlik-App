@@ -4,15 +4,15 @@
     <div class="container">
       <div class="items">
         <div class="item">
-          <p class="sup">Oilaviy mehmon uyi egasi:</p>
+          <p class="sup">{{ $store.state.translations["hostel_owner"] }}</p>
           <p class="text">{{ hotel.director_name }}</p>
         </div>
         <div class="item">
-          <p class="sup">Tashkilot yuridik nomi:</p>
+          <p class="sup">{{ $store.state.translations["legal_name"] }}</p>
           <p class="text">{{ hotel.legal_name }}</p>
         </div>
         <div class="item">
-          <p class="sup">Telefon raqamlari:</p>
+          <p class="sup">{{ $store.state.translations["phone_number"] }}</p>
           <p class="link">
             <span>
               <svg
@@ -36,16 +36,20 @@
           </p>
         </div>
         <div class="item">
-          <p class="sup">Oilaviy mehmon uyi holati:</p>
-          <p v-show="hotel.status == 1" class="text">Aktiv</p>
-          <p v-show="hotel.status == 0" class="text">To'xtatilgan</p>
+          <p class="sup">{{ $store.state.translations["hostel_status"] }}</p>
+          <p v-show="hotel.status == 1" class="text">
+            {{ $store.state.translations["active"] }}
+          </p>
+          <p v-show="hotel.status == 0" class="text">
+            {{ $store.state.translations["passive"] }}
+          </p>
         </div>
         <div class="item">
-          <p class="sup">Reyestrga kiritilgan sanasi:</p>
+          <p class="sup">{{ $store.state.translations["registry_date"] }}</p>
           <p class="text">{{ hotel.entry_date }}</p>
         </div>
         <div class="item">
-          <p class="sup">Elektron manzili:</p>
+          <p class="sup">{{ $store.state.translations["email"] }}</p>
           <p class="link">
             <span>
               <svg
@@ -77,17 +81,17 @@
           </p>
         </div>
         <div class="item">
-          <p class="sup">Reyestr raqami:</p>
+          <p class="sup">{{ $store.state.translations["registry_num"] }}</p>
           <p class="text">{{ hotel.register_number }}</p>
         </div>
         <div class="item">
-          <p class="sup">Manzili:</p>
+          <p class="sup">{{ $store.state.translations["address"] }}</p>
           <p class="text">
             {{ hotel.address }}
           </p>
         </div>
         <div class="item">
-          <p class="sup">Oilaviy mehmon uyi sayti:</p>
+          <p class="sup">{{ $store.state.translations["website"] }}</p>
           <p class="link">
             <span>
               <svg

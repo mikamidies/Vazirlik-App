@@ -8,7 +8,9 @@
           <div class="crumbs">
             <ol>
               <li>
-                <NuxtLink class="last" to="/"> Bosh sahifa </NuxtLink>
+                <NuxtLink class="last" to="/">
+                  {{ $store.state.translations["main"] }}
+                </NuxtLink>
               </li>
               <li>
                 <svg

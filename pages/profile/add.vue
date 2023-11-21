@@ -3,21 +3,33 @@
     <SiteTop :title="title" />
     <div class="container">
       <div class="cardo">
-        <a-form-model class="w-full" :model="form" ref="ruleForm" :rules="rules">
+        <a-form-model
+          class="w-full"
+          :model="form"
+          ref="ruleForm"
+          :rules="rules"
+        >
           <div class="items">
             <div class="item">
               <a-form-model-item prop="name" class="form-item w-full mb-0">
-                <p class="sup">Oilaviy mehmon uyi nomi:</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_name"] }}
+                </p>
                 <input
                   type="text"
                   v-model="form.name"
-                  placeholder="Oilaviy mehmon uyi nomini kiriting"
+                  :placeholder="$store.state.translations[`hostel_name`]"
                 />
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item prop="phone_number" class="form-item w-full mb-0">
-                <p class="sup">Oilaviy mehmon uyi telefon raqamini kiriting:</p>
+              <a-form-model-item
+                prop="phone_number"
+                class="form-item w-full mb-0"
+              >
+                <p class="sup">
+                  {{ $store.state.translations["phone_num"] }}
+                </p>
                 <input
                   type="text"
                   v-mask="'+998 ## ### ## ##'"
@@ -28,28 +40,40 @@
             </div>
             <div class="item">
               <a-form-model-item prop="website" class="form-item w-full mb-0">
-                <p class="sup">Oilaviy mehmon uyi web sayti:</p>
+                <p class="sup">
+                  {{ $store.state.translations["website"] }}
+                </p>
                 <input
                   v-model="form.website"
                   type="text"
-                  placeholder="Oilaviy mehmon uyi web sayti manzilini kiriting"
+                  :placeholder="$store.state.translations[`website`]"
                 />
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item prop="phone_number1" class="form-item w-full mb-0">
+              <a-form-model-item
+                prop="phone_number1"
+                class="form-item w-full mb-0"
+              >
                 <p class="sup">
-                  Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:
+                  {{ $store.state.translations["add_number"] }}
                 </p>
-                <input type="text"   v-mask="'+998 ## ### ## ##'" v-model="form.phone_number1" placeholder="+998" />
+                <input
+                  type="text"
+                  v-mask="'+998 ## ### ## ##'"
+                  v-model="form.phone_number1"
+                  placeholder="+998"
+                />
               </a-form-model-item>
             </div>
             <div class="item">
               <a-form-model-item prop="region_id" class="form-item w-full mb-0">
-                <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_region"] }}
+                </p>
                 <a-select
                   v-model="form.region_id"
-                  placeholder="Oilaviy mehmon uyi joylashgan hudud"
+                  :placeholder="$store.state.translations[`hostel_owner`]"
                 >
                   <a-select-option
                     v-for="region in regions"
@@ -63,53 +87,63 @@
             </div>
             <div class="item">
               <a-form-model-item prop="email" class="form-item w-full mb-0">
-                <p class="sup">Oilaviy mehmon uyi elektron manzili:</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_address"] }}
+                </p>
                 <input
                   v-model="form.email"
                   type="email"
-                  placeholder="Oilaviy mehmon uyi elektron manzilini kiriting"
+                  :placeholder="$store.state.translations[`hostel_address`]"
                 />
               </a-form-model-item>
             </div>
             <div class="item">
               <a-form-model-item prop="tin" class="form-item w-full mb-0">
-                <p class="sup">STIR:</p>
+                <p class="sup">{{ $store.state.translations["stir_num"] }}</p>
                 <input
                   type="text"
                   v-model="form.tin"
-                  placeholder="Tashkilotning STIRini kiriting"
+                  :placeholder="$store.state.translations[`stir_num`]"
                 />
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item prop="legal_name" class="form-item w-full mb-0">
-                <p class="sup">Tashkilot yuridik nomi:</p>
+              <a-form-model-item
+                prop="legal_name"
+                class="form-item w-full mb-0"
+              >
+                <p class="sup">{{ $store.state.translations["legal_name"] }}</p>
                 <input
                   type="text"
                   v-model="form.legal_name"
-                  placeholder="Tashkilot yuridik nomini kiriting"
+                  :placeholder="$store.state.translations[`legal_name`]"
                 />
               </a-form-model-item>
             </div>
             <div class="item">
               <a-form-model-item prop="address" class="form-item w-full mb-0">
-                <p class="sup">Oilaviy mehmon uyi manzili:</p>
+                <p class="sup">
+                  {{ $store.state.translations["hostel_address"] }}
+                </p>
                 <input
                   type="text"
                   v-model="form.address"
-                  placeholder="Oilaviy mehmon uyi manziliin"
+                  :placeholder="$store.state.translations[`hostel_address`]"
                 />
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item prop="director_name" class="form-item w-full mb-0">
+              <a-form-model-item
+                prop="director_name"
+                class="form-item w-full mb-0"
+              >
                 <p class="sup">
-                  Oilaviy mehmon uyi egasining ismi familyasi va otasi ismi:
+                  {{ $store.state.translations["hostel_owner"] }}
                 </p>
                 <input
                   type="text"
                   v-model="form.director_name"
-                  placeholder="Oilaviy mehmon uyi egasining ismi sharifini kiriting"
+                  :placeholder="$store.state.translations[`hostel_owner`]"
                 />
               </a-form-model-item>
             </div>
@@ -150,7 +184,7 @@
                       </span>
                     </p>
                     <p class="ant-upload-text">
-                      Oilaviy mehmon uyi asosiy rasmi yoki logotipi
+                      {{ $store.state.translations["photo_logo"] }}
                     </p>
                   </a-upload-dragger>
                 </ClientOnly>
@@ -158,8 +192,12 @@
             </a-form-item>
           </div>
           <div class="buttons">
-            <button type="submit" class="cancel">Bekor qilish</button>
-            <button type="button" class="confirm" @click="sumbit">Saqlash</button>
+            <button type="submit" class="cancel">
+              {{ $store.state.translations["cancel"] }}
+            </button>
+            <button type="button" class="confirm" @click="sumbit">
+              {{ $store.state.translations["save"] }}
+            </button>
           </div>
         </a-form-model>
       </div>
@@ -176,32 +214,82 @@ export default {
       headers: {},
       title: "Mehmon uyi qo‘shish",
       rules: {
-        name: [{ required: true, message: "This field is required", trigger: "change" }],
-        website: [
-          { required: true, message: "This field is required", trigger: "change" },
+        name: [
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
-        email: [{ required: true, message: "This field is required", trigger: "change" }],
+        website: [
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
+        ],
+        email: [
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
+        ],
         region_id: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
         legal_name: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
-        tin: [{ required: true, message: "This field is required", trigger: "change" }],
+        tin: [
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
+        ],
         director_surname: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
         director_name: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
         director_fathers_name: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
         address: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
         phone_number: [
-          { required: true, message: "This field is required", trigger: "change" },
+          {
+            required: true,
+            message: "This field is required",
+            trigger: "change",
+          },
         ],
       },
       form: {
@@ -272,7 +360,8 @@ export default {
     },
     handleChange(info) {
       this.fileList = info.fileList;
-      if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
+      if (info?.fileList[0]?.response)
+        this.form.img = info?.fileList[0]?.response;
     },
   },
 };
@@ -338,7 +427,11 @@ form :deep(.ant-select-selection) {
   flex-direction: column;
   justify-content: center;
 }
-form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
+form
+  :deep(
+    .ant-select-selection__placeholder,
+    .ant-select-search__field__placeholder
+  ) {
   color: #5d5d5f;
   font-size: 16px;
   font-style: normal;

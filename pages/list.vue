@@ -6,14 +6,14 @@
       <div class="tabler">
         <table>
           <tr>
-            <th>Reyestr raqami</th>
-            <th>Mehmon uyi nomi</th>
-            <th>Mehmon uyi joylashgan hudud</th>
-            <th>Mehmon uyi manzili</th>
-            <th>Mehmon uyi holati</th>
-            <th>Mehmon uyi telefon raqami</th>
+            <th>{{ $store.state.translations["registry_number"] }}</th>
+            <th>{{ $store.state.translations["hostel_name"] }}</th>
+            <th>{{ $store.state.translations["hostel_region"] }}</th>
+            <th>{{ $store.state.translations["hostel_address"] }}</th>
+            <th>{{ $store.state.translations["hostel_status"] }}</th>
+            <th>{{ $store.state.translations["hostel_phone"] }}</th>
           </tr>
-          <tr v-for="item in hotels.data" :key="item.id">
+          <tr v-for="item in hotels?.data" :key="item.id">
             <td>
               <p class="strong">{{ item.register_number }}</p>
             </td>
@@ -29,13 +29,17 @@
               </p>
             </td>
             <td>
-              <p v-show="item.status == 1" class="status active">Aktiv</p>
+              <p v-show="item.status == 1" class="status active">
+                {{ $store.state.translations["active"] }}
+              </p>
               <p v-show="item.status == 0" class="status passive">
-                To'xtatilgan
+                {{ $store.state.translations["passive"] }}
               </p>
             </td>
             <td>
-              <p class="num">{{ item.phone_number }}</p>
+              <NuxtLink :to="`/hotels/${item.id}`">
+                <p class="num">{{ item.phone_number }}</p>
+              </NuxtLink>
             </td>
           </tr>
         </table>
@@ -52,7 +56,7 @@ import hotelsApi from "@/api/hotels";
 export default {
   data() {
     return {
-      title: "Oilaviy mehmon uylari ro‘yxati",
+      title: this.$store.state.translations["list_title"],
       hotels: [],
       totalPage: 1,
     };

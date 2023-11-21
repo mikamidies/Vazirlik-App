@@ -4,9 +4,12 @@
     <div class="container">
       <form @submit.prevent="onSubmit">
         <div class="input">
-          <p class="sup">Ariza turi</p>
+          <p class="sup">{{ $store.state.translations["app_type"] }}</p>
 
-          <a-select v-model="type" placeholder="Ariza turi">
+          <a-select
+            v-model="type"
+            :placeholder="$store.state.translations[`app_type`]"
+          >
             <a-select-option
               v-for="option in options"
               :key="option.id"
@@ -54,7 +57,7 @@
                   </span>
                 </p>
                 <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
+                  {{ $store.state.translations["state_certificate"] }}
                 </p>
               </a-upload-dragger>
             </div>
@@ -95,7 +98,9 @@
                     </svg>
                   </span>
                 </p>
-                <p class="ant-upload-text">Kadastr ko‘chirmasi</p>
+                <p class="ant-upload-text">
+                  {{ $store.state.translations["cadastre"] }}
+                </p>
               </a-upload-dragger>
             </div>
           </a-form-item>
@@ -136,7 +141,7 @@
                   </span>
                 </p>
                 <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
+                  {{ $store.state.translations["certificate"] }}
                 </p>
               </a-upload-dragger>
             </div>
@@ -177,7 +182,9 @@
                     </svg>
                   </span>
                 </p>
-                <p class="ant-upload-text">Kadastr ko‘chirmasi</p>
+                <p class="ant-upload-text">
+                  {{ $store.state.translations["fire_secturity"] }}
+                </p>
               </a-upload-dragger>
             </div>
           </a-form-item>
@@ -218,14 +225,16 @@
                   </span>
                 </p>
                 <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
+                  {{ $store.state.translations["sanitation"] }}
                 </p>
               </a-upload-dragger>
             </div>
           </a-form-item>
         </div>
         <div class="link">
-          <button type="submit">Arizani yuborish</button>
+          <button type="submit">
+            {{ $store.state.translations["send_it"] }}
+          </button>
         </div>
       </form>
     </div>

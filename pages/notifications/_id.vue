@@ -10,7 +10,9 @@
       </div>
 
       <div class="link">
-        <NuxtLink to="/list">Oilaviy mehmon uylari ro‘yxati</NuxtLink>
+        <NuxtLink to="/list">{{
+          $store.state.translations["list_title"]
+        }}</NuxtLink>
       </div>
     </div>
     <Loader v-if="loading" />
