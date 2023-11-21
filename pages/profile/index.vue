@@ -8,15 +8,10 @@
           <div class="right">
             <div class="items">
               <div class="item">
-<<<<<<< HEAD
                 <p class="sup">
                   {{ $store.state.translations["hostel_owner"] }}
                 </p>
-                <p class="name">Ismoilov Akmal Bahodirovich</p>
-=======
-                <p class="sup">F.I.O</p>
                 <p class="name">{{ $store.state.user["name"] }}</p>
->>>>>>> 0b4db67a373851368ec7784950fe59503eecb3a3
               </div>
               <div class="item">
                 <p class="sup">{{ $store.state.translations["jshshir"] }}</p>
@@ -31,17 +26,12 @@
                 <p class="name">1998-01-20</p>
               </div>
               <div class="item">
-<<<<<<< HEAD
                 <p class="sup">
                   {{ $store.state.translations["hostel_address"] }}
                 </p>
                 <p class="name">
                   ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
                 </p>
-=======
-                <p class="sup">Адрес по прописке</p>
-                <p class="name">ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ</p>
->>>>>>> 0b4db67a373851368ec7784950fe59503eecb3a3
               </div>
             </div>
           </div>
@@ -145,13 +135,12 @@
           </div>
         </div>
         <div class="link">
-<<<<<<< HEAD
           <NuxtLink :to="`/profile/${hotel?.id}`">
             {{ $store.state.translations["update_data"] }}
           </NuxtLink>
-=======
-          <NuxtLink :to="`/profile/${hotel?.id}`"> Ma‘lumotlarni yangilash </NuxtLink>
->>>>>>> 0b4db67a373851368ec7784950fe59503eecb3a3
+          <NuxtLink :to="`/profile/${hotel?.id}`">
+            Ma‘lumotlarni yangilash
+          </NuxtLink>
           <NuxtLink class="app" to="/applications/new">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -339,6 +328,7 @@ export default {
 .app:hover {
   transform: scale(0.95);
 }
+
 @media screen and (max-width: 1024px) {
   .flexer {
     display: flex;
