@@ -34,7 +34,9 @@
               </p>
             </td>
             <td>
-              <p class="num">{{ item.phone_number }}</p>
+              <NuxtLink :to="`/hotels/${item.id}`">
+                <p class="num">{{ item.phone_number }}</p>
+              </NuxtLink>
             </td>
           </tr>
         </table>
@@ -49,6 +51,10 @@
 <script>
 export default {
   props: ["hotels"],
+
+  mounted() {
+    console.log(this.hotels);
+  },
 };
 </script>
 

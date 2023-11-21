@@ -2,28 +2,17 @@
   <div class="master">
     <SiteTop :title="title" />
     <div class="container">
-      <form>
+      <form @submit.prevent="onSubmit">
         <div class="input">
           <p class="sup">Ariza turi</p>
 
-          <a-select
-            v-decorator="[
-              'gender',
-              {
-                rules: [
-                  { required: true, message: 'Please select your gender!' },
-                ],
-              },
-            ]"
-            placeholder="Oilaviy mehmon uyini Oilaviy mehmon uylari Yagona Reyestriga kiritish"
-            @change="handleSelectChange"
-          >
-            <a-select-option value="male">
-              Oilaviy mehmon uyini Oilaviy mehmon uylari Yagona Reyestriga
-              kiritish
-            </a-select-option>
-            <a-select-option value="female">
-              Oilaviy mehmon uyini Oilaviy mehmon uylari
+          <a-select v-model="type" placeholder="Ariza turi">
+            <a-select-option
+              v-for="option in options"
+              :key="option.id"
+              :value="option.value"
+            >
+              {{ option.label }}
             </a-select-option>
           </a-select>
         </div>
@@ -31,20 +20,15 @@
           <a-form-item>
             <div
               class="dropbox"
-              :class="{ disable: fileList.fileOne.length > 0 }"
+              :class="{ disable: fileList.fire_safety.length > 0 }"
             >
               <a-upload-dragger
-                @change="($event) => handleChange($event, 'fileOne')"
-                :file-list="fileList.fileOne"
-                v-decorator="[
-                  'dragger',
-                  {
-                    valuePropName: 'fileList',
-                    getValueFromEvent: normFile,
-                  },
-                ]"
-                name="files"
-                action="/upload.do"
+                @change="($event) => handleChange($event, 'fire_safety')"
+                :file-list="fileList.fire_safety"
+                accept=".doc, .docx, .pdf"
+                name="file"
+                action="https://api.hotels.ndc.uz/api/files"
+                :headers="headers"
               >
                 <p class="ant-upload-drag-icon">
                   <span>
@@ -78,20 +62,15 @@
           <a-form-item>
             <div
               class="dropbox"
-              :class="{ disable: fileList.fileTwo.length > 0 }"
+              :class="{ disable: fileList.sanitation.length > 0 }"
             >
               <a-upload-dragger
-                @change="($event) => handleChange($event, 'fileTwo')"
-                :file-list="fileList.fileTwo"
-                v-decorator="[
-                  'dragger',
-                  {
-                    valuePropName: 'fileList',
-                    getValueFromEvent: normFile,
-                  },
-                ]"
-                name="files"
-                action="/upload.do"
+                @change="($event) => handleChange($event, 'sanitation')"
+                :file-list="fileList.sanitation"
+                accept=".doc, .docx, .pdf"
+                name="file"
+                action="https://api.hotels.ndc.uz/api/files"
+                :headers="headers"
               >
                 <p class="ant-upload-drag-icon">
                   <span>
@@ -120,9 +99,133 @@
               </a-upload-dragger>
             </div>
           </a-form-item>
+          <a-form-item>
+            <div
+              class="dropbox"
+              :class="{ disable: fileList.certificate.length > 0 }"
+            >
+              <a-upload-dragger
+                @change="($event) => handleChange($event, 'certificate')"
+                :file-list="fileList.certificate"
+                accept=".doc, .docx, .pdf"
+                name="file"
+                action="https://api.hotels.ndc.uz/api/files"
+                :headers="headers"
+              >
+                <p class="ant-upload-drag-icon">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.4"
+                        d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
+                        fill="#3C4BDC"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
+                        fill="#3C4BDC"
+                      />
+                    </svg>
+                  </span>
+                </p>
+                <p class="ant-upload-text">
+                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
+                </p>
+              </a-upload-dragger>
+            </div>
+          </a-form-item>
+          <a-form-item>
+            <div
+              class="dropbox"
+              :class="{ disable: fileList.state_certificate.length > 0 }"
+            >
+              <a-upload-dragger
+                @change="($event) => handleChange($event, 'state_certificate')"
+                :file-list="fileList.state_certificate"
+                accept=".doc, .docx, .pdf"
+                name="file"
+                action="https://api.hotels.ndc.uz/api/files"
+                :headers="headers"
+              >
+                <p class="ant-upload-drag-icon">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.4"
+                        d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
+                        fill="#3C4BDC"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
+                        fill="#3C4BDC"
+                      />
+                    </svg>
+                  </span>
+                </p>
+                <p class="ant-upload-text">Kadastr ko‘chirmasi</p>
+              </a-upload-dragger>
+            </div>
+          </a-form-item>
+          <a-form-item>
+            <div
+              class="dropbox"
+              :class="{ disable: fileList.cadastre.length > 0 }"
+            >
+              <a-upload-dragger
+                @change="($event) => handleChange($event, 'cadastre')"
+                :file-list="fileList.cadastre"
+                accept=".doc, .docx, .pdf"
+                name="file"
+                action="https://api.hotels.ndc.uz/api/files"
+                :headers="headers"
+              >
+                <p class="ant-upload-drag-icon">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                    >
+                      <path
+                        opacity="0.4"
+                        d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
+                        fill="#3C4BDC"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
+                        fill="#3C4BDC"
+                      />
+                    </svg>
+                  </span>
+                </p>
+                <p class="ant-upload-text">
+                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
+                </p>
+              </a-upload-dragger>
+            </div>
+          </a-form-item>
         </div>
         <div class="link">
-          <NuxtLink to="/applications/new"> Yangi ariza yuborish </NuxtLink>
+          <button type="submit">Arizani yuborish</button>
         </div>
       </form>
     </div>
@@ -130,20 +233,88 @@
 </template>
 
 <script>
+import applicationApi from "@/api/application.js";
+
 export default {
   data() {
     return {
       title: "Yangi ariza",
       fileList: {
-        fileOne: [],
-        fileTwo: [],
+        fire_safety: [],
+        sanitation: [],
+        certificate: [],
+        state_certificate: [],
+        cadastre: [],
       },
+      type: "",
+      options: [
+        {
+          label: "Nodavlat Tashkiloti",
+          value: "Davlat",
+        },
+        {
+          label: "Davlat Tashkiloti",
+          value: "Nodavlat",
+        },
+      ],
+      fileTypes: {
+        fire_safety: "",
+        sanitation: "",
+        certificate: "",
+        state_certificate: "",
+        cadastre: "",
+      },
+      headers: {},
+      hotel_id: 1,
     };
+  },
+
+  mounted() {
+    this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
 
   methods: {
     handleChange(info, name) {
       this.fileList[name] = info.fileList;
+      if (info?.fileList[0]?.response) {
+        this.fileTypes[name] = info?.fileList[0]?.response;
+      }
+    },
+
+    async onSubmit() {
+      const formData = {
+        type: this.type,
+        hotel_id: this.hotel_id,
+        fire_safety: this.fileTypes.fire_safety,
+        sanitation: this.fileTypes.sanitation,
+        certificate: this.fileTypes.certificate,
+        state_certificate: this.fileTypes.state_certificate,
+        cadastre: this.fileTypes.cadastre,
+      };
+
+      const res = await applicationApi.sendApplication({
+        data: formData,
+        params: {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        },
+      });
+
+      if (res && res.status === 201) {
+        console.log("OK");
+      } else {
+        console.log("Not OK");
+      }
+
+      this.type = "";
+      this.fileTypes.fire_safety = "";
+      this.fileTypes.sanitation = "";
+      this.fileTypes.certificate = "";
+      this.fileTypes.state_certificate = "";
+      this.fileTypes.cadastre = "";
+
+      this.$router.push("/applications");
     },
   },
 };
@@ -162,7 +333,7 @@ form {
   justify-content: center;
   padding: 40px 0 0 0;
 }
-.link a {
+.link button {
   padding: 18px 50px;
   border-radius: 16px;
   border: 1px solid var(--Agro-Blue, #3c4bdc);
@@ -174,8 +345,9 @@ form {
   line-height: 140%; /* 19.6px */
   transition: 0.4s;
   display: inline-flex;
+  background: transparent;
 }
-.link a:hover {
+.link button:hover {
   background: #3c4bdc;
   color: white;
 }
@@ -248,6 +420,7 @@ form
   margin: 0;
   height: 100%;
   transform: translateY(-50%);
+  display: flex !important;
 }
 form :deep(.ant-select-selection-selected-value) {
   color: var(--Black, #020105);
@@ -256,6 +429,9 @@ form :deep(.ant-select-selection-selected-value) {
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
+  background: #f5f5f7;
+  position: relative;
+  z-index: 999;
 }
 form :deep(.dropbox.disable .ant-upload.ant-upload-drag) {
   pointer-events: none;
