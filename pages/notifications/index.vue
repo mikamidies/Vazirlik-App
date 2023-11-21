@@ -50,19 +50,27 @@ export default {
     };
   },
   async mounted() {
-    this.__GET__MESSAGES();
+    if (localStorage.getItem("authToken")) {
+      this.__GET__MESSAGES();
+    } else {
+      this.$router.push("/");
+    }
   },
   methods: {
     moment,
     async __GET__MESSAGES() {
-      const messages = await messagesApi.getMessages(this.$axios, {
-        params: { page: 1, ...this.$route.query },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
-      this.messages = messages?.data;
-      this.totalPage = messages?.total;
+      try {
+        const messages = await messagesApi.getMessages(this.$axios, {
+          params: { page: 1, ...this.$route.query },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        this.messages = messages?.data;
+        this.totalPage = messages?.total;
+      } catch (e) {
+        this.$router.push("/");
+      }
     },
   },
   components: { PaginationElement },

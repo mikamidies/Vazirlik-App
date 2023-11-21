@@ -18,10 +18,7 @@
         </div>
         <div class="grid">
           <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.fire_safety.length > 0 }"
-            >
+            <div class="dropbox" :class="{ disable: fileList.fire_safety.length > 0 }">
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'fire_safety')"
                 :file-list="fileList.fire_safety"
@@ -53,17 +50,12 @@
                     </svg>
                   </span>
                 </p>
-                <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
-                </p>
+                <p class="ant-upload-text">Davlat ro‘yxatidan o‘tganligi guvohnomasi</p>
               </a-upload-dragger>
             </div>
           </a-form-item>
           <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.sanitation.length > 0 }"
-            >
+            <div class="dropbox" :class="{ disable: fileList.sanitation.length > 0 }">
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'sanitation')"
                 :file-list="fileList.sanitation"
@@ -100,10 +92,7 @@
             </div>
           </a-form-item>
           <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.certificate.length > 0 }"
-            >
+            <div class="dropbox" :class="{ disable: fileList.certificate.length > 0 }">
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'certificate')"
                 :file-list="fileList.certificate"
@@ -135,9 +124,7 @@
                     </svg>
                   </span>
                 </p>
-                <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
-                </p>
+                <p class="ant-upload-text">Davlat ro‘yxatidan o‘tganligi guvohnomasi</p>
               </a-upload-dragger>
             </div>
           </a-form-item>
@@ -182,10 +169,7 @@
             </div>
           </a-form-item>
           <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.cadastre.length > 0 }"
-            >
+            <div class="dropbox" :class="{ disable: fileList.cadastre.length > 0 }">
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'cadastre')"
                 :file-list="fileList.cadastre"
@@ -217,9 +201,7 @@
                     </svg>
                   </span>
                 </p>
-                <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
-                </p>
+                <p class="ant-upload-text">Davlat ro‘yxatidan o‘tganligi guvohnomasi</p>
               </a-upload-dragger>
             </div>
           </a-form-item>
@@ -270,6 +252,8 @@ export default {
   },
 
   mounted() {
+    if (!localStorage.getItem("authToken")) this.$router.push("/");
+
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
 
@@ -284,7 +268,7 @@ export default {
     async onSubmit() {
       const formData = {
         type: this.type,
-        hotel_id: this.hotel_id,
+        hotel_id: this.$route.params.id,
         fire_safety: this.fileTypes.fire_safety,
         sanitation: this.fileTypes.sanitation,
         certificate: this.fileTypes.certificate,
@@ -405,11 +389,7 @@ form :deep(.ant-select-selection) {
   justify-content: center;
   padding-left: 24px;
 }
-form
-  :deep(
-    .ant-select-selection__placeholder,
-    .ant-select-search__field__placeholder
-  ) {
+form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: var(--Black, #020105);
   font-family: var(--medium);
   font-size: 18px;
@@ -451,11 +431,7 @@ form :deep(.dropbox.disable .ant-upload.ant-upload-drag) {
     align-items: center;
   }
   form :deep(.ant-select-selection-selected-value),
-  form
-    :deep(
-      .ant-select-selection__placeholder,
-      .ant-select-search__field__placeholder
-    ) {
+  form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;

@@ -236,7 +236,8 @@ export default {
       regions,
     };
   },
-  mounted() {
+  async mounted() {
+    if (!localStorage.getItem("authToken")) await this.$router.push("/");
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
   methods: {
@@ -284,9 +285,9 @@ export default {
 </script>
 
 <style scoped>
-.uploadDis :deep(.ant-upload.ant-upload-drag){
+.uploadDis :deep(.ant-upload.ant-upload-drag) {
   pointer-events: none !important;
-  opacity: .5 !important;
+  opacity: 0.5 !important;
 }
 .disabled {
   pointer-events: none;

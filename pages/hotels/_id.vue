@@ -115,11 +115,7 @@
           :zoom="10"
           style="height: 700px"
         >
-          <ymap-marker
-            :coords="coords"
-            marker-id="123"
-            hint-content="some hint"
-          />
+          <ymap-marker :coords="coords" marker-id="123" hint-content="some hint" />
         </yandex-map>
       </div>
     </div>
@@ -139,6 +135,7 @@ export default {
   },
 
   async mounted() {
+    if (!localStorage.getItem("authToken")) await this.$router.push("/");
     const hotels = await hotelsApi.getHotels(this.$axios, {
       params: {},
       headers: {

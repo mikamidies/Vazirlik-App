@@ -24,9 +24,7 @@
               <p v-show="item.status == `accepted`" class="status active">
                 Qabul qilindi
               </p>
-              <p v-show="item.status == `rejected`" class="status passive">
-                Rad etildi
-              </p>
+              <p v-show="item.status == `rejected`" class="status passive">Rad etildi</p>
               <p v-show="item.status == `new`" class="status new">Yangi</p>
             </td>
             <td>
@@ -89,20 +87,28 @@ export default {
   },
 
   async mounted() {
-    this.getApps();
+    if (localStorage.getItem("authToken")) {
+      this.getApps();
+    } else {
+      this.$router.push("/");
+    }
   },
 
   methods: {
     async getApps() {
-      const applications = await applicationApi.getApplications(this.$axios, {
-        params: { page: 1, ...this.$route.query },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
+      try {
+        const applications = await applicationApi.getApplications(this.$axios, {
+          params: { page: 1, ...this.$route.query },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
 
-      this.applications = applications.data;
-      this.totalPage = applications.total;
+        this.applications = applications.data;
+        this.totalPage = applications.total;
+      } catch (e) {
+        this.$router.push("/");
+      }
     },
   },
 };
