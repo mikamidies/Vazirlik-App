@@ -153,7 +153,7 @@
               <div class="dropbox">
                 <ClientOnly fallback-tag="span" fallback="Loading comments...">
                   <a-upload-dragger
-                    :class="{ disabled: fileList.length > 0 }"
+                    :class="{ uploadDis: fileList.length > 0 }"
                     :headers="headers"
                     v-decorator="['dragger']"
                     name="file"
@@ -368,6 +368,10 @@ export default {
 </script>
 
 <style scoped>
+.uploadDis :deep(.ant-upload.ant-upload-drag){
+  pointer-events: none !important;
+  opacity: .5 !important;
+}
 .disabled {
   pointer-events: none;
 }

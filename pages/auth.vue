@@ -7,7 +7,7 @@
           {{ $store.state.translations["oneid_txt"] }}
         </h4>
         <div class="flex">
-          <a href="#" class="link">
+          <a :href="link" class="link">
             <img src="@/assets/img/oneid.svg" alt="" />
             {{ $store.state.translations["sign_in"] }}
           </a>
@@ -18,11 +18,17 @@
 </template>
 
 <script>
+import authApi from "@/api/auth";
 export default {
   data() {
     return {
       title: this.$store.state.translations["oneid_title"],
+      link: "",
     };
+  },
+  async fetch() {
+    const linkData = await authApi.getLink(this.$axios);
+    this.link = linkData?.data?.data;
   },
 };
 </script>

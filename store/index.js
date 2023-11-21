@@ -1,6 +1,8 @@
 export const state = () => ({
   code: "",
   translations: {},
+  auth: false,
+  user: {},
 });
 
 export const mutations = {
@@ -14,6 +16,13 @@ export const mutations = {
 
   getTranslations(state, payload) {
     state.translations = payload;
+  },
+
+  checkAuth(state, payload) {
+    state.auth = payload;
+  },
+  getUserInfo(state, payload) {
+    state.user = payload;
   },
 };
 

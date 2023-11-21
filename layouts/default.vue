@@ -10,12 +10,25 @@
 
 <script>
 import translationsApi from "@/api/translations";
+import authApi from "@/api/auth";
+
 export default {
   data() {
     return {};
   },
 
-  mounted() {},
+  async mounted() {
+    if (localStorage.getItem("authToken")) {
+      try {
+        const data = await authApi.getUserInfo(this.$axios, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        this.$store.commit("getUserInfo", data?.data?.data);
+      } catch (e) {}
+    }
+  },
 
   async fetch() {
     const translations = await translationsApi.getTranslations(this.$axios, {

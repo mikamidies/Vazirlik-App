@@ -18,6 +18,8 @@ export default {};
   left: 0;
   height: 100vh;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10000;
+  pointer-events: none;
 }
 </style>
