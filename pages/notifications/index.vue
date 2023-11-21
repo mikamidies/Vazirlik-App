@@ -32,6 +32,7 @@
           </div>
         </div>
       </div>
+      <PaginationElement @getData="__GET__MESSAGES" :totalPage="totalPage" />
     </div>
   </div>
 </template>
@@ -39,26 +40,32 @@
 <script>
 import messagesApi from "@/api/messages";
 import moment from "moment";
+import PaginationElement from "~/components/paginationElement.vue";
 export default {
   data() {
     return {
       title: "Xabarnomalar",
       messages: [],
+      totalPage: 1,
     };
   },
   async mounted() {
-    const messages = await messagesApi.getMessages(this.$axios, {
-      params: {},
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    });
-
-    this.messages = messages?.data;
+    this.__GET__MESSAGES();
   },
   methods: {
     moment,
+    async __GET__MESSAGES() {
+      const messages = await messagesApi.getMessages(this.$axios, {
+        params: { page: 1, ...this.$route.query },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
+      this.messages = messages?.data;
+      this.totalPage = messages?.total;
+    },
   },
+  components: { PaginationElement },
 };
 </script>
 

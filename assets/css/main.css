@@ -176,6 +176,9 @@ table {
 ::-webkit-scrollbar-thumb:hover {
   background: #3c4bdc;
 }
+button {
+  cursor: pointer;
+}
 @media screen and (max-width: 1024px) {
   .container {
     padding: 0 16px;

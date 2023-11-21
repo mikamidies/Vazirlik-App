@@ -18,9 +18,7 @@
               <p class="strong">#987712</p>
             </td>
             <td>
-              <p class="status waiting">
-                2-bosqich (Hujjatlar ko‘rib chiqilmoqda)
-              </p>
+              <p class="status waiting">2-bosqich (Hujjatlar ko‘rib chiqilmoqda)</p>
             </td>
             <td>
               <p class="weak">15.10.2023 - 14:37</p>
@@ -63,9 +61,7 @@
               <p class="strong">#987712</p>
             </td>
             <td>
-              <p class="status active">
-                So‘nggi bosqich (Muvaffaqiyatli yakunlangan)
-              </p>
+              <p class="status active">So‘nggi bosqich (Muvaffaqiyatli yakunlangan)</p>
             </td>
             <td>
               <p class="weak">15.10.2023 - 14:37</p>
@@ -148,6 +144,8 @@
           </tr>
         </table>
       </div>
+      <!-- <PaginationElement @getData="__GET__MESSAGES" :totalPage="totalPage" /> -->
+
       <div class="link">
         <NuxtLink to="/applications/new"> Yangi ariza yuborish </NuxtLink>
       </div>
@@ -156,12 +154,15 @@
 </template>
 
 <script>
+import PaginationElement from "~/components/paginationElement.vue";
+
 export default {
   data() {
     return {
       title: "Arizalar",
     };
   },
+  components: { PaginationElement },
 };
 </script>
 

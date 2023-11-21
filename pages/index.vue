@@ -17,6 +17,10 @@ export default {
   },
 
   async mounted() {
+    if (this.$route.query["code"]) {
+      await this.$store.commit("getCode", this.$route.query["code"]);
+      this.$router.replace({ path: "/", query: {} });
+    }
     const hotels = await hotelsApi.getHotels(this.$axios, {
       params: {},
       headers: {

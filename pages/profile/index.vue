@@ -60,7 +60,7 @@
       <div class="cardo" v-else>
         <div class="flexer">
           <div class="left" >
-            <img :src="`https://api.hotels.ndc.uz/stores/temp/bdPHgnv3kPxMP7s3LyNdacDTxeapmtzVpKJI53XI.png`" alt="" class="pic" />
+            <img :src="`https://api.hotels.ndc.uz/storage/temp/bdPHgnv3kPxMP7s3LyNdacDTxeapmtzVpKJI53XI.png`" alt="" class="pic" />
           </div>
           <div class="right">
             <div class="items">
@@ -111,7 +111,7 @@
           </div>
         </div>
         <div class="link">
-          <NuxtLink to="/profile/edit"> Ma‘lumotlarni yangilash </NuxtLink>
+          <NuxtLink :to="`/profile/${hotel?.id}`"> Ma‘lumotlarni yangilash </NuxtLink>
           <NuxtLink class="app" to="/applications/new">
             <svg
               xmlns="http://www.w3.org/2000/svg"

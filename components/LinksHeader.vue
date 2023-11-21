@@ -48,7 +48,7 @@ export default {};
   color: white;
   border-color: #3c4bdc;
 }
-.header a.nuxt-link-exact-active {
+.header a.nuxt-link-exact-active,.header a.nuxt-link-active {
   background: #3c4bdc;
   color: white;
   border-color: #3c4bdc;
