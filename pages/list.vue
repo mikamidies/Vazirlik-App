@@ -40,6 +40,8 @@
           </tr>
         </table>
       </div>
+
+      <PaginationElement />
     </div>
   </div>
 </template>
