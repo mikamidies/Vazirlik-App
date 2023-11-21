@@ -29,8 +29,13 @@
         </div>
         <div class="grid">
           <a-form-item>
-            <div class="dropbox">
+            <div
+              class="dropbox"
+              :class="{ disable: fileList.fileOne.length > 0 }"
+            >
               <a-upload-dragger
+                @change="($event) => handleChange($event, 'fileOne')"
+                :file-list="fileList.fileOne"
                 v-decorator="[
                   'dragger',
                   {
@@ -71,8 +76,13 @@
             </div>
           </a-form-item>
           <a-form-item>
-            <div class="dropbox">
+            <div
+              class="dropbox"
+              :class="{ disable: fileList.fileTwo.length > 0 }"
+            >
               <a-upload-dragger
+                @change="($event) => handleChange($event, 'fileTwo')"
+                :file-list="fileList.fileTwo"
                 v-decorator="[
                   'dragger',
                   {
@@ -124,7 +134,17 @@ export default {
   data() {
     return {
       title: "Yangi ariza",
+      fileList: {
+        fileOne: [],
+        fileTwo: [],
+      },
     };
+  },
+
+  methods: {
+    handleChange(info, name) {
+      this.fileList[name] = info.fileList;
+    },
   },
 };
 </script>
@@ -236,6 +256,10 @@ form :deep(.ant-select-selection-selected-value) {
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
+}
+form :deep(.dropbox.disable .ant-upload.ant-upload-drag) {
+  pointer-events: none;
+  opacity: 0.5;
 }
 @media screen and (max-width: 1024px) {
   .container {

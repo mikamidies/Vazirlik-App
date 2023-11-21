@@ -2,6 +2,63 @@
   <div class="master">
     <SiteTop :title="title" />
     <div class="container">
+      <LinksHeader />
+      <div class="person cardo">
+        <div class="flexer">
+          <div class="right">
+            <div class="items">
+              <div class="item">
+                <p class="sup">F.I.O</p>
+                <p class="name">Ismoilov Akmal Bahodirovich</p>
+              </div>
+              <div class="item">
+                <p class="sup">JSHSHIR</p>
+                <p class="name">32001986500022</p>
+              </div>
+              <div class="item">
+                <p class="sup">Pasport seriyasi va raqami</p>
+                <p class="name">AD3665673</p>
+              </div>
+              <div class="item">
+                <p class="sup">Tug‘ilgan sanasi</p>
+                <p class="name">1998-01-20</p>
+              </div>
+              <div class="item">
+                <p class="sup">Адрес по прописке</p>
+                <p class="name">
+                  ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add cardo">
+        <div class="mid">
+          <h4>Mehmon uyi</h4>
+          <p>Mehmon uyi qo’shilmagan</p>
+          <NuxtLink to="/profile/add">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+            >
+              <path
+                d="M12 18.6665L13.6999 20.3664C14.8898 21.5563 16.8709 21.3602 17.8043 19.96L21.3333 14.6665M28 13.5336V23.9556C28 26.9256 25.6122 29.3332 22.6667 29.3332H9.33333C6.38781 29.3332 4 26.9256 4 23.9556V13.5336C4 11.919 4.71953 10.3898 5.95982 9.36854L12.6265 3.87897C14.5897 2.26235 17.4103 2.26235 19.3735 3.87896L26.0402 9.36853C27.2805 10.3898 28 11.919 28 13.5336Z"
+                stroke="#3C4BDC"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Mehmon uyi qo‘shish
+          </NuxtLink>
+        </div>
+      </div>
+
       <div class="cardo">
         <div class="flexer">
           <div class="left">
@@ -52,6 +109,24 @@
         </div>
         <div class="link">
           <NuxtLink to="/profile/edit"> Ma‘lumotlarni yangilash </NuxtLink>
+          <NuxtLink class="app" to="/applications/new">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+            >
+              <path
+                d="M12 18.6665L13.6999 20.3664C14.8898 21.5563 16.8709 21.3602 17.8043 19.96L21.3333 14.6665M28 13.5336V23.9556C28 26.9256 25.6122 29.3332 22.6667 29.3332H9.33333C6.38781 29.3332 4 26.9256 4 23.9556V13.5336C4 11.919 4.71953 10.3898 5.95982 9.36854L12.6265 3.87897C14.5897 2.26235 17.4103 2.26235 19.3735 3.87896L26.0402 9.36853C27.2805 10.3898 28 11.919 28 13.5336Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Ariza jo‘natish
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -70,7 +145,7 @@ export default {
 
 <style scoped>
 .container {
-  padding: 40px 0 112px 0;
+  padding: 40px 44px 112px 44px;
 }
 .cardo {
   padding: 40px;
@@ -78,8 +153,8 @@ export default {
   background: var(--Apple-Grey, #f5f5f7);
 }
 .flexer {
-  display: grid;
-  grid-template-columns: 2fr 8fr;
+  display: flex;
+  justify-content: center;
   gap: 40px;
 }
 .pic {
@@ -93,6 +168,12 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 48px;
+}
+.person .items {
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 4px;
+  max-width: 70%;
+  margin: 0 auto;
 }
 .sup {
   margin-bottom: 8px;
@@ -115,6 +196,7 @@ export default {
   display: flex;
   justify-content: center;
   padding-top: 55px;
+  gap: 12px;
 }
 .link a {
   display: flex;
@@ -130,10 +212,72 @@ export default {
   line-height: 140%; /* 19.6px */
   transition: 0.4s;
   background: white;
+  align-items: center;
 }
 .link a:hover {
   background: #3c4bdc;
   color: white;
+}
+
+.person {
+  margin-bottom: 32px;
+}
+.add {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.mid h4 {
+  margin-bottom: 24px;
+  color: var(--Black, #020105);
+  font-family: var(--semi);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
+}
+.mid p {
+  margin-bottom: 40px;
+  color: var(--Black, #020105);
+  font-family: var(--medium);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 27px */
+}
+.mid a {
+  color: var(--Agro-blue, #3c4bdc);
+  font-family: var(--semi);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 19.6px */
+  padding: 18px 50px;
+  border-radius: 16px;
+  border: 1px solid var(--Agro-Blue, #3c4bdc);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.4s;
+}
+.mid a:hover {
+  background: #3c4bdc;
+  color: white;
+}
+.mid a svg path {
+  transition: 0.4s;
+}
+.mid a:hover svg path {
+  stroke: white;
+}
+.app {
+  background: #3c4bdc !important;
+  color: white !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.app:hover {
+  transform: scale(0.95);
 }
 @media screen and (max-width: 1024px) {
   .flexer {

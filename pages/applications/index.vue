@@ -2,6 +2,7 @@
   <div class="master">
     <SiteTop :title="title" />
     <div class="container">
+      <LinksHeader />
       <div class="tabler">
         <table>
           <tr>
@@ -167,7 +168,7 @@ export default {
 <style scoped>
 @import url(@/assets/css/table.css);
 .container {
-  padding: 40px 0 112px 0;
+  padding: 40px 44px 112px 44px;
 }
 .status {
   max-width: max-content !important;

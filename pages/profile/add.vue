@@ -8,19 +8,17 @@
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi nomi:</p>
               <input
-                disabled
                 type="text"
                 placeholder="Oilaviy mehmon uyi nomini kiriting"
               />
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi telefon raqamini kiriting:</p>
-              <input disabled type="number" placeholder="+998" />
+              <input type="number" placeholder="+998" />
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi web sayti:</p>
               <input
-                disabled
                 type="text"
                 placeholder="Oilaviy mehmon uyi web sayti manzilini kiriting"
               />
@@ -29,12 +27,11 @@
               <p class="sup">
                 Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:
               </p>
-              <input disabled type="number" placeholder="+998" />
+              <input type="number" placeholder="+998" />
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
               <a-select
-                disabled
                 v-decorator="[
                   'gender',
                   {
@@ -53,41 +50,30 @@
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi elektron manzili:</p>
               <input
-                disabled
                 type="email"
                 placeholder="Oilaviy mehmon uyi elektron manzilini kiriting"
               />
             </div>
             <div class="item">
               <p class="sup">STIR:</p>
-              <input
-                disabled
-                type="text"
-                placeholder="Tashkilotning STIRini kiriting"
-              />
+              <input type="text" placeholder="Tashkilotning STIRini kiriting" />
             </div>
             <div class="item">
               <p class="sup">Tashkilot yuridik nomi:</p>
               <input
-                disabled
                 type="text"
                 placeholder="Tashkilot yuridik nomini kiriting"
               />
             </div>
             <div class="item">
               <p class="sup">STIR:</p>
-              <input
-                disabled
-                type="text"
-                placeholder="Oilaviy mehmon uyi manziliin"
-              />
+              <input type="text" placeholder="Oilaviy mehmon uyi manziliin" />
             </div>
             <div class="item">
               <p class="sup">
                 Oilaviy mehmon uyi egasining ismi familyasi va otasi ismi:
               </p>
               <input
-                disabled
                 type="text"
                 placeholder="Oilaviy mehmon uyi egasining ismi sharifini kiriting"
               />
@@ -151,7 +137,7 @@
 export default {
   data() {
     return {
-      title: "Profil tahrirlash",
+      title: "Mehmon uyi qo‘shish",
     };
   },
 };
@@ -189,7 +175,7 @@ export default {
 .item input {
   border-radius: 16px;
   border: 1px solid #e1e3f5;
-  background: var(--grey-8, #ebebeb);
+  background: var(--White, #fff);
   width: 100%;
   padding: 20px 24px;
   color: black;
@@ -197,7 +183,6 @@ export default {
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
-  cursor: no-drop;
 }
 .item input::placeholder {
   color: #5d5d5f;
@@ -209,7 +194,7 @@ export default {
 form :deep(.ant-select-selection) {
   border-radius: 16px;
   border: 1px solid #e1e3f5;
-  background: var(--grey-8, #ebebeb);
+  background: var(--White, #fff);
   height: 65px;
   display: flex;
   flex-direction: column;

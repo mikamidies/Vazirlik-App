@@ -2,6 +2,7 @@
   <div class="master">
     <SiteTop :title="title" />
     <div class="container">
+      <LinksHeader />
       <div class="items">
         <div class="item">
           <div class="left">
@@ -101,8 +102,7 @@ export default {
 
 <style scoped>
 .container {
-  max-width: 1440px;
-  padding: 107px 0 112px 0;
+  padding: 40px 44px 112px 44px;
 }
 .items {
   border: 1px solid #ebebeb;
