@@ -3,13 +3,15 @@
     <div class="container">
       <div class="left">
         <NuxtLink to="/" class="title">
-          Oilaviy mehmon <br />
+          Oilaviy mehmon uylari <br />
           <span>uylari ro‘yxati</span>
         </NuxtLink>
       </div>
       <div class="mid">
-        <NuxtLink to="/"> Bosh sahifa </NuxtLink>
-        <NuxtLink to="/list"> Mehmon uylari ro‘yxati </NuxtLink>
+        <NuxtLink to="/"> {{ $store.state.translations["main"] }} </NuxtLink>
+        <NuxtLink to="/list">
+          {{ $store.state.translations["list_title"] }}
+        </NuxtLink>
       </div>
       <div class="right">
         <button @click="handleModal = !handleModal">
@@ -87,14 +89,14 @@
         </button>
       </div>
 
-      <div>
+      <!-- <div>
         <form @submit.prevent="onSubmit">
           <input type="text" v-model="username" />
           <input type="number" v-model="password" />
 
           <button type="submit">Send</button>
         </form>
-      </div>
+      </div> -->
     </div>
 
     <div class="searcher" :class="{ show: handleModal == true }">
@@ -135,7 +137,7 @@
           </div>
           <div class="empty">
             <img src="@/assets/img/empty.svg" alt="" />
-            <p>Ma‘lumot topilmadi</p>
+            <p>{{ $store.state.translations["no_data"] }}</p>
           </div>
           <div class="items">
             <div class="item">

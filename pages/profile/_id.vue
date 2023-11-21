@@ -6,16 +6,16 @@
         <form>
           <div class="items">
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi nomi:</p>
+              <p class="sup">{{ $store.state.translations["hostel_name"] }}</p>
               <input
                 disabled
                 v-model="form.name"
                 type="text"
-                placeholder="Oilaviy mehmon uyi nomini kiriting"
+                :placeholder="$store.state.translations[`hostel_name`]"
               />
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi telefon raqamini kiriting:</p>
+              <p class="sup">{{ $store.state.translations["phone_num"] }}</p>
               <input
                 disabled
                 type="text"
@@ -24,16 +24,18 @@
               />
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi web sayti:</p>
+              <p class="sup">{{ $store.state.translations["website"] }}</p>
               <input
                 disabled
                 type="text"
                 v-model="form.website"
-                placeholder="Oilaviy mehmon uyi web sayti manzilini kiriting"
+                :placeholder="$store.state.translations[`website`]"
               />
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:</p>
+              <p class="sup">
+                {{ $store.state.translations["add_number"] }}
+              </p>
               <input
                 disabled
                 type="text"
@@ -42,12 +44,14 @@
               />
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
+              <p class="sup">
+                {{ $store.state.translations["hostel_region"] }}
+              </p>
               <a-select
                 disabled
                 style="width: 100%"
                 v-model="form.region_id"
-                placeholder="Oilaviy mehmon uyi joylashgan hudud"
+                :placeholder="$store.state.translations[`hostel_owner`]"
               >
                 <a-select-option
                   v-for="region in regions"
@@ -59,50 +63,54 @@
               </a-select>
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi elektron manzili:</p>
+              <p class="sup">
+                {{ $store.state.translations["hostel_address"] }}
+              </p>
               <input
                 v-model="form.email"
                 disabled
                 type="email"
-                placeholder="Oilaviy mehmon uyi elektron manzilini kiriting"
+                :placeholder="$store.state.translations[`hostel_address`]"
               />
             </div>
             <div class="item">
-              <p class="sup">STIR:</p>
+              <p class="sup">{{ $store.state.translations["stir_num"] }}</p>
               <input
                 disabled
                 type="text"
                 v-model="form.tin"
-                placeholder="Tashkilotning STIRini kiriting"
+                :placeholder="$store.state.translations[`stir_num`]"
               />
             </div>
             <div class="item">
-              <p class="sup">Tashkilot yuridik nomi:</p>
+              <p class="sup">{{ $store.state.translations["legal_name"] }}</p>
               <input
                 disabled
                 type="text"
                 v-model="form.legal_name"
-                placeholder="Tashkilot yuridik nomini kiriting"
-              />
-            </div>
-            <div class="item">
-              <p class="sup">Oilaviy mehmon uyi manzili:</p>
-              <input
-                disabled
-                type="text"
-                v-model="form.address"
-                placeholder="Oilaviy mehmon uyi manziliin"
+                :placeholder="$store.state.translations[`legal_name`]"
               />
             </div>
             <div class="item">
               <p class="sup">
-                Oilaviy mehmon uyi egasining ismi familyasi va otasi ismi:
+                {{ $store.state.translations["hostel_address"] }}
+              </p>
+              <input
+                disabled
+                type="text"
+                v-model="form.address"
+                :placeholder="$store.state.translations[`hostel_address`]"
+              />
+            </div>
+            <div class="item">
+              <p class="sup">
+                {{ $store.state.translations["hostel_owner"] }}
               </p>
               <input
                 disabled
                 type="text"
                 v-model="form.director_name"
-                placeholder="Oilaviy mehmon uyi egasining ismi sharifini kiriting"
+                :placeholder="$store.state.translations[`hostel_owner`]"
               />
             </div>
           </div>
@@ -141,7 +149,7 @@
                     </span>
                   </p>
                   <p class="ant-upload-text">
-                    Oilaviy mehmon uyi asosiy rasmi yoki logotipi
+                    {{ $store.state.translations["photo_logo"] }}
                   </p>
                 </a-upload-dragger>
               </div>
@@ -149,8 +157,12 @@
           </div>
         </form>
         <div class="buttons">
-          <button class="cancel" @click="$router.go(-1)">Bekor qilish</button>
-          <button class="confirm">Saqlash</button>
+          <button class="cancel" @click="$router.go(-1)">
+            {{ $store.state.translations["cancel"] }}
+          </button>
+          <button class="confirm">
+            {{ $store.state.translations["save"] }}
+          </button>
         </div>
       </div>
       <Loader v-if="loading" />
@@ -244,7 +256,8 @@ export default {
     },
     handleChange(info) {
       this.fileList = info.fileList;
-      if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
+      if (info?.fileList[0]?.response)
+        this.form.img = info?.fileList[0]?.response;
     },
   },
   components: { Loader },
@@ -309,7 +322,10 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
-:deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
+:deep(
+    .ant-select-selection__placeholder,
+    .ant-select-search__field__placeholder
+  ) {
   color: #5d5d5f;
   font-size: 16px;
   font-style: normal;

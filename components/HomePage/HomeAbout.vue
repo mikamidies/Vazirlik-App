@@ -2,20 +2,12 @@
   <div class="wrap">
     <div class="container small">
       <div class="left">
-        <h4 class="title">Oilaviy Mehmon Uylari Yagona Reyestri</h4>
+        <h4 class="title">{{ $store.state.translations["main_title"] }}</h4>
         <p class="txt">
-          Lorem ipsum dolor sit amet consectetur. Egestas fringilla turpis ut id
-          mattis. Suspendisse fusce eget non justo tristique. Malesuada massa
-          nec aenean feugiat cursus tellus in. Ac feugiat donec sit tincidunt
-          bibendum eget auctor. Vitae convallis odio sed egestas nulla varius.
-          At habitant tortor interdum tortor mi velit pretium diam.
+          {{ $store.state.translations["about_txt1"] }}
         </p>
         <p class="second">
-          Maecenas pulvinar in duis risus risus auctor bibendum nulla. Sagittis
-          eu elementum posuere nunc quam proin cum. Consectetur maecenas nisi
-          vitae ultricies nulla quis mi. Tellus amet sed enim sit quam. Nunc
-          feugiat egestas luctus odio ipsum ipsum lorem. Viverra purus vitae in
-          habitant vel.
+          {{ $store.state.translations["about_txt1"] }}
         </p>
       </div>
       <div class="right">

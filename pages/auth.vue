@@ -4,14 +4,12 @@
     <div class="container">
       <div class="content">
         <h4 class="title">
-          Oilaviy mehmon uyini Oilaviy Mehmon Uylari Yagona Reyestriga kiritish uchun
-          ariza yuborishdan avval OneID Yagona Identifikatsiya Tizimi orqali
-          avtorizatsiyadan o‘tishingiz zarur
+          {{ $store.state.translations["oneid_txt"] }}
         </h4>
         <div class="flex">
           <a :href="link" class="link">
             <img src="@/assets/img/oneid.svg" alt="" />
-            Avtorizatsiyadan o‘tish
+            {{ $store.state.translations["sign_in"] }}
           </a>
         </div>
       </div>
@@ -24,8 +22,8 @@ import authApi from "@/api/auth";
 export default {
   data() {
     return {
-      title: "Royxattan o'tish",
-      link: ""
+      title: this.$store.state.translations["oneid_title"],
+      link: "",
     };
   },
   async fetch() {

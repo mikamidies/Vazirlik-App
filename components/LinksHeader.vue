@@ -1,12 +1,18 @@
 <template>
   <div class="header">
     <div class="left">
-      <NuxtLink to="/profile">Mening profilim</NuxtLink>
-      <NuxtLink to="/applications">Mening arizalarim</NuxtLink>
-      <NuxtLink to="/notifications">Xabarlar</NuxtLink>
+      <NuxtLink to="/profile">{{
+        $store.state.translations["my_profile"]
+      }}</NuxtLink>
+      <NuxtLink to="/applications">{{
+        $store.state.translations["my_applications"]
+      }}</NuxtLink>
+      <NuxtLink to="/notifications">{{
+        $store.state.translations["notifications"]
+      }}</NuxtLink>
     </div>
     <div class="right">
-      <button>Tizimdan chiqish</button>
+      <button>{{ $store.state.translations["log_out"] }}</button>
     </div>
   </div>
 </template>
@@ -48,7 +54,8 @@ export default {};
   color: white;
   border-color: #3c4bdc;
 }
-.header a.nuxt-link-exact-active,.header a.nuxt-link-active {
+.header a.nuxt-link-exact-active,
+.header a.nuxt-link-active {
   background: #3c4bdc;
   color: white;
   border-color: #3c4bdc;

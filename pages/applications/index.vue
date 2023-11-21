@@ -6,12 +6,12 @@
       <div class="tabler">
         <table>
           <tr>
-            <th>Ariza raqami</th>
-            <th>Holati</th>
-            <th>Yuborilgan sanasi</th>
-            <th>Yakunlangan sanasi</th>
-            <th>Reyestrdan ko‘chirma</th>
-            <th>Amallar</th>
+            <th>{{ $store.state.translations["app_num"] }}</th>
+            <th>{{ $store.state.translations["polozheniye"] }}</th>
+            <th>{{ $store.state.translations["send_date"] }}</th>
+            <th>{{ $store.state.translations["end_date"] }}</th>
+            <th>{{ $store.state.translations["registry_copy"] }}</th>
+            <th>{{ $store.state.translations["event"] }}</th>
           </tr>
           <tr v-for="item in applications" :key="item.id">
             <td>
@@ -19,13 +19,17 @@
             </td>
             <td>
               <p v-show="item.status == `in_process`" class="status waiting">
-                2-bosqich (Hujjatlar ko‘rib chiqilmoqda)
+                {{ $store.state.translations["waiting"] }}
               </p>
               <p v-show="item.status == `accepted`" class="status active">
-                Qabul qilindi
+                {{ $store.state.translations["accepted"] }}
               </p>
-              <p v-show="item.status == `rejected`" class="status passive">Rad etildi</p>
-              <p v-show="item.status == `new`" class="status new">Yangi</p>
+              <p v-show="item.status == `rejected`" class="status passive">
+                {{ $store.state.translations["rejected"] }}
+              </p>
+              <p v-show="item.status == `new`" class="status new">
+                {{ $store.state.translations["new"] }}
+              </p>
             </td>
             <td>
               <p class="weak">{{ item.created_at }}</p>
@@ -68,7 +72,9 @@
       <PaginationElement @getData="getApps" :totalPage="totalPage" />
 
       <div class="link">
-        <NuxtLink to="/applications/new"> Yangi ariza yuborish </NuxtLink>
+        <NuxtLink to="/applications/new">
+          {{ $store.state.translations["new_app"] }}
+        </NuxtLink>
       </div>
     </div>
   </div>
@@ -81,7 +87,7 @@ export default {
   data() {
     return {
       applications: "",
-      title: "Arizalar",
+      title: this.$store.state.translations["applications"],
       totalPage: 1,
     };
   },

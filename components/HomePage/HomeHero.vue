@@ -3,7 +3,7 @@
     <div class="container">
       <div class="cardo">
         <img src="@/assets/img/vector.png" class="vector" alt="" />
-        <h4 class="title">Oilaviy Mehmon Uylari Yagona Reyestri</h4>
+        <h4 class="title">{{ $store.state.translations["main_title"] }}</h4>
       </div>
     </div>
   </div>

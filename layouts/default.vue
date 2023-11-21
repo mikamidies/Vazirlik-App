@@ -9,9 +9,14 @@
 </template>
 
 <script>
+import translationsApi from "@/api/translations";
 import authApi from "@/api/auth";
 
 export default {
+  data() {
+    return {};
+  },
+
   async mounted() {
     if (localStorage.getItem("authToken")) {
       try {
@@ -24,6 +29,36 @@ export default {
         this.$store.commit("checkAuth", true);
       } catch (e) {}
     }
+  },
+
+  async fetch() {
+    const translations = await translationsApi.getTranslations(this.$axios, {
+      headers: {
+        Language: this.$i18n.locale,
+      },
+    });
+
+    console.log(translations);
+
+    await this.$store.commit("getTranslations", translations.data);
+  },
+
+  computed: {
+    currentLang() {
+      return this.$i18n.locale;
+    },
+  },
+
+  watch: {
+    async currentLang(val) {
+      const translations = await translationsApi.getTranslations(this.$axios, {
+        headers: {
+          Language: this.$i18n.locale,
+        },
+      });
+
+      await this.$store.commit("getTranslations", translations);
+    },
   },
 };
 </script>

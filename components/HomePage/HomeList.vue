@@ -1,16 +1,16 @@
 <template>
   <div class="wrap">
     <div class="container">
-      <h4 class="title">Oilaviy mehmon uylari ro‘yxati</h4>
+      <h4 class="title">{{ $store.state.translations["list_title"] }}</h4>
       <div class="tabler">
         <table>
           <tr>
-            <th>Reyestr raqami</th>
-            <th>Mehmon uyi nomi</th>
-            <th>Mehmon uyi joylashgan hudud</th>
-            <th>Mehmon uyi manzili</th>
-            <th>Mehmon uyi holati</th>
-            <th>Mehmon uyi telefon raqami</th>
+            <th>{{ $store.state.translations["registry_number"] }}</th>
+            <th>{{ $store.state.translations["hostel_name"] }}</th>
+            <th>{{ $store.state.translations["hostel_region"] }}</th>
+            <th>{{ $store.state.translations["hostel_address"] }}</th>
+            <th>{{ $store.state.translations["hostel_status"] }}</th>
+            <th>{{ $store.state.translations["hostel_phone"] }}</th>
           </tr>
           <tr v-for="item in hotels?.data" :key="item.id">
             <td>
@@ -28,9 +28,11 @@
               </p>
             </td>
             <td>
-              <p v-show="item.status == 1" class="status active">Aktiv</p>
+              <p v-show="item.status == 1" class="status active">
+                {{ $store.state.translations["active"] }}
+              </p>
               <p v-show="item.status == 0" class="status passive">
-                To'xtatilgan
+                {{ $store.state.translations["passive"] }}
               </p>
             </td>
             <td>
@@ -42,7 +44,9 @@
         </table>
       </div>
       <div class="link">
-        <NuxtLink to="/list"> Barchasini ko’rish </NuxtLink>
+        <NuxtLink to="/list">
+          {{ $store.state.translations["see_all"] }}
+        </NuxtLink>
       </div>
     </div>
   </div>
