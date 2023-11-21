@@ -138,10 +138,8 @@
           <NuxtLink :to="`/profile/${hotel?.id}`">
             {{ $store.state.translations["update_data"] }}
           </NuxtLink>
-          <NuxtLink :to="`/profile/${hotel?.id}`">
-            Ma‘lumotlarni yangilash
-          </NuxtLink>
-          <NuxtLink class="app" to="/applications/new">
+
+          <NuxtLink class="app" :to="`/applications/${hotel?.id}`">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -174,20 +172,26 @@ export default {
       title: "Mening profilim",
       hotels: [],
       hotel: {},
-      baseUrl: "",
     };
   },
   async mounted() {
-    this.baseUrl = process.env.BASE_URL_IMG;
-    const hotels = await hotelsApi.getUserHotels(this.$axios, {
-      params: {},
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    });
+    if (localStorage.getItem("authToken")) {
+      try {
+        const hotels = await hotelsApi.getUserHotels(this.$axios, {
+          params: {},
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
 
-    this.hotels = hotels?.data;
-    this.hotel = hotels?.data[0];
+        this.hotels = hotels?.data;
+        this.hotel = hotels?.data[0];
+      } catch (e) {
+        this.$router.push("/");
+      }
+    } else {
+      this.$router.push("/");
+    }
   },
 };
 </script>

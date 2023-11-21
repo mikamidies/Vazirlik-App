@@ -93,20 +93,28 @@ export default {
   },
 
   async mounted() {
-    this.getApps();
+    if (localStorage.getItem("authToken")) {
+      this.getApps();
+    } else {
+      this.$router.push("/");
+    }
   },
 
   methods: {
     async getApps() {
-      const applications = await applicationApi.getApplications(this.$axios, {
-        params: { page: 1, ...this.$route.query },
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      });
+      try {
+        const applications = await applicationApi.getApplications(this.$axios, {
+          params: { page: 1, ...this.$route.query },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
 
-      this.applications = applications.data;
-      this.totalPage = applications.total;
+        this.applications = applications.data;
+        this.totalPage = applications.total;
+      } catch (e) {
+        this.$router.push("/");
+      }
     },
   },
 };

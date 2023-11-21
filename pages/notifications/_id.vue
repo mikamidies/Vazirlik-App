@@ -32,16 +32,20 @@ export default {
     };
   },
   async mounted() {
-    this.loading = true;
-    const hotel = await messagesApi.getMessageById(this.$axios, {
-      id: this.$route.params.id,
-      params: {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+    if (localStorage.getItem("authToken")) {
+      this.loading = true;
+      const hotel = await messagesApi.getMessageById(this.$axios, {
+        id: this.$route.params.id,
+        params: {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
         },
-      },
-    });
-    this.message = hotel?.data;
+      });
+      this.message = hotel?.data;
+    } else {
+      this.$router.push("/");
+    }
   },
   components: { Loader },
 };

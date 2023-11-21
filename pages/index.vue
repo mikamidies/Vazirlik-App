@@ -42,9 +42,7 @@ export default {
       },
     });
     this.hotels = hotels;
-    if (localStorage.getItem("authToken")) {
-      this.$store.commit("checkAuth", true);
-    }
+   
   },
   components: { Loader },
 };
