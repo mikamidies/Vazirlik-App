@@ -4,67 +4,13 @@
     <div class="container">
       <LinksHeader />
       <div class="items">
-        <div class="item">
+        <div class="item" v-for="message in messages" :key="message?.id">
           <div class="left">
-            <p class="name">Barcha oilaviy mehmon uyi egalari diqqatiga</p>
+            <p class="name">{{ message?.title }}</p>
           </div>
           <div class="right">
-            <NuxtLink to="/notifications/slug" class="link">
-              15.10.2023 - 14:37
-              <span
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M12.956 6.28699L18.669 12L12.956 17.713M5.35498 12H18.652"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  /></svg
-              ></span>
-            </NuxtLink>
-          </div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <p class="name">Barcha oilaviy mehmon uyi egalari diqqatiga</p>
-          </div>
-          <div class="right">
-            <NuxtLink to="/notifications/slug" class="link">
-              15.10.2023 - 14:37
-              <span
-                ><svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M12.956 6.28699L18.669 12L12.956 17.713M5.35498 12H18.652"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                    stroke-miterlimit="10"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  /></svg
-              ></span>
-            </NuxtLink>
-          </div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <p class="name">Barcha oilaviy mehmon uyi egalari diqqatiga</p>
-          </div>
-          <div class="right">
-            <NuxtLink to="/notifications/slug" class="link">
-              15.10.2023 - 14:37
+            <NuxtLink :to="`/notifications/${message?.id}`" class="link">
+              {{ moment(message?.created_at).format("DD.MM.YYYY - HH:MM") }}
               <span
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -91,11 +37,27 @@
 </template>
 
 <script>
+import messagesApi from "@/api/messages";
+import moment from "moment";
 export default {
   data() {
     return {
       title: "Xabarnomalar",
+      messages: [],
     };
+  },
+  async mounted() {
+    const messages = await messagesApi.getMessages(this.$axios, {
+      params: {},
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    });
+
+    this.messages = messages?.data;
+  },
+  methods: {
+    moment,
   },
 };
 </script>

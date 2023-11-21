@@ -9,50 +9,58 @@
               <p class="sup">Oilaviy mehmon uyi nomi:</p>
               <input
                 disabled
+                v-model="form.name"
                 type="text"
                 placeholder="Oilaviy mehmon uyi nomini kiriting"
               />
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi telefon raqamini kiriting:</p>
-              <input disabled type="number" placeholder="+998" />
+              <input
+                disabled
+                type="text"
+                v-model="form.phone_number"
+                placeholder="+998"
+              />
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi web sayti:</p>
               <input
                 disabled
                 type="text"
+                v-model="form.website"
                 placeholder="Oilaviy mehmon uyi web sayti manzilini kiriting"
               />
             </div>
             <div class="item">
-              <p class="sup">
-                Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:
-              </p>
-              <input disabled type="number" placeholder="+998" />
+              <p class="sup">Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:</p>
+              <input
+                disabled
+                type="text"
+                v-model="form.phone_number1"
+                placeholder="+998"
+              />
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
               <a-select
                 disabled
-                v-decorator="[
-                  'gender',
-                  {
-                    rules: [
-                      { required: true, message: 'Please select your gender!' },
-                    ],
-                  },
-                ]"
+                v-model="form.region_id"
                 placeholder="Oilaviy mehmon uyi joylashgan hudud"
-                @change="handleSelectChange"
               >
-                <a-select-option value="male"> Toshkent </a-select-option>
-                <a-select-option value="female"> Samarqand </a-select-option>
+                <a-select-option
+                  v-for="region in regions"
+                  :value="region?.id"
+                  :key="region?.id"
+                >
+                  {{ region?.name }}
+                </a-select-option>
               </a-select>
             </div>
             <div class="item">
               <p class="sup">Oilaviy mehmon uyi elektron manzili:</p>
               <input
+                v-model="form.email"
                 disabled
                 type="email"
                 placeholder="Oilaviy mehmon uyi elektron manzilini kiriting"
@@ -63,6 +71,7 @@
               <input
                 disabled
                 type="text"
+                v-model="form.tin"
                 placeholder="Tashkilotning STIRini kiriting"
               />
             </div>
@@ -71,14 +80,16 @@
               <input
                 disabled
                 type="text"
+                v-model="form.legal_name"
                 placeholder="Tashkilot yuridik nomini kiriting"
               />
             </div>
             <div class="item">
-              <p class="sup">STIR:</p>
+              <p class="sup">Oilaviy mehmon uyi manzili:</p>
               <input
                 disabled
                 type="text"
+                v-model="form.address"
                 placeholder="Oilaviy mehmon uyi manziliin"
               />
             </div>
@@ -89,6 +100,7 @@
               <input
                 disabled
                 type="text"
+                v-model="form.director_name"
                 placeholder="Oilaviy mehmon uyi egasining ismi sharifini kiriting"
               />
             </div>
@@ -97,15 +109,12 @@
             <a-form-item>
               <div class="dropbox">
                 <a-upload-dragger
-                  v-decorator="[
-                    'dragger',
-                    {
-                      valuePropName: 'fileList',
-                      getValueFromEvent: normFile,
-                    },
-                  ]"
-                  name="files"
-                  action="/upload.do"
+                  :class="{ disabled: fileList.length > 0 }"
+                  :headers="headers"
+                  v-decorator="['dragger']"
+                  name="file"
+                  action="https://api.hotels.ndc.uz/api/files"
+                  @change="handleChange"
                 >
                   <p class="ant-upload-drag-icon">
                     <span>
@@ -148,11 +157,88 @@
 </template>
 
 <script>
+import hotelsApi from "@/api/hotels";
+import regionsApi from "@/api/regions";
+
 export default {
   data() {
     return {
+      headers: {},
+      fileList: [],
       title: "Profil tahrirlash",
+      form: {
+        name: "",
+        phone_number: "",
+        phone_number1: "",
+        website: "",
+        email: "",
+        region_id: undefined,
+        legal_name: "",
+        tin: "",
+        director_surname: "",
+        director_name: "",
+        director_fathers_name: "",
+        address: "",
+        img: "",
+        legal_name: "",
+      },
+      hotel: {},
     };
+  },
+  async asyncData({ $axios }) {
+    const regionsData = await regionsApi.getRegions($axios, {
+      params: {},
+    });
+    const regions = regionsData;
+    return {
+      regions,
+    };
+  },
+  async mounted() {
+    this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
+    const hotel = await hotelsApi.getHotelById(this.$axios, {
+      id: this.$route.params.id,
+      params: {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      },
+    });
+    this.hotel = hotel?.data;
+    this.form = {
+      name: hotel?.data?.name,
+      phone_number: hotel?.data?.phone_number,
+      phone_number1: hotel?.data?.phone_number2,
+      website: hotel?.data?.website,
+      email: hotel?.data?.email,
+      region_id: hotel?.data?.region_id,
+      legal_name: hotel?.data?.legal_name,
+      tin: hotel?.data?.tin,
+      director_surname: hotel?.data?.director_surname,
+      director_name: hotel?.data?.director_name,
+      director_fathers_name: hotel?.data?.director_fathers_name,
+      address: hotel?.data?.address,
+      img: hotel?.data?.img,
+      legal_name: hotel?.data?.legal_name,
+    };
+  },
+  methods: {
+    sumbit() {
+      const data = {
+        ...this.form,
+        director_surname: this.form.director_name,
+        director_fathers_name: this.form.director_name,
+      };
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          this.__EDIT_HOTEL(data);
+        }
+      });
+    },
+    handleChange(info) {
+      this.fileList = info.fileList;
+      if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
+    },
   },
 };
 </script>
@@ -215,11 +301,7 @@ form :deep(.ant-select-selection) {
   flex-direction: column;
   justify-content: center;
 }
-form
-  :deep(
-    .ant-select-selection__placeholder,
-    .ant-select-search__field__placeholder
-  ) {
+form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: #5d5d5f;
   font-size: 16px;
   font-style: normal;

@@ -25,16 +25,14 @@
               </div>
               <div class="item">
                 <p class="sup">Адрес по прописке</p>
-                <p class="name">
-                  ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
-                </p>
+                <p class="name">ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="add cardo">
+      <div class="add cardo" v-if="hotels.length < 1">
         <div class="mid">
           <h4>Mehmon uyi</h4>
           <p>Mehmon uyi qo’shilmagan</p>
@@ -59,49 +57,54 @@
         </div>
       </div>
 
-      <div class="cardo">
+      <div class="cardo" v-else>
         <div class="flexer">
-          <div class="left">
-            <img src="@/assets/img/logo.png" alt="" class="pic" />
+          <div class="left" >
+            <img :src="`https://api.hotels.ndc.uz/stores/temp/bdPHgnv3kPxMP7s3LyNdacDTxeapmtzVpKJI53XI.png`" alt="" class="pic" />
           </div>
           <div class="right">
             <div class="items">
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi nomi:</p>
-                <p class="name">Hilton</p>
+                <p class="name">{{ hotel?.name || "------" }}</p>
               </div>
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi telefon raqami</p>
-                <p class="name">+998 99 909 09 90, +998 33 333 03 33</p>
+                <p class="name">
+                  {{ hotel?.phone_number || "------" }}, {{ hotel?.phone_number2 }}
+                </p>
               </div>
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi veb sayti</p>
-                <p class="name">www.hilton.uz</p>
+                <p class="name">{{ hotel?.website || "------" }}</p>
               </div>
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi elektron manzili</p>
-                <p class="name">Zaynobiddin2502@mail.ru</p>
+                <p class="name">{{ hotel?.email || "------" }}</p>
               </div>
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi joylashgan hudud</p>
-                <p class="name">Toshkent shahri</p>
+                <p class="name">{{ hotel?.region?.name || "------" }}</p>
               </div>
               <div class="item">
                 <p class="sup">Tashkilot yuridik nomi</p>
-                <p class="name">“Lokomotiv-hostel” MCHJ</p>
+                <p class="name">{{ hotel?.legal_name || "------" }}</p>
               </div>
               <div class="item">
                 <p class="sup">STIR</p>
-                <p class="name">“Lokomotiv-hostel” MCHJ</p>
+                <p class="name">{{ hotel?.tin || "------" }}</p>
               </div>
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi egasi</p>
-                <p class="name">Abdullaev Iskandar Yuldashevich</p>
+                <p class="name">
+                  {{ hotel?.director_surname || "------" }} {{ hotel?.director_name }}
+                  {{ hotel?.director_fathers_name }}
+                </p>
               </div>
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi manzili</p>
                 <p class="name">
-                  Toshkent shahri, Mirobod tumani, O‘zbekiston ko‘chasi 2-uy
+                  {{ hotel?.address || "----" }}
                 </p>
               </div>
             </div>
@@ -134,11 +137,30 @@
 </template>
 
 <script>
+import hotelsApi from "@/api/hotels";
+
 export default {
   data() {
     return {
       title: "Mening profilim",
+      hotels: [],
+      hotel: {},
+      baseUrl: "",
     };
+  },
+  async mounted() {
+    this.baseUrl = process.env.BASE_URL_IMG;
+    const hotels = await hotelsApi.getHotels(this.$axios, {
+      params: {},
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    });
+
+    this.hotels = hotels?.data;
+    this.hotel = hotels?.data[0];
+
+    console.log(hotels);
   },
 };
 </script>

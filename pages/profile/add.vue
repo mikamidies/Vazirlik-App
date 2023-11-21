@@ -3,147 +3,285 @@
     <SiteTop :title="title" />
     <div class="container">
       <div class="cardo">
-        <form>
+        <a-form-model class="w-full" :model="form" ref="ruleForm" :rules="rules">
           <div class="items">
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi nomi:</p>
-              <input
-                type="text"
-                placeholder="Oilaviy mehmon uyi nomini kiriting"
-              />
+              <a-form-model-item prop="name" class="form-item w-full mb-0">
+                <p class="sup">Oilaviy mehmon uyi nomi:</p>
+                <input
+                  type="text"
+                  v-model="form.name"
+                  placeholder="Oilaviy mehmon uyi nomini kiriting"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi telefon raqamini kiriting:</p>
-              <input type="number" placeholder="+998" />
+              <a-form-model-item prop="phone_number" class="form-item w-full mb-0">
+                <p class="sup">Oilaviy mehmon uyi telefon raqamini kiriting:</p>
+                <input
+                  type="text"
+                  v-mask="'+998 ## ### ## ##'"
+                  v-model="form.phone_number"
+                  placeholder="+998"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi web sayti:</p>
-              <input
-                type="text"
-                placeholder="Oilaviy mehmon uyi web sayti manzilini kiriting"
-              />
+              <a-form-model-item prop="website" class="form-item w-full mb-0">
+                <p class="sup">Oilaviy mehmon uyi web sayti:</p>
+                <input
+                  v-model="form.website"
+                  type="text"
+                  placeholder="Oilaviy mehmon uyi web sayti manzilini kiriting"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">
-                Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:
-              </p>
-              <input type="number" placeholder="+998" />
+              <a-form-model-item prop="phone_number1" class="form-item w-full mb-0">
+                <p class="sup">
+                  Oilaviy mehmon uyi qo‘shimcha telefon raqamini kiriting:
+                </p>
+                <input type="text"   v-mask="'+998 ## ### ## ##'" v-model="form.phone_number1" placeholder="+998" />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
-              <a-select
-                v-decorator="[
-                  'gender',
-                  {
-                    rules: [
-                      { required: true, message: 'Please select your gender!' },
-                    ],
-                  },
-                ]"
-                placeholder="Oilaviy mehmon uyi joylashgan hudud"
-                @change="handleSelectChange"
-              >
-                <a-select-option value="male"> Toshkent </a-select-option>
-                <a-select-option value="female"> Samarqand </a-select-option>
-              </a-select>
+              <a-form-model-item prop="region_id" class="form-item w-full mb-0">
+                <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
+                <a-select
+                  v-model="form.region_id"
+                  placeholder="Oilaviy mehmon uyi joylashgan hudud"
+                >
+                  <a-select-option
+                    v-for="region in regions"
+                    :value="region?.id"
+                    :key="region?.id"
+                  >
+                    {{ region?.name }}
+                  </a-select-option>
+                </a-select>
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">Oilaviy mehmon uyi elektron manzili:</p>
-              <input
-                type="email"
-                placeholder="Oilaviy mehmon uyi elektron manzilini kiriting"
-              />
+              <a-form-model-item prop="email" class="form-item w-full mb-0">
+                <p class="sup">Oilaviy mehmon uyi elektron manzili:</p>
+                <input
+                  v-model="form.email"
+                  type="email"
+                  placeholder="Oilaviy mehmon uyi elektron manzilini kiriting"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">STIR:</p>
-              <input type="text" placeholder="Tashkilotning STIRini kiriting" />
+              <a-form-model-item prop="tin" class="form-item w-full mb-0">
+                <p class="sup">STIR:</p>
+                <input
+                  type="text"
+                  v-model="form.tin"
+                  placeholder="Tashkilotning STIRini kiriting"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">Tashkilot yuridik nomi:</p>
-              <input
-                type="text"
-                placeholder="Tashkilot yuridik nomini kiriting"
-              />
+              <a-form-model-item prop="legal_name" class="form-item w-full mb-0">
+                <p class="sup">Tashkilot yuridik nomi:</p>
+                <input
+                  type="text"
+                  v-model="form.legal_name"
+                  placeholder="Tashkilot yuridik nomini kiriting"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">STIR:</p>
-              <input type="text" placeholder="Oilaviy mehmon uyi manziliin" />
+              <a-form-model-item prop="address" class="form-item w-full mb-0">
+                <p class="sup">Oilaviy mehmon uyi manzili:</p>
+                <input
+                  type="text"
+                  v-model="form.address"
+                  placeholder="Oilaviy mehmon uyi manziliin"
+                />
+              </a-form-model-item>
             </div>
             <div class="item">
-              <p class="sup">
-                Oilaviy mehmon uyi egasining ismi familyasi va otasi ismi:
-              </p>
-              <input
-                type="text"
-                placeholder="Oilaviy mehmon uyi egasining ismi sharifini kiriting"
-              />
+              <a-form-model-item prop="director_name" class="form-item w-full mb-0">
+                <p class="sup">
+                  Oilaviy mehmon uyi egasining ismi familyasi va otasi ismi:
+                </p>
+                <input
+                  type="text"
+                  v-model="form.director_name"
+                  placeholder="Oilaviy mehmon uyi egasining ismi sharifini kiriting"
+                />
+              </a-form-model-item>
             </div>
           </div>
           <div class="drag">
             <a-form-item>
               <div class="dropbox">
-                <a-upload-dragger
-                  v-decorator="[
-                    'dragger',
-                    {
-                      valuePropName: 'fileList',
-                      getValueFromEvent: normFile,
-                    },
-                  ]"
-                  name="files"
-                  action="/upload.do"
-                >
-                  <p class="ant-upload-drag-icon">
-                    <span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="32"
-                        height="32"
-                        viewBox="0 0 32 32"
-                        fill="none"
-                      >
-                        <path
-                          opacity="0.4"
-                          d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
-                          fill="#3C4BDC"
-                        />
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
-                          fill="#3C4BDC"
-                        />
-                      </svg>
-                    </span>
-                  </p>
-                  <p class="ant-upload-text">
-                    Oilaviy mehmon uyi asosiy rasmi yoki logotipi
-                  </p>
-                </a-upload-dragger>
+                <ClientOnly fallback-tag="span" fallback="Loading comments...">
+                  <a-upload-dragger
+                    :class="{ disabled: fileList.length > 0 }"
+                    :headers="headers"
+                    v-decorator="['dragger']"
+                    name="file"
+                    action="https://api.hotels.ndc.uz/api/files"
+                    @change="handleChange"
+                  >
+                    <p class="ant-upload-drag-icon">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="32"
+                          height="32"
+                          viewBox="0 0 32 32"
+                          fill="none"
+                        >
+                          <path
+                            opacity="0.4"
+                            d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
+                            fill="#3C4BDC"
+                          />
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
+                            fill="#3C4BDC"
+                          />
+                        </svg>
+                      </span>
+                    </p>
+                    <p class="ant-upload-text">
+                      Oilaviy mehmon uyi asosiy rasmi yoki logotipi
+                    </p>
+                  </a-upload-dragger>
+                </ClientOnly>
               </div>
             </a-form-item>
           </div>
           <div class="buttons">
-            <button class="cancel">Bekor qilish</button>
-            <button class="confirm">Saqlash</button>
+            <button type="submit" class="cancel">Bekor qilish</button>
+            <button type="button" class="confirm" @click="sumbit">Saqlash</button>
           </div>
-        </form>
+        </a-form-model>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import hotelsApi from "@/api/hotels";
+import regionsApi from "@/api/regions";
 export default {
   data() {
     return {
+      headers: {},
       title: "Mehmon uyi qo‘shish",
+      rules: {
+        name: [{ required: true, message: "This field is required", trigger: "change" }],
+        website: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        email: [{ required: true, message: "This field is required", trigger: "change" }],
+        region_id: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        legal_name: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        tin: [{ required: true, message: "This field is required", trigger: "change" }],
+        director_surname: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        director_name: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        director_fathers_name: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        address: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+        phone_number: [
+          { required: true, message: "This field is required", trigger: "change" },
+        ],
+      },
+      form: {
+        name: "",
+        phone_number: "",
+        phone_number1: "",
+        website: "",
+        email: "",
+        region_id: undefined,
+        legal_name: "",
+        tin: "",
+        director_surname: "",
+        director_name: "",
+        director_fathers_name: "",
+        address: "",
+        img: "",
+      },
+      fileList: [],
     };
+  },
+  async asyncData({ $axios }) {
+    const regionsData = await regionsApi.getRegions($axios, {
+      params: {},
+    });
+    const regions = regionsData;
+    return {
+      regions,
+    };
+  },
+  mounted() {
+    this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
+  },
+  methods: {
+    sumbit() {
+      const data = {
+        ...this.form,
+        director_surname: this.form.director_name,
+        director_fathers_name: this.form.director_name,
+      };
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
+          this.__POST_HOTEL(data);
+        }
+      });
+    },
+    async __POST_HOTEL(formData) {
+      try {
+        const hotel = await hotelsApi.postHotels(this.$axios, {
+          data: formData,
+          params: {
+            params: {},
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          },
+        });
+        this.$notification["success"]({
+          message: "Success",
+          description: "Успешно добавлен",
+        });
+        this.$router.go(-1);
+      } catch (e) {
+        this.$notification["error"]({
+          message: "Error",
+          description: e.response.statusText,
+        });
+      }
+    },
+    handleChange(info) {
+      this.fileList = info.fileList;
+      if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
+    },
   },
 };
 </script>
 
 <style scoped>
+.disabled {
+  pointer-events: none;
+}
 .container {
   padding: 40px 0 112px 0;
 }
@@ -200,11 +338,7 @@ form :deep(.ant-select-selection) {
   flex-direction: column;
   justify-content: center;
 }
-form
-  :deep(
-    .ant-select-selection__placeholder,
-    .ant-select-search__field__placeholder
-  ) {
+form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: #5d5d5f;
   font-size: 16px;
   font-style: normal;
@@ -282,6 +416,7 @@ form :deep(.ant-select-selection-selected-value) {
   border-radius: 16px;
   border: 1px solid var(--Agro-Blue, #3c4bdc);
   background: var(--White, #fff);
+  cursor: pointer;
 }
 .confirm {
   color: var(--White, #fff);
@@ -294,6 +429,7 @@ form :deep(.ant-select-selection-selected-value) {
   border-radius: 16px;
   background: var(--Agro-blue, #3c4bdc);
   border: 1px solid #3c4bdc;
+  cursor: pointer;
 }
 @media screen and (max-width: 1024px) {
   .items {
