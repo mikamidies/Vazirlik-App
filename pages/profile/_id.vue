@@ -45,6 +45,7 @@
               <p class="sup">Oilaviy mehmon uyi joylashgan hudud:</p>
               <a-select
                 disabled
+                style="width: 100%"
                 v-model="form.region_id"
                 placeholder="Oilaviy mehmon uyi joylashgan hudud"
               >
@@ -146,12 +147,13 @@
               </div>
             </a-form-item>
           </div>
-          <div class="buttons">
-            <button class="cancel">Bekor qilish</button>
-            <button class="confirm">Saqlash</button>
-          </div>
         </form>
+        <div class="buttons">
+          <button class="cancel" @click="$router.go(-1)">Bekor qilish</button>
+          <button class="confirm">Saqlash</button>
+        </div>
       </div>
+      <Loader v-if="loading" />
     </div>
   </div>
 </template>
@@ -159,6 +161,7 @@
 <script>
 import hotelsApi from "@/api/hotels";
 import regionsApi from "@/api/regions";
+import Loader from "~/components/loader.vue";
 
 export default {
   data() {
@@ -183,6 +186,7 @@ export default {
         legal_name: "",
       },
       hotel: {},
+      loading: false,
     };
   },
   async asyncData({ $axios }) {
@@ -195,6 +199,7 @@ export default {
     };
   },
   async mounted() {
+    this.loading = true;
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
     const hotel = await hotelsApi.getHotelById(this.$axios, {
       id: this.$route.params.id,
@@ -221,6 +226,7 @@ export default {
       img: hotel?.data?.img,
       legal_name: hotel?.data?.legal_name,
     };
+    this.loading = false;
   },
   methods: {
     sumbit() {
@@ -240,6 +246,7 @@ export default {
       if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
     },
   },
+  components: { Loader },
 };
 </script>
 
@@ -292,7 +299,7 @@ export default {
   font-weight: 400;
   line-height: 150%; /* 24px */
 }
-form :deep(.ant-select-selection) {
+:deep(.ant-select-selection) {
   border-radius: 16px;
   border: 1px solid #e1e3f5;
   background: var(--grey-8, #ebebeb);
@@ -301,7 +308,7 @@ form :deep(.ant-select-selection) {
   flex-direction: column;
   justify-content: center;
 }
-form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
+:deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: #5d5d5f;
   font-size: 16px;
   font-style: normal;
@@ -312,12 +319,12 @@ form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeh
   height: 100%;
   transform: translateY(-50%);
 }
-form :deep(.ant-select-selection__rendered) {
+:deep(.ant-select-selection__rendered) {
   margin: 0;
   margin-left: 24px;
 }
 
-form :deep(.ant-select-selection-selected-value) {
+:deep(.ant-select-selection-selected-value) {
   color: var(--Black, #020105);
   font-family: var(--medium);
   color: #5d5d5f;
@@ -411,7 +418,7 @@ form :deep(.ant-select-selection-selected-value) {
     padding: 12px 24px;
     border-radius: 10px;
   }
-  form :deep(.ant-select-selection) {
+  :deep(.ant-select-selection) {
     height: 50px;
   }
   .drag {

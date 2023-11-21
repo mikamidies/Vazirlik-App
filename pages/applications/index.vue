@@ -67,6 +67,8 @@
           </tr>
         </table>
       </div>
+      <PaginationElement @getData="getApps" :totalPage="totalPage" />
+
       <div class="link">
         <NuxtLink to="/applications/new"> Yangi ariza yuborish </NuxtLink>
       </div>
@@ -82,18 +84,26 @@ export default {
     return {
       applications: "",
       title: "Arizalar",
+      totalPage: 1,
     };
   },
 
   async mounted() {
-    const applications = await applicationApi.getApplications(this.$axios, {
-      params: {},
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    });
+    this.getApps();
+  },
 
-    this.applications = applications.data;
+  methods: {
+    async getApps() {
+      const applications = await applicationApi.getApplications(this.$axios, {
+        params: { page: 1, ...this.$route.query },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
+
+      this.applications = applications.data;
+      this.totalPage = applications.total;
+    },
   },
 };
 </script>

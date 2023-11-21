@@ -119,7 +119,9 @@
           </div>
         </div>
         <div class="link">
-          <NuxtLink to="/profile/edit"> Ma‘lumotlarni yangilash </NuxtLink>
+          <NuxtLink :to="`/profile/${hotel?.id}`">
+            Ma‘lumotlarni yangilash
+          </NuxtLink>
           <NuxtLink class="app" to="/applications/new">
             <svg
               xmlns="http://www.w3.org/2000/svg"

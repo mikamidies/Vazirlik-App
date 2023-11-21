@@ -41,7 +41,7 @@
         </table>
       </div>
 
-      <PaginationElement />
+      <PaginationElement @getData="__GET_HOTELS" :totalPage="totalPage" />
     </div>
   </div>
 </template>
@@ -54,18 +54,27 @@ export default {
     return {
       title: "Oilaviy mehmon uylari ro‘yxati",
       hotels: [],
+      totalPage: 1,
     };
   },
 
   async mounted() {
-    const hotels = await hotelsApi.getHotels(this.$axios, {
-      params: {},
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
-    });
+    this.__GET_HOTELS();
+  },
+  methods: {
+    async __GET_HOTELS() {
+      try {
+        const hotels = await hotelsApi.getHotels(this.$axios, {
+          params: { page: 1, ...this.$route.query },
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
 
-    this.hotels = hotels;
+        this.hotels = hotels;
+        this.totalPage = hotels.total;
+      } catch (e) {}
+    },
   },
 };
 </script>

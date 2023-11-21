@@ -5,26 +5,32 @@
       <div class="body">
         <h4>{{ message?.title }}</h4>
         <span class="editor" v-html="message?.message"></span>
+        <h4>{{ message?.title }}</h4>
+        <span class="editor" v-html="message?.message"></span>
       </div>
 
       <div class="link">
         <NuxtLink to="/list">Oilaviy mehmon uylari ro‘yxati</NuxtLink>
       </div>
     </div>
+    <Loader v-if="loading" />
   </div>
 </template>
 
 <script>
 import messagesApi from "@/api/messages";
+import Loader from "~/components/loader.vue";
 
 export default {
   data() {
     return {
       title: "Barcha oilaviy mehmon uyi egalari diqqatiga",
       message: {},
+      loading: false,
     };
   },
   async mounted() {
+    this.loading = true;
     const hotel = await messagesApi.getMessageById(this.$axios, {
       id: this.$route.params.id,
       params: {
@@ -35,6 +41,7 @@ export default {
     });
     this.message = hotel?.data;
   },
+  components: { Loader },
 };
 </script>
 

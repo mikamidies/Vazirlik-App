@@ -1,11 +1,56 @@
 <template>
   <div class="wrap">
-    <a-pagination :default-current="6" :total="500" />
+    <a-pagination @change="onChange" v-model.number="current" :total="totalPage" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["totalPage"],
+  data() {
+    return {
+      current: 1,
+      params: {
+        pageSize: 16,
+        page: 1,
+      },
+    };
+  },
+  async mounted() {
+    if (
+      !Object.keys(this.$route.query).includes("page") ||
+      !Object.keys(this.$route.query).includes("page_size")
+    ) {
+      await this.$router.replace({
+        path: this.$route.path,
+        query: { page: this.params.page, page_size: this.params.pageSize },
+      });
+    }
+    this.current = Number(this.$route.query.page);
+  },
+  methods: {
+    onChange(e) {
+      this.changePage(e);
+    },
+    async changePage(e) {
+      await this.changePagination(e);
+      this.$emit("getData");
+    },
+    async changePagination(val) {
+      if (this.$route.query.page != val) {
+        await this.$router.replace({
+          path: this.$route.path,
+          query: {
+            ...this.$route.query,
+            page: val,
+          },
+        });
+      }
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    },
+  },
+};
 </script>
 
 <style scoped>
