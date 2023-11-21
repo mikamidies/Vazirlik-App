@@ -29,7 +29,19 @@ export default {
           code: this.$store.state.code,
         });
         this.loading = false;
-        localStorage.setItem("authToken", tokenData?.data?.data?.token);
+        await localStorage.setItem("authToken", tokenData?.data?.data?.token);
+
+        if (localStorage.getItem("authToken")) {
+          try {
+            const data = await authApi.getUserInfo(this.$axios, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
+            });
+            this.$store.commit("getUserInfo", data?.data?.data);
+            this.$store.commit("checkAuth", true);
+          } catch (e) {}
+        }
       } catch (e) {
       } finally {
         this.loading = false;
@@ -42,7 +54,6 @@ export default {
       },
     });
     this.hotels = hotels;
-   
   },
   components: { Loader },
 };
