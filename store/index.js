@@ -1,6 +1,7 @@
 export const state = () => ({
   code: "",
   auth: false,
+  user: {},
 });
 export const mutations = {
   getCode(state, payload) {
@@ -8,5 +9,8 @@ export const mutations = {
   },
   checkAuth(state, payload) {
     state.auth = payload;
+  },
+  getUserInfo(state, payload) {
+    state.user = payload;
   },
 };

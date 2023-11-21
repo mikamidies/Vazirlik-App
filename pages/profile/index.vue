@@ -9,7 +9,7 @@
             <div class="items">
               <div class="item">
                 <p class="sup">F.I.O</p>
-                <p class="name">Ismoilov Akmal Bahodirovich</p>
+                <p class="name">{{ $store.state.user["name"] }}</p>
               </div>
               <div class="item">
                 <p class="sup">JSHSHIR</p>
@@ -25,9 +25,7 @@
               </div>
               <div class="item">
                 <p class="sup">Адрес по прописке</p>
-                <p class="name">
-                  ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
-                </p>
+                <p class="name">ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ</p>
               </div>
             </div>
           </div>
@@ -119,9 +117,7 @@
           </div>
         </div>
         <div class="link">
-          <NuxtLink :to="`/profile/${hotel?.id}`">
-            Ma‘lumotlarni yangilash
-          </NuxtLink>
+          <NuxtLink :to="`/profile/${hotel?.id}`"> Ma‘lumotlarni yangilash </NuxtLink>
           <NuxtLink class="app" to="/applications/new">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +156,7 @@ export default {
   },
   async mounted() {
     this.baseUrl = process.env.BASE_URL_IMG;
-    const hotels = await hotelsApi.getHotels(this.$axios, {
+    const hotels = await hotelsApi.getUserHotels(this.$axios, {
       params: {},
       headers: {
         Authorization: `Bearer ${localStorage.getItem("authToken")}`,

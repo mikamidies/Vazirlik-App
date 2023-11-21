@@ -9,7 +9,22 @@
 </template>
 
 <script>
-export default {};
+import authApi from "@/api/auth";
+
+export default {
+  async mounted() {
+    if (localStorage.getItem("authToken")) {
+      try {
+        const data = await authApi.getUserInfo(this.$axios, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        this.$store.commit("getUserInfo", data?.data?.data);
+      } catch (e) {}
+    }
+  },
+};
 </script>
 
 <style scoped>
