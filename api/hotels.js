@@ -28,4 +28,27 @@ export default {
       console.log(e);
     }
   },
+
+  async getHotelById(axios, payload) {
+    try {
+      let res;
+
+      if (axios) {
+        res = await axios.get(`/hotels/${payload.id}`, {
+          ...payload.params,
+        });
+      }
+      return res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  },
+
+  async postHotels(axios, payload) {
+    let res;
+
+    if (axios) {
+      res = await axios.post("/hotels", payload.data, { ...payload.params });
+    }
+  },
 };

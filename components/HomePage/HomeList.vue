@@ -12,7 +12,7 @@
             <th>Mehmon uyi holati</th>
             <th>Mehmon uyi telefon raqami</th>
           </tr>
-          <tr v-for="item in hotels.data" :key="item.id">
+          <tr v-for="item in hotels?.data" :key="item.id">
             <td>
               <p class="strong">{{ item.register_number }}</p>
             </td>
