@@ -3,8 +3,8 @@
     <SiteTop :title="title" />
     <div class="container">
       <div class="body">
-        <h4>{{message?.title}}</h4>
-       <span class="editor" v-html="message?.message"></span>
+        <h4>{{ message?.title }}</h4>
+        <span class="editor" v-html="message?.message"></span>
       </div>
 
       <div class="link">
@@ -34,7 +34,6 @@ export default {
       },
     });
     this.message = hotel?.data;
-    console.log(this.message);
   },
 };
 </script>

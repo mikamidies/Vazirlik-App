@@ -25,7 +25,9 @@
               </div>
               <div class="item">
                 <p class="sup">Адрес по прописке</p>
-                <p class="name">ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ</p>
+                <p class="name">
+                  ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
+                </p>
               </div>
             </div>
           </div>
@@ -59,8 +61,12 @@
 
       <div class="cardo" v-else>
         <div class="flexer">
-          <div class="left" >
-            <img :src="`https://api.hotels.ndc.uz/stores/temp/bdPHgnv3kPxMP7s3LyNdacDTxeapmtzVpKJI53XI.png`" alt="" class="pic" />
+          <div class="left">
+            <img
+              :src="`https://api.hotels.ndc.uz/stores/temp/bdPHgnv3kPxMP7s3LyNdacDTxeapmtzVpKJI53XI.png`"
+              alt=""
+              class="pic"
+            />
           </div>
           <div class="right">
             <div class="items">
@@ -71,7 +77,8 @@
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi telefon raqami</p>
                 <p class="name">
-                  {{ hotel?.phone_number || "------" }}, {{ hotel?.phone_number2 }}
+                  {{ hotel?.phone_number || "------" }},
+                  {{ hotel?.phone_number2 }}
                 </p>
               </div>
               <div class="item">
@@ -97,7 +104,8 @@
               <div class="item">
                 <p class="sup">Oilaviy mehmon uyi egasi</p>
                 <p class="name">
-                  {{ hotel?.director_surname || "------" }} {{ hotel?.director_name }}
+                  {{ hotel?.director_surname || "------" }}
+                  {{ hotel?.director_name }}
                   {{ hotel?.director_fathers_name }}
                 </p>
               </div>
@@ -159,8 +167,6 @@ export default {
 
     this.hotels = hotels?.data;
     this.hotel = hotels?.data[0];
-
-    console.log(hotels);
   },
 };
 </script>

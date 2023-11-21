@@ -12,7 +12,7 @@
         <NuxtLink to="/list"> Mehmon uylari ro‘yxati </NuxtLink>
       </div>
       <div class="right">
-        <button>
+        <button @click="handleModal = !handleModal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -97,86 +97,162 @@
       </div>
     </div>
 
-    <div class="searcher">
-      <div class="space"></div>
+    <div class="searcher" :class="{ show: handleModal == true }">
+      <div class="space" @click="handleModal = false"></div>
       <div class="body">
-        <div class="input">
+        <div class="x" @click="handleModal = false">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
+            width="29"
+            height="29"
+            viewBox="0 0 29 29"
             fill="none"
           >
             <path
-              d="M18.5 18.5L22 22M21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21C16.7467 21 21 16.7467 21 11.5Z"
-              stroke="#CCD4DD"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              d="M14.5013 12.792L20.4822 6.81104L22.191 8.51987L16.2102 14.5008L22.191 20.4817L20.4822 22.1906L14.5013 16.2097L8.52036 22.1906L6.81152 20.4817L12.7925 14.5008L6.81152 8.51987L8.52036 6.81104L14.5013 12.792Z"
+              fill="#3C4BDC"
             />
           </svg>
-          <input type="text" placeholder="Lux family Guestho" />
         </div>
-        <div class="items">
-          <div class="item">
-            <h4>Lux family Guesthouse</h4>
-            <p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <ellipse
-                  cx="10"
-                  cy="9.16675"
-                  rx="2.5"
-                  ry="2.5"
-                  stroke="#3C4BDC"
-                  stroke-width="1.5"
-                />
-                <path
-                  d="M17.5 9.07416C17.5 13.1652 12.8125 18.3334 10 18.3334C7.1875 18.3334 2.5 13.1652 2.5 9.07416C2.5 4.98316 5.85786 1.66675 10 1.66675C14.1421 1.66675 17.5 4.98316 17.5 9.07416Z"
-                  stroke="#3C4BDC"
-                  stroke-width="1.5"
-                />
-              </svg>
-              Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
-              ko‘chasi, 2-uy
-            </p>
-            <NuxtLink to="/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <path
-                  d="M11.7676 8.23218L8.23204 11.7677"
-                  stroke="#3C4BDC"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M8.61065 5.83344L9.99955 4.44454C11.5337 2.91041 14.021 2.91041 15.5551 4.44454V4.44454C17.0893 5.97868 17.0893 8.466 15.5551 10.0001L14.1662 11.389"
-                  stroke="#3C4BDC"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M11.3893 14.1666L10.0005 15.5555C8.46632 17.0896 5.979 17.0896 4.44486 15.5555V15.5555C2.91073 14.0213 2.91073 11.534 4.44486 9.99987L5.83376 8.61097"
-                  stroke="#3C4BDC"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-              </svg>
-              Havola: <span> pereneseniye-nastennoy-rospisi </span>
-            </NuxtLink>
+        <div class="limit">
+          <div class="input">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M18.5 18.5L22 22M21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21C16.7467 21 21 16.7467 21 11.5Z"
+                stroke="#CCD4DD"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <input type="text" placeholder="Lux family Guestho" />
           </div>
-          <div class="item"></div>
+          <div class="empty">
+            <img src="@/assets/img/empty.svg" alt="" />
+            <p>Ma‘lumot topilmadi</p>
+          </div>
+          <div class="items">
+            <div class="item">
+              <h4>Lux family Guesthouse</h4>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <ellipse
+                    cx="10"
+                    cy="9.16675"
+                    rx="2.5"
+                    ry="2.5"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M17.5 9.07416C17.5 13.1652 12.8125 18.3334 10 18.3334C7.1875 18.3334 2.5 13.1652 2.5 9.07416C2.5 4.98316 5.85786 1.66675 10 1.66675C14.1421 1.66675 17.5 4.98316 17.5 9.07416Z"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
+                ko‘chasi, 2-uy
+              </p>
+              <NuxtLink to="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M11.7676 8.23218L8.23204 11.7677"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M8.61065 5.83344L9.99955 4.44454C11.5337 2.91041 14.021 2.91041 15.5551 4.44454V4.44454C17.0893 5.97868 17.0893 8.466 15.5551 10.0001L14.1662 11.389"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M11.3893 14.1666L10.0005 15.5555C8.46632 17.0896 5.979 17.0896 4.44486 15.5555V15.5555C2.91073 14.0213 2.91073 11.534 4.44486 9.99987L5.83376 8.61097"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                Havola: <span> pereneseniye-nastennoy-rospisi </span>
+              </NuxtLink>
+            </div>
+            <div class="item">
+              <h4>Lux family Guesthouse</h4>
+              <p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <ellipse
+                    cx="10"
+                    cy="9.16675"
+                    rx="2.5"
+                    ry="2.5"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M17.5 9.07416C17.5 13.1652 12.8125 18.3334 10 18.3334C7.1875 18.3334 2.5 13.1652 2.5 9.07416C2.5 4.98316 5.85786 1.66675 10 1.66675C14.1421 1.66675 17.5 4.98316 17.5 9.07416Z"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                  />
+                </svg>
+                Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
+                ko‘chasi, 2-uy
+              </p>
+              <NuxtLink to="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    d="M11.7676 8.23218L8.23204 11.7677"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M8.61065 5.83344L9.99955 4.44454C11.5337 2.91041 14.021 2.91041 15.5551 4.44454V4.44454C17.0893 5.97868 17.0893 8.466 15.5551 10.0001L14.1662 11.389"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M11.3893 14.1666L10.0005 15.5555C8.46632 17.0896 5.979 17.0896 4.44486 15.5555V15.5555C2.91073 14.0213 2.91073 11.534 4.44486 9.99987L5.83376 8.61097"
+                    stroke="#3C4BDC"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                Havola: <span> pereneseniye-nastennoy-rospisi </span>
+              </NuxtLink>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -191,6 +267,7 @@ export default {
     return {
       username: "",
       password: "",
+      handleModal: false,
     };
   },
   methods: {
@@ -276,7 +353,160 @@ export default {
 }
 .searcher {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.searcher.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+.space {
+  background: rgba(2, 1, 5, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.body {
+  border-radius: 0px 0px 16px 16px;
+  border: 1px solid #e1e3f5;
+  background: #f7f8fc;
+  width: 100%;
+  max-width: 1536px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  padding: 32px 48px 48px 48px;
+  transition: 0.4s;
+  transform: translateY(-100%);
+}
+.searcher.show .body {
+  transform: translateY(0);
+}
+.x {
+  top: 32px;
+  right: 64px;
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #eff0f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.input {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ebebeb;
+  gap: 12px;
+}
+.limit {
+  max-width: 90%;
+}
+.input input {
+  color: var(--Dark-blue, #002856);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 8px 0;
+}
+.input input:focus {
+  outline: none;
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  gap: 24px;
   display: none;
+}
+.item {
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: #fff;
+  transition: 0.2s;
+}
+.item:hover {
+  background: #edeffa;
+}
+.item h4 {
+  margin-bottom: 8px;
+  color: var(--Blue-dark, #002856);
+  font-family: var(--semi);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%; /* 33.6px */
+}
+.item p {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #353437;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+}
+.item a {
+  color: #353437;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 187.5% */
+  letter-spacing: 0.64px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.item a span {
+  color: var(--Agro-blue, #3c4bdc);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px; /* 187.5% */
+  letter-spacing: 0.64px;
+}
+.empty {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+  display: none;
+}
+.empty img {
+  width: 100%;
+  max-width: 390px;
+  height: 200px;
+  object-fit: contain;
+  display: flex;
+  margin-bottom: 16px;
+}
+.empty p {
+  color: var(--Dark-blue, #002856);
+  text-align: center;
+  font-family: var(--medium);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 33.6px */
 }
 @media screen and (max-width: 1024px) {
   .right,

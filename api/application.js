@@ -9,4 +9,19 @@ export default {
       console.log(e);
     }
   },
+
+  async getApplications(axios, params) {
+    try {
+      let res;
+
+      if (axios) {
+        res = await axios.get("/applications", {
+          ...params,
+        });
+      }
+      return res.data.data;
+    } catch (e) {
+      console.log(e);
+    }
+  },
 };

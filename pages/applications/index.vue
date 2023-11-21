@@ -13,108 +13,27 @@
             <th>Reyestrdan ko‘chirma</th>
             <th>Amallar</th>
           </tr>
-          <tr>
+          <tr v-for="item in applications" :key="item.id">
             <td>
-              <p class="strong">#987712</p>
+              <p class="strong">{{ item.id }}</p>
             </td>
             <td>
-              <p class="status waiting">
+              <p v-show="item.status == `in_process`" class="status waiting">
                 2-bosqich (Hujjatlar ko‘rib chiqilmoqda)
               </p>
-            </td>
-            <td>
-              <p class="weak">15.10.2023 - 14:37</p>
-            </td>
-            <td>
-              <p class="weak">21.10.2023 - 14:37</p>
-            </td>
-            <td>
-              <p class="strong">000368</p>
-            </td>
-            <td>
-              <div class="button">
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M6 8L8 10M8 10L10 8M8 10L8 2"
-                      stroke="#00A7AE"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M5 6V6C3.34315 6 2 7.34315 2 9L2 11C2 12.6569 3.34315 14 5 14L11 14C12.6569 14 14 12.6569 14 11L14 9C14 7.34315 12.6569 6 11 6V6"
-                      stroke="#00A7AE"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="strong">#987712</p>
-            </td>
-            <td>
-              <p class="status active">
-                So‘nggi bosqich (Muvaffaqiyatli yakunlangan)
+              <p v-show="item.status == `accepted`" class="status active">
+                Qabul qilindi
               </p>
+              <p v-show="item.status == `rejected`" class="status passive">
+                Rad etildi
+              </p>
+              <p v-show="item.status == `new`" class="status new">Yangi</p>
             </td>
             <td>
-              <p class="weak">15.10.2023 - 14:37</p>
+              <p class="weak">{{ item.created_at }}</p>
             </td>
             <td>
-              <p class="weak">21.10.2023 - 14:37</p>
-            </td>
-            <td>
-              <p class="strong">000368</p>
-            </td>
-            <td>
-              <div class="button">
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M6 8L8 10M8 10L10 8M8 10L8 2"
-                      stroke="#00A7AE"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M5 6V6C3.34315 6 2 7.34315 2 9L2 11C2 12.6569 3.34315 14 5 14L11 14C12.6569 14 14 12.6569 14 11L14 9C14 7.34315 12.6569 6 11 6V6"
-                      stroke="#00A7AE"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="strong">#987712</p>
-            </td>
-            <td>
-              <p class="status passive">So‘nggi bosqich (Rad etildi)</p>
-            </td>
-            <td>
-              <p class="weak">15.10.2023 - 14:37</p>
-            </td>
-            <td>
-              <p class="weak">21.10.2023 - 14:37</p>
+              <p class="weak">{{ item.closed_at }}</p>
             </td>
             <td>
               <p class="strong">000368</p>
@@ -156,11 +75,25 @@
 </template>
 
 <script>
+import applicationApi from "@/api/application";
+
 export default {
   data() {
     return {
+      applications: "",
       title: "Arizalar",
     };
+  },
+
+  async mounted() {
+    const applications = await applicationApi.getApplications(this.$axios, {
+      params: {},
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    });
+
+    this.applications = applications.data;
   },
 };
 </script>

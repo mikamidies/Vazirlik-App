@@ -66,8 +66,6 @@ export default {
     });
 
     this.hotels = hotels;
-
-    console.log(hotels);
   },
 };
 </script>
