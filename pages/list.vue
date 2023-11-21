@@ -30,7 +30,9 @@
             </td>
             <td>
               <p v-show="item.status == 1" class="status active">Aktiv</p>
-              <p v-show="item.status == 0" class="status passive">To'xtatilgan</p>
+              <p v-show="item.status == 0" class="status passive">
+                To'xtatilgan
+              </p>
             </td>
             <td>
               <p class="num">{{ item.phone_number }}</p>
@@ -39,7 +41,7 @@
         </table>
       </div>
 
-      <PaginationElement @getData="__GET_HOTELS" :totalPage="totalPage"/>
+      <PaginationElement @getData="__GET_HOTELS" :totalPage="totalPage" />
     </div>
   </div>
 </template>

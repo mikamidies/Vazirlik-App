@@ -5,13 +5,15 @@
       <div class="body">
         <h4>{{ message?.title }}</h4>
         <span class="editor" v-html="message?.message"></span>
+        <h4>{{ message?.title }}</h4>
+        <span class="editor" v-html="message?.message"></span>
       </div>
 
       <div class="link">
         <NuxtLink to="/list">Oilaviy mehmon uylari ro‘yxati</NuxtLink>
       </div>
     </div>
-    <Loader v-if="loading"/>
+    <Loader v-if="loading" />
   </div>
 </template>
 
@@ -38,8 +40,6 @@ export default {
       },
     });
     this.message = hotel?.data;
-    this.loading = false;
-
   },
   components: { Loader },
 };

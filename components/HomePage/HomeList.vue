@@ -52,9 +52,7 @@
 export default {
   props: ["hotels"],
 
-  mounted() {
-    console.log(this.hotels);
-  },
+  mounted() {},
 };
 </script>
 
