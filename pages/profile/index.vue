@@ -159,8 +159,6 @@ export default {
 
     this.hotels = hotels?.data;
     this.hotel = hotels?.data[0];
-
-    console.log(hotels);
   },
 };
 </script>
