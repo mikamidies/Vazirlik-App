@@ -96,6 +96,90 @@
         </form>
       </div>
     </div>
+
+    <div class="searcher">
+      <div class="space"></div>
+      <div class="body">
+        <div class="input">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M18.5 18.5L22 22M21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21C16.7467 21 21 16.7467 21 11.5Z"
+              stroke="#CCD4DD"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <input type="text" placeholder="Lux family Guestho" />
+        </div>
+        <div class="items">
+          <div class="item">
+            <h4>Lux family Guesthouse</h4>
+            <p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <ellipse
+                  cx="10"
+                  cy="9.16675"
+                  rx="2.5"
+                  ry="2.5"
+                  stroke="#3C4BDC"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M17.5 9.07416C17.5 13.1652 12.8125 18.3334 10 18.3334C7.1875 18.3334 2.5 13.1652 2.5 9.07416C2.5 4.98316 5.85786 1.66675 10 1.66675C14.1421 1.66675 17.5 4.98316 17.5 9.07416Z"
+                  stroke="#3C4BDC"
+                  stroke-width="1.5"
+                />
+              </svg>
+              Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
+              ko‘chasi, 2-uy
+            </p>
+            <NuxtLink to="/">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M11.7676 8.23218L8.23204 11.7677"
+                  stroke="#3C4BDC"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M8.61065 5.83344L9.99955 4.44454C11.5337 2.91041 14.021 2.91041 15.5551 4.44454V4.44454C17.0893 5.97868 17.0893 8.466 15.5551 10.0001L14.1662 11.389"
+                  stroke="#3C4BDC"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M11.3893 14.1666L10.0005 15.5555C8.46632 17.0896 5.979 17.0896 4.44486 15.5555V15.5555C2.91073 14.0213 2.91073 11.534 4.44486 9.99987L5.83376 8.61097"
+                  stroke="#3C4BDC"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+              Havola: <span> pereneseniye-nastennoy-rospisi </span>
+            </NuxtLink>
+          </div>
+          <div class="item"></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -189,6 +273,10 @@ export default {
   align-items: center;
   justify-content: center;
   border: 0;
+}
+.searcher {
+  position: fixed;
+  display: none;
 }
 @media screen and (max-width: 1024px) {
   .right,
