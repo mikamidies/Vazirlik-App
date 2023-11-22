@@ -272,7 +272,6 @@ export default {
         cadastre: "",
       },
       headers: {},
-      hotel_id: 1,
     };
   },
 
@@ -291,7 +290,7 @@ export default {
     async onSubmit() {
       const formData = {
         type: this.type,
-        hotel_id: this.hotel_id,
+        hotel_id: this.$route.params.id,
         fire_safety: this.fileTypes.fire_safety,
         sanitation: this.fileTypes.sanitation,
         certificate: this.fileTypes.certificate,
