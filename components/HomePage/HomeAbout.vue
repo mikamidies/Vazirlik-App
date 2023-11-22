@@ -4,10 +4,25 @@
       <div class="left">
         <h4 class="title">{{ $store.state.translations["main_title"] }}</h4>
         <p class="txt">
-          {{ $store.state.translations["about_txt1"] }}
+          Axborot tizimi orqali qogʼoz hujjat aylanishi kamayadi, reyestrdan koʼchirma
+          berish toliq elektron shaklda amalga oshiriladi, ishchi jarayonga sarflanadigan
+          vaqt bir necha barobariga qisqartirish imkonini beradi.
         </p>
         <p class="second">
-          {{ $store.state.translations["about_txt1"] }}
+          Ushbu axborot tizimi yordamida quyidagi jarayonlar raqamlashtiriladi: 
+         <ul>
+         <li> – Oilaviy
+          Mehmon Uylari Yagona Reyestri, shuningdek har bir oilaviy mehmon uylari kerakli
+          maʼlumotlari bilan toʼldirilgan yagona maʼlumotlar bazasini shakllantirish;
+          </li>
+          <li> – Oʼzbekiston Respublikasi hududida faoliyat yuritayotgan oilaviy mehmon uylari
+          reyestrini yuritish; 
+         </li>
+         <li> – qoʼmita tomonidan oilaviy mehmon uylari faoliyati
+          nazoratini yuritish; 
+        </li>
+        <li>  – statistik maʼlumotlarni yuritish.</li>
+         </ul>
         </p>
       </div>
       <div class="right">

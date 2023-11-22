@@ -256,13 +256,10 @@ export default {
       type: "",
       options: [
         {
-          label: "Nodavlat Tashkiloti",
+          label: "Mehmon uyini Oilaviy Mehmon Uylari Yagona Reyestriga kiritish",
           value: "Davlat",
         },
-        {
-          label: "Davlat Tashkiloti",
-          value: "Nodavlat",
-        },
+       
       ],
       fileTypes: {
         fire_safety: "",

@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="container">
       <div class="cardo">
-        <img src="@/assets/img/vector.png" class="vector" alt="" />
+        <img src="@/assets/img/88941595038930.jpg" class="vector" alt="" />
         <h4 class="title">{{ $store.state.translations["main_title"] }}</h4>
       </div>
     </div>
@@ -26,6 +26,7 @@ export default {};
   align-items: center;
   justify-content: center;
   min-height: 440px;
+  overflow: hidden;
 }
 .cardo::after {
   content: "";
@@ -42,6 +43,9 @@ export default {};
   top: 0;
   left: 0;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .title {
   color: var(--White, var(--White, #fff));
