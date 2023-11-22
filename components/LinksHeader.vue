@@ -38,7 +38,7 @@
         <h4>Tizimdan chiqishga tayyormisiz?</h4>
         <div class="buttons">
           <button @click="handleModal = false" class="no">Yo‘q</button>
-          <button class="yes">Ha</button>
+          <button @click="logOut" class="yes">Ha</button>
         </div>
       </div>
     </div>
@@ -51,6 +51,12 @@ export default {
     return {
       handleModal: false,
     };
+  },
+  methods: {
+    logOut() {
+      localStorage.removeItem("authToken");
+      this.$router.push("/");
+    },
   },
 };
 </script>
