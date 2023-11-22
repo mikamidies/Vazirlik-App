@@ -139,26 +139,26 @@ export default {
   },
 
   async mounted() {
-    if (!localStorage.getItem("authToken")) await this.$router.push("/");
+    // if (!localStorage.getItem("authToken")) await this.$router.push("/");
     const hotels = await hotelsApi.getHotels(this.$axios, {
       params: {},
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
+      // headers: {
+      //   Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      // },
     });
 
     const hotel = await hotelsApi.getHotel(this.$route.params.id, this.$axios, {
       params: {},
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-      },
+      // headers: {
+      //   Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      // },
     });
 
     this.hotels = hotels;
     this.hotel = hotel.data;
 
-    this.coords[0] = hotel.data.lat.replace(",", ".");
-    this.coords[1] = hotel.data.lon.replace(",", ".");
+    this.coords[0] = hotel.data.lat?.replace(",", ".");
+    this.coords[1] = hotel.data.lon?.replace(",", ".");
   },
 };
 </script>
