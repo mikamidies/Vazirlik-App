@@ -40,6 +40,7 @@ export default {
             });
             this.$store.commit("getUserInfo", data?.data?.data);
             this.$store.commit("checkAuth", true);
+            this.$router.push("/profile");
           } catch (e) {}
         }
       } catch (e) {

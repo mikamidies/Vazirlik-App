@@ -88,12 +88,12 @@
             <div class="item">
               <a-form-model-item prop="email" class="form-item w-full mb-0">
                 <p class="sup">
-                  {{ $store.state.translations["hostel_address"] }}
+                  {{ $store.state.translations["email"] }}
                 </p>
                 <input
                   v-model="form.email"
                   type="email"
-                  :placeholder="$store.state.translations[`hostel_address`]"
+                  :placeholder="$store.state.translations[`email`]"
                 />
               </a-form-model-item>
             </div>

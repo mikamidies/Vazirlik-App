@@ -3,14 +3,17 @@
     <div class="container">
       <div class="left">
         <NuxtLink to="/" class="title">
-          Oilaviy mehmon uylari <br />
-          <span>uylari ro‘yxati</span>
+          <img src="@/assets/img/brand.svg" alt="" class="brand" />
         </NuxtLink>
       </div>
       <div class="mid">
         <NuxtLink to="/"> {{ $store.state.translations["main"] }} </NuxtLink>
         <NuxtLink to="/list">
           {{ $store.state.translations["list_title"] }}
+        </NuxtLink>
+        <NuxtLink to="/contacts">
+          {{ $store.state.translations["contacts"] }}
+          {{ $store.state.translations["contacters"] }}
         </NuxtLink>
       </div>
       <div class="right">
@@ -142,7 +145,7 @@
             <input
               type="text"
               v-model="search"
-              placeholder="Lux family Guestho"
+              :placeholder="$store.state.translations[`search`]"
             />
           </div>
           <div class="empty" v-show="empty == true">
@@ -246,9 +249,7 @@ export default {
         const res = await authApi.handleAuth(formData);
 
         localStorage.setItem("authToken", res.data.data.token);
-
-      } catch (error) {
-      }
+      } catch (error) {}
     },
   },
   watch: {
@@ -273,6 +274,9 @@ export default {
 </script>
 
 <style scoped>
+.brand {
+  width: 180px;
+}
 .container {
   display: flex;
   align-items: center;

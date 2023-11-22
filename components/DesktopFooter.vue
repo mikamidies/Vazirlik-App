@@ -6,8 +6,7 @@
         <div class="container small">
           <div class="top">
             <h4 class="title">
-              Oilaviy mehmon <br />
-              <span>uylari ro‘yxati</span>
+              <img src="@/assets/img/white.svg" alt="" class="brand" />
             </h4>
           </div>
           <div class="grid">
@@ -202,6 +201,9 @@ export default {};
 </script>
 
 <style scoped>
+.brand {
+  width: 180px;
+}
 .wrap {
   padding-bottom: 74px;
 }

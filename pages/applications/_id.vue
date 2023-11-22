@@ -4,9 +4,12 @@
     <div class="container">
       <form @submit.prevent="onSubmit">
         <div class="input">
-          <p class="sup">Ariza turi</p>
+          <p class="sup">{{ $store.state.translations["app_type"] }}</p>
 
-          <a-select v-model="type" placeholder="Ariza turi">
+          <a-select
+            v-model="type"
+            :placeholder="$store.state.translations[`app_type`]"
+          >
             <a-select-option
               v-for="option in options"
               :key="option.id"
@@ -20,11 +23,11 @@
           <a-form-item>
             <div
               class="dropbox"
-              :class="{ disable: fileList.fire_safety.length > 0 }"
+              :class="{ disable: fileList.state_certificate.length > 0 }"
             >
               <a-upload-dragger
-                @change="($event) => handleChange($event, 'fire_safety')"
-                :file-list="fileList.fire_safety"
+                @change="($event) => handleChange($event, 'state_certificate')"
+                :file-list="fileList.state_certificate"
                 accept=".doc, .docx, .pdf"
                 name="file"
                 action="https://api.hotels.ndc.uz/api/files"
@@ -54,7 +57,7 @@
                   </span>
                 </p>
                 <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
+                  {{ $store.state.translations["state_certificate"] }}
                 </p>
               </a-upload-dragger>
             </div>
@@ -62,11 +65,11 @@
           <a-form-item>
             <div
               class="dropbox"
-              :class="{ disable: fileList.sanitation.length > 0 }"
+              :class="{ disable: fileList.cadastre.length > 0 }"
             >
               <a-upload-dragger
-                @change="($event) => handleChange($event, 'sanitation')"
-                :file-list="fileList.sanitation"
+                @change="($event) => handleChange($event, 'cadastre')"
+                :file-list="fileList.cadastre"
                 accept=".doc, .docx, .pdf"
                 name="file"
                 action="https://api.hotels.ndc.uz/api/files"
@@ -95,11 +98,13 @@
                     </svg>
                   </span>
                 </p>
-                <p class="ant-upload-text">Kadastr ko‘chirmasi</p>
+                <p class="ant-upload-text">
+                  {{ $store.state.translations["cadastre"] }}
+                </p>
               </a-upload-dragger>
             </div>
           </a-form-item>
-          <a-form-item>
+          <!-- <a-form-item>
             <div
               class="dropbox"
               :class="{ disable: fileList.certificate.length > 0 }"
@@ -222,10 +227,12 @@
                 </p>
               </a-upload-dragger>
             </div>
-          </a-form-item>
+          </a-form-item> -->
         </div>
         <div class="link">
-          <button type="submit">Arizani yuborish</button>
+          <button type="submit">
+            {{ $store.state.translations["send_it"] }}
+          </button>
         </div>
       </form>
     </div>
@@ -300,8 +307,6 @@ export default {
           },
         },
       });
-
-  
 
       this.type = "";
       this.fileTypes.fire_safety = "";
