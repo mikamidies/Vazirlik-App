@@ -10,7 +10,6 @@ export default {
       }
       return res.data.data;
     } catch (e) {
-      console.log(e);
     }
   },
   async getMessageById(axios, payload) {
@@ -24,7 +23,6 @@ export default {
       }
       return res.data;
     } catch (e) {
-      console.log(e);
     }
   },
 };

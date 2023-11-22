@@ -10,7 +10,7 @@ export default {
       }
       return res.data.data;
     } catch (e) {
-      console.log(e);
+       
     }
   },
   async getUserHotels(axios, params) {
@@ -24,7 +24,7 @@ export default {
       }
       return res.data.data;
     } catch (e) {
-      console.log(e);
+       
     }
   },
   async getHotel(id, axios, params) {
@@ -38,7 +38,7 @@ export default {
       }
       return res.data;
     } catch (e) {
-      console.log(e);
+       
     }
   },
 
@@ -53,7 +53,7 @@ export default {
       }
       return res.data;
     } catch (e) {
-      console.log(e);
+       
     }
   },
 

@@ -38,7 +38,6 @@ export default {
       },
     });
 
-    console.log(translations);
 
     await this.$store.commit("getTranslations", translations.data);
   },

@@ -6,7 +6,6 @@ export default {
       });
       return res;
     } catch (e) {
-      console.log(e);
     }
   },
 
@@ -21,7 +20,6 @@ export default {
       }
       return res.data.data;
     } catch (e) {
-      console.log(e);
     }
   },
 };

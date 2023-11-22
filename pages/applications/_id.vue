@@ -301,11 +301,7 @@ export default {
         },
       });
 
-      if (res && res.status === 201) {
-        console.log("OK");
-      } else {
-        console.log("Not OK");
-      }
+  
 
       this.type = "";
       this.fileTypes.fire_safety = "";
