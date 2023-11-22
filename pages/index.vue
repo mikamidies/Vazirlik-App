@@ -30,6 +30,7 @@ export default {
         });
         this.loading = false;
         await localStorage.setItem("authToken", tokenData?.data?.data?.token);
+
         if (localStorage.getItem("authToken")) {
           try {
             const data = await authApi.getUserInfo(this.$axios, {

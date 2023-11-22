@@ -72,21 +72,27 @@
             />
           </svg>
         </button>
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12C22 10.3431 17.5228 9 12 9C6.47715 9 2 10.3431 2 12M22 12C22 13.6569 17.5228 15 12 15C6.47715 15 2 13.6569 2 12M12 22C6.47715 22 2 17.5228 2 12M12 22C14.2091 22 16 17.5228 16 12C16 6.47715 14.2091 2 12 2M12 22C9.79086 22 8 17.5228 8 12C8 6.47715 9.79086 2 12 2M2 12C2 6.47715 6.47715 2 12 2"
-              stroke="#3C4BDC"
-              stroke-width="1.5"
-            />
-          </svg>
-        </button>
+        <div class="langer">
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12C22 10.3431 17.5228 9 12 9C6.47715 9 2 10.3431 2 12M22 12C22 13.6569 17.5228 15 12 15C6.47715 15 2 13.6569 2 12M12 22C6.47715 22 2 17.5228 2 12M12 22C14.2091 22 16 17.5228 16 12C16 6.47715 14.2091 2 12 2M12 22C9.79086 22 8 17.5228 8 12C8 6.47715 9.79086 2 12 2M2 12C2 6.47715 6.47715 2 12 2"
+                stroke="#3C4BDC"
+                stroke-width="1.5"
+              />
+            </svg>
+          </button>
+          <div class="drop">
+            <nuxt-link :to="switchLocalePath('ru')">Русский</nuxt-link>
+            <nuxt-link :to="switchLocalePath('uz')">O'zbekcha</nuxt-link>
+          </div>
+        </div>
       </div>
 
       <!-- <div>
@@ -133,15 +139,19 @@
                 stroke-linejoin="round"
               />
             </svg>
-            <input type="text" placeholder="Lux family Guestho" />
+            <input
+              type="text"
+              v-model="search"
+              placeholder="Lux family Guestho"
+            />
           </div>
-          <div class="empty">
+          <div class="empty" v-show="empty == true">
             <img src="@/assets/img/empty.svg" alt="" />
             <p>{{ $store.state.translations["no_data"] }}</p>
           </div>
-          <div class="items">
-            <div class="item">
-              <h4>Lux family Guesthouse</h4>
+          <div class="items" v-show="hotels.length > 0">
+            <div v-for="item in hotels" :key="item.id" class="item">
+              <h4>{{ item.name }}</h4>
               <p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -164,10 +174,9 @@
                     stroke-width="1.5"
                   />
                 </svg>
-                Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
-                ko‘chasi, 2-uy
+                {{ item.name }} {{ item.address }}
               </p>
-              <NuxtLink to="/">
+              <a :href="`/hotels/${item.id}`">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -194,65 +203,8 @@
                     stroke-linecap="round"
                   />
                 </svg>
-                Havola: <span> pereneseniye-nastennoy-rospisi </span>
-              </NuxtLink>
-            </div>
-            <div class="item">
-              <h4>Lux family Guesthouse</h4>
-              <p>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <ellipse
-                    cx="10"
-                    cy="9.16675"
-                    rx="2.5"
-                    ry="2.5"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                  />
-                  <path
-                    d="M17.5 9.07416C17.5 13.1652 12.8125 18.3334 10 18.3334C7.1875 18.3334 2.5 13.1652 2.5 9.07416C2.5 4.98316 5.85786 1.66675 10 1.66675C14.1421 1.66675 17.5 4.98316 17.5 9.07416Z"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                  />
-                </svg>
-                Lux Family Guesthouse Toshkent sh, Mirobod tumani, O‘zbekiston
-                ko‘chasi, 2-uy
-              </p>
-              <NuxtLink to="/">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <path
-                    d="M11.7676 8.23218L8.23204 11.7677"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  />
-                  <path
-                    d="M8.61065 5.83344L9.99955 4.44454C11.5337 2.91041 14.021 2.91041 15.5551 4.44454V4.44454C17.0893 5.97868 17.0893 8.466 15.5551 10.0001L14.1662 11.389"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  />
-                  <path
-                    d="M11.3893 14.1666L10.0005 15.5555C8.46632 17.0896 5.979 17.0896 4.44486 15.5555V15.5555C2.91073 14.0213 2.91073 11.534 4.44486 9.99987L5.83376 8.61097"
-                    stroke="#3C4BDC"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                Havola: <span> pereneseniye-nastennoy-rospisi </span>
-              </NuxtLink>
+                Havola: <span> {{ item.website }} </span>
+              </a>
             </div>
           </div>
         </div>
@@ -263,6 +215,7 @@
 
 <script>
 import authApi from "@/api/auth.js";
+import hotelsApi from "@/api/hotels";
 
 export default {
   data() {
@@ -270,9 +223,15 @@ export default {
       username: "",
       password: "",
       handleModal: false,
+      search: "",
+      hotels: "",
+      empty: false,
     };
   },
   methods: {
+    onChange(e) {
+      console.log(e);
+    },
     async onSubmit() {
       const formData = {
         username: this.username,
@@ -289,6 +248,24 @@ export default {
         localStorage.setItem("authToken", res.data.data.token);
 
       } catch (error) {
+      }
+    },
+  },
+  watch: {
+    async search(val) {
+      console.log(val);
+      if (val.length > 2) {
+        const data = await hotelsApi.getHotels(this.$axios, {
+          params: { search: val },
+        });
+
+        if (data.data.length > 0) {
+          this.empty = false;
+        } else {
+          this.empty = true;
+        }
+
+        this.hotels = data.data;
       }
     },
   },
@@ -433,7 +410,6 @@ export default {
   flex-direction: column;
   padding-top: 24px;
   gap: 24px;
-  display: none;
 }
 .item {
   padding: 16px 24px;
@@ -489,7 +465,6 @@ export default {
   flex-direction: column;
   align-items: center;
   padding-top: 40px;
-  display: none;
 }
 .empty img {
   width: 100%;
@@ -507,6 +482,42 @@ export default {
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 33.6px */
+}
+.langer {
+  position: relative;
+}
+
+.drop {
+  transition: 0.4s;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  background: white;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 4px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.langer:hover .drop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+.drop a {
+  color: var(--Dark-blue, #002856);
+  font-family: var(--medium);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
 }
 @media screen and (max-width: 1024px) {
   .right,

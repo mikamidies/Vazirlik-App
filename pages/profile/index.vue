@@ -29,7 +29,9 @@
                 <p class="sup">
                   {{ $store.state.translations["hostel_address"] }}
                 </p>
-                <p class="name">ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ</p>
+                <p class="name">
+                  ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
+                </p>
               </div>
             </div>
           </div>
@@ -330,6 +332,7 @@ export default {
 .app:hover {
   transform: scale(0.95);
 }
+
 @media screen and (max-width: 1024px) {
   .flexer {
     display: flex;

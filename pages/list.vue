@@ -6,7 +6,7 @@
       <div class="tabler">
         <table>
           <tr>
-            <th>{{ $store.state.translations["registry_number"] }}</th>
+            <th>{{ $store.state.translations["registry_num"] }}</th>
             <th>{{ $store.state.translations["hostel_name"] }}</th>
             <th>{{ $store.state.translations["hostel_region"] }}</th>
             <th>{{ $store.state.translations["hostel_address"] }}</th>
