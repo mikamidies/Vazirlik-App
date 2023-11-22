@@ -73,7 +73,7 @@
                 </p>
                 <a-select
                   v-model="form.region_id"
-                  :placeholder="$store.state.translations[`hostel_owner`]"
+                  :placeholder="$store.state.translations[`hostel_region`]"
                 >
                   <a-select-option
                     v-for="region in regions"
