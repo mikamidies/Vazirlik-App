@@ -187,10 +187,10 @@ export default {
         this.hotels = hotels?.data;
         this.hotel = hotels?.data[0];
       } catch (e) {
-        this.$router.push("/");
+        // this.$router.push("/");
       }
     } else {
-      this.$router.push("/");
+      this.$router.push("/auth");
     }
   },
 };

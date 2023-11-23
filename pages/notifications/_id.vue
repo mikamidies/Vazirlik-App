@@ -43,7 +43,7 @@ export default {
       this.message = hotel?.data;
       this.loading = false;
     } else {
-      this.$router.push("/");
+      this.$router.push("/auth");
     }
   },
   components: { Loader },

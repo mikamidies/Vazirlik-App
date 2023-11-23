@@ -320,7 +320,7 @@ export default {
     };
   },
   async mounted() {
-    if (!localStorage.getItem("authToken")) await this.$router.push("/");
+    if (!localStorage.getItem("authToken")) await this.$router.push("/auth");
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
   methods: {

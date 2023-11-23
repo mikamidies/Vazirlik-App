@@ -18,8 +18,10 @@ export const mutations = {
     state.translations = payload;
   },
 
-  checkAuth(state, payload) {
-    state.auth = payload;
+  checkAuth(state) {
+    localStorage.getItem("authToken")
+      ? (state.auth = true)
+      : (state.auth = false);
   },
   getUserInfo(state, payload) {
     state.user = payload;

@@ -96,7 +96,7 @@ export default {
     if (localStorage.getItem("authToken")) {
       this.getApps();
     } else {
-      this.$router.push("/");
+      this.$router.push("/auth");
     }
   },
 

@@ -2,9 +2,7 @@
   <div class="wrap">
     <div class="header">
       <div class="left">
-        <NuxtLink to="/profile">{{
-          $store.state.translations["my_profile"]
-        }}</NuxtLink>
+        <NuxtLink to="/profile">{{ $store.state.translations["my_profile"] }}</NuxtLink>
         <NuxtLink to="/applications">{{
           $store.state.translations["my_applications"]
         }}</NuxtLink>
@@ -46,6 +44,7 @@
 </template>
 
 <script>
+import authApi from "@/api/auth";
 export default {
   data() {
     return {
@@ -53,9 +52,23 @@ export default {
     };
   },
   methods: {
-    logOut() {
-      localStorage.removeItem("authToken");
-      this.$router.push("/");
+    async logOut() {
+      try {
+        const hotels = await authApi.logOut(this.$axios, {
+          params: {},
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+
+        await localStorage.removeItem("authToken");
+        this.$store.commit("checkAuth");
+        this.$router.push("/");
+      } catch (e) {
+        await localStorage.removeItem("authToken");
+        this.$store.commit("checkAuth");
+        this.$router.push("/");
+      }
     },
   },
 };

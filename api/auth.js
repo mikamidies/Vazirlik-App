@@ -9,9 +9,15 @@ export default {
   },
   async getLink(axios) {
     let res;
-
     if (axios) {
       res = await axios.get("/client/get_one_id_auth_link");
+    }
+    return res;
+  },
+  async logOut(axios,params) {
+    let res;
+    if (axios) {
+      res = await axios.get("/logout",{...params});
     }
     return res;
   },
