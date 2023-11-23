@@ -43,7 +43,6 @@ export default {
             this.$router.push("/profile");
           } catch (e) {}
         }
-      } catch (e) {
       } finally {
         this.loading = false;
       }
