@@ -16,17 +16,21 @@
               </p>
               <ul>
                 <li>
-                  <a href="#" class="link">
+                  <a
+                    href="https://uzbektourism.uz/"
+                    target="_blank"
+                    class="link"
+                  >
                     {{ $store.state.translations["tourism_agency"] }}</a
                   >
                 </li>
                 <li>
-                  <a href="#" class="link">
+                  <a href="https://pm.gov.uz/oz#/" target="_blank" class="link">
                     {{ $store.state.translations["president_reseption"] }}
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="link">
+                  <a href="https://my.gov.uz/oz" target="_blank" class="link">
                     {{ $store.state.translations["services_center"] }}
                   </a>
                 </li>

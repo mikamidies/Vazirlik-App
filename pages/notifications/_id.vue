@@ -71,16 +71,19 @@ export default {
   margin: 0 auto;
 }
 .body .editor {
+  display: flex;
+  flex-direction: column;
+  max-width: 952px;
+  margin: 0 auto 24px auto;
+}
+.body :deep(p) {
   color: var(--grey-80, #353437);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 24px */
-  display: flex;
-  max-width: 952px;
-  margin: 0 auto 24px auto;
+  line-height: 150%;
 }
-.body img {
+.body :deep(img) {
   width: 100%;
   height: 620px;
   object-fit: cover;

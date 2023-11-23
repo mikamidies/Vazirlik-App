@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="container">
       <div class="cardo">
-        <img src="@/assets/img/88941595038930.jpg" class="vector" alt="" />
+        <img src="@/assets/img/vector.png" class="vector" alt="" />
         <h4 class="title">{{ $store.state.translations["main_title"] }}</h4>
       </div>
     </div>
@@ -18,7 +18,7 @@ export default {};
   /* margin-top: 24px; */
 }
 .cardo {
-  background: url(@/assets/img/hero.jpg) center no-repeat;
+  background: url(@/assets/img/88941595038930.jpg) center no-repeat;
   background-size: cover;
   border-radius: 32px;
   position: relative;
@@ -43,9 +43,9 @@ export default {};
   top: 0;
   left: 0;
   z-index: 2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
 }
 .title {
   color: var(--White, var(--White, #fff));

@@ -100,7 +100,7 @@
           </p>
         </div>
         <div class="item">
-          <p class="sup">{{ $store.state.translations["address"] }}</p>
+          <p class="sup">{{ $store.state.translations["hostel_address"] }}</p>
           <p class="text">
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -12,7 +12,7 @@
           <p class="text">{{ hotel.legal_name }}</p>
         </div>
         <div class="item">
-          <p class="sup">{{ $store.state.translations["phone_number"] }}</p>
+          <p class="sup">{{ $store.state.translations["phone_numbers"] }}</p>
           <p class="link">
             <span>
               <svg
@@ -85,7 +85,7 @@
           <p class="text">{{ hotel.register_number }}</p>
         </div>
         <div class="item">
-          <p class="sup">{{ $store.state.translations["address"] }}</p>
+          <p class="sup">{{ $store.state.translations["hostel_address"] }}</p>
           <p class="text">
             {{ hotel.address }}
           </p>
@@ -119,7 +119,11 @@
           :zoom="10"
           style="height: 700px"
         >
-          <ymap-marker :coords="coords" marker-id="123" hint-content="some hint" />
+          <ymap-marker
+            :coords="coords"
+            marker-id="123"
+            hint-content="some hint"
+          />
         </yandex-map>
       </div>
     </div>
