@@ -42,7 +42,7 @@
             </td>
             <td>
               <div class="button">
-                <button>
+                <button v-show="item?.status == `accepted`">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -71,11 +71,11 @@
       </div>
       <PaginationElement @getData="getApps" :totalPage="totalPage" />
 
-      <div class="link">
+      <!-- <div class="link">
         <NuxtLink to="/applications/new">
           {{ $store.state.translations["new_app"] }}
         </NuxtLink>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

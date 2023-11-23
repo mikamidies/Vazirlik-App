@@ -24,7 +24,7 @@ import Loader from "~/components/loader.vue";
 export default {
   data() {
     return {
-      title: "Barcha oilaviy mehmon uyi egalari diqqatiga",
+      title: this.$store.state.translations["show_message"],
       message: {},
       loading: false,
     };
