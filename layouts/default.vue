@@ -18,6 +18,14 @@ export default {
   },
 
   async mounted() {
+    const translations = await translationsApi.getTranslations(this.$axios, {
+      headers: {
+        Language: this.$i18n.locale,
+      },
+    });
+
+    await this.$store.commit("getTranslations", translations.data);
+
     if (localStorage.getItem("authToken")) {
       try {
         const data = await authApi.getUserInfo(this.$axios, {

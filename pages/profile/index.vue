@@ -30,7 +30,7 @@
                   {{ $store.state.translations["hostel_address"] }}
                 </p>
                 <p class="name">
-                  ЎЗБЕКИСТОН, ТОШКЕНТ ШАҲРИ, БОҒОБОД МФЙ, 15 МАВЗЕ
+                  {{ hotel?.address || "----" }}
                 </p>
               </div>
             </div>
@@ -67,7 +67,7 @@
         <div class="flexer">
           <div class="left">
             <img
-              :src="`https://api.hotels.ndc.uz/stores/temp/bdPHgnv3kPxMP7s3LyNdacDTxeapmtzVpKJI53XI.png`"
+              :src="`https://api.hotels.ndc.uz/storage/${hotel.img}`"
               alt=""
               class="pic"
             />

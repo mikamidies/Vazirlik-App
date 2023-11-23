@@ -10,7 +10,7 @@
             <th>{{ $store.state.translations["polozheniye"] }}</th>
             <th>{{ $store.state.translations["send_date"] }}</th>
             <th>{{ $store.state.translations["end_date"] }}</th>
-            <th>{{ $store.state.translations["registry_copy"] }}</th>
+            <th>{{ $store.state.translations["registry_num"] }}</th>
             <th>{{ $store.state.translations["event"] }}</th>
           </tr>
           <tr v-for="item in applications" :key="item.id">
@@ -38,7 +38,7 @@
               <p class="weak">{{ item.closed_at }}</p>
             </td>
             <td>
-              <p class="strong">000368</p>
+              <p class="strong">{{ item?.register_number || "—" }}</p>
             </td>
             <td>
               <div class="button">

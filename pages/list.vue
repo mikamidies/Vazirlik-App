@@ -15,7 +15,7 @@
           </tr>
           <tr v-for="item in hotels?.data" :key="item.id">
             <td>
-              <p class="strong">{{ item.register_number }}</p>
+              <p class="strong">{{ item?.register_number || "—" }}</p>
             </td>
             <td>
               <p class="strong">{{ item.name }}</p>
@@ -38,7 +38,25 @@
             </td>
             <td>
               <NuxtLink :to="`/hotels/${item.id}`">
-                <p class="num">{{ item.phone_number }}</p>
+                <p class="num">
+                  {{ item.phone_number }}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M12.9565 6.28711L18.6695 12.0001L12.9565 17.7131M5.35547 12.0001H18.6525"
+                      stroke="#3C4BDC"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </p>
               </NuxtLink>
             </td>
           </tr>
