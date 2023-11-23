@@ -36,7 +36,7 @@
               </p>
             </td>
             <td>
-              <NuxtLink :to="`/hotels/${item.id}`">
+              <NuxtLink :to="localePath(`/hotels/${item.id}`)">
                 <p class="num">
                   {{ item.phone_number }}
                   <svg
@@ -62,7 +62,7 @@
         </table>
       </div>
       <div class="link">
-        <NuxtLink to="/list">
+        <NuxtLink :to="localePath('/list')">
           {{ $store.state.translations["see_all"] }}
         </NuxtLink>
       </div>

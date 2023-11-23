@@ -2,16 +2,18 @@
   <div class="wrap">
     <div class="container">
       <div class="left">
-        <NuxtLink to="/" class="title">
+        <NuxtLink :to="localePath('/')" class="title">
           <img src="@/assets/img/brand.svg" alt="" class="brand" />
         </NuxtLink>
       </div>
       <div class="mid">
-        <NuxtLink to="/"> {{ $store.state.translations["main"] }} </NuxtLink>
-        <NuxtLink to="/list">
+        <NuxtLink :to="localePath('/')">
+          {{ $store.state.translations["main"] }}
+        </NuxtLink>
+        <NuxtLink :to="localePath('/list')">
           {{ $store.state.translations["list_title"] }}
         </NuxtLink>
-        <NuxtLink to="/contacts">
+        <NuxtLink :to="localePath('/contacts')">
           {{ $store.state.translations["contacts"] }}
           {{ $store.state.translations["contacters"] }}
         </NuxtLink>
@@ -48,7 +50,9 @@
             />
           </svg>
         </button>
-        <button @click="$router.push($store.state.auth ? '/profile' : '/auth')">
+        <button
+          @click="$router.push(localePath($store.state.auth ? '/profile' : '/auth'))"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

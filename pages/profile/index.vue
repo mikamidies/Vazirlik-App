@@ -40,7 +40,7 @@
         <div class="mid">
           <h4>{{ $store.state.translations["hostel"] }}</h4>
           <p>{{ $store.state.translations["no_added"] }}</p>
-          <NuxtLink to="/profile/add">
+          <NuxtLink :to="localePath('/profile/add')">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -133,11 +133,11 @@
           </div>
         </div>
         <div class="link">
-          <NuxtLink :to="`/profile/${hotel?.id}`">
+          <NuxtLink :to="localePath(`/profile/${hotel?.id}`)">
             {{ $store.state.translations["update_data"] }}
           </NuxtLink>
 
-          <NuxtLink class="app" :to="`/applications/${hotel?.id}`">
+          <NuxtLink class="app" :to="localePath(`/applications/${hotel?.id}`)">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"
@@ -185,10 +185,14 @@ export default {
         this.hotels = hotels?.data;
         this.hotel = hotels?.data[0];
       } catch (e) {
-        // this.$router.push("/");
+        if (e.response.status == 401) {
+          await localStorage.removeItem("authToken");
+          this.$store.commit("checkAuth");
+          this.$router.push(this.localePath("/auth"));
+        }
       }
     } else {
-      this.$router.push("/auth");
+      this.$router.push(this.localePath("/auth"));
     }
   },
 };
