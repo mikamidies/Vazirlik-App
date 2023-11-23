@@ -96,7 +96,7 @@ export default {
     if (localStorage.getItem("authToken")) {
       this.getApps();
     } else {
-      this.$router.push("/auth");
+      this.$router.push(this.localePath("/auth"));
     }
   },
 
@@ -113,7 +113,7 @@ export default {
         this.applications = applications.data;
         this.totalPage = applications.total;
       } catch (e) {
-        this.$router.push("/");
+        this.$router.push(this.localePath("/"));
       }
     },
   },

@@ -37,7 +37,7 @@
               </p>
             </td>
             <td>
-              <NuxtLink :to="`/hotels/${item.id}`">
+              <NuxtLink :to="localePath(`/hotels/${item.id}`)">
                 <p class="num">
                   {{ item.phone_number }}
                   <svg

@@ -51,7 +51,7 @@
                 disabled
                 style="width: 100%"
                 v-model="form.region_id"
-                :placeholder="$store.state.translations[`hostel_owner`]"
+                :placeholder="$store.state.translations[`hostel_region`]"
               >
                 <a-select-option
                   v-for="region in regions"
@@ -64,13 +64,13 @@
             </div>
             <div class="item">
               <p class="sup">
-                {{ $store.state.translations["hostel_address"] }}
+                {{ $store.state.translations["email"] }}
               </p>
               <input
                 v-model="form.email"
                 disabled
                 type="email"
-                :placeholder="$store.state.translations[`hostel_address`]"
+                :placeholder="$store.state.translations[`email`]"
               />
             </div>
             <div class="item">
@@ -211,7 +211,8 @@ export default {
     };
   },
   async mounted() {
-    if (!localStorage.getItem("authToken")) await this.$router.push("/auth");
+    if (!localStorage.getItem("authToken"))
+      await this.$router.push(this.localePath("/auth"));
     this.loading = true;
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
     const hotel = await hotelsApi.getHotelById(this.$axios, {

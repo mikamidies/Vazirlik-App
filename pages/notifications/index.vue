@@ -9,7 +9,7 @@
             <p class="name">{{ message?.title }}</p>
           </div>
           <div class="right">
-            <NuxtLink :to="`/notifications/${message?.id}`" class="link">
+            <NuxtLink :to="localePath(`/notifications/${message?.id}`)" class="link">
               {{ moment(message?.created_at).format("DD.MM.YYYY - HH:MM") }}
               <span
                 ><svg
@@ -53,7 +53,7 @@ export default {
     if (localStorage.getItem("authToken")) {
       this.__GET__MESSAGES();
     } else {
-      this.$router.push("/");
+      this.$router.push(this.localePath("/"));
     }
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
         this.messages = messages?.data;
         this.totalPage = messages?.total;
       } catch (e) {
-        this.$router.push("/auth");
+        this.$router.push(this.localePath("/auth"));
       }
     },
   },

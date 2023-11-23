@@ -27,7 +27,7 @@ export default {
     };
   },
   mounted() {
-    if (localStorage.getItem("authToken")) this.$router.push("/profile");
+    if (localStorage.getItem("authToken")) this.$router.push(this.localePath("/profile"));
   },
   async fetch() {
     const linkData = await authApi.getLink(this.$axios);

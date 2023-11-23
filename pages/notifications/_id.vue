@@ -8,7 +8,7 @@
       </div>
 
       <div class="link">
-        <NuxtLink to="/list">{{
+        <NuxtLink :to="localePath('/list')">{{
           $store.state.translations["list_title"]
         }}</NuxtLink>
       </div>
@@ -43,7 +43,7 @@ export default {
       this.message = hotel?.data;
       this.loading = false;
     } else {
-      this.$router.push("/auth");
+      this.$router.push(this.localePath("/auth"));
     }
   },
   components: { Loader },

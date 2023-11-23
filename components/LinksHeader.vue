@@ -2,11 +2,13 @@
   <div class="wrap">
     <div class="header">
       <div class="left">
-        <NuxtLink to="/profile">{{ $store.state.translations["my_profile"] }}</NuxtLink>
-        <NuxtLink to="/applications">{{
+        <NuxtLink :to="localePath('/profile')">{{
+          $store.state.translations["my_profile"]
+        }}</NuxtLink>
+        <NuxtLink :to="localePath('/applications')">{{
           $store.state.translations["my_applications"]
         }}</NuxtLink>
-        <NuxtLink to="/notifications">{{
+        <NuxtLink :to="localePath('/notifications')">{{
           $store.state.translations["notifications"]
         }}</NuxtLink>
       </div>
@@ -63,11 +65,11 @@ export default {
 
         await localStorage.removeItem("authToken");
         this.$store.commit("checkAuth");
-        this.$router.push("/");
+        this.$router.push(this.localePath("/"));
       } catch (e) {
         await localStorage.removeItem("authToken");
         this.$store.commit("checkAuth");
-        this.$router.push("/");
+        this.$router.push(this.localePath("/"));
       }
     },
   },

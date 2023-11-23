@@ -20,7 +20,7 @@ export default {
   async mounted() {
     const translations = await translationsApi.getTranslations(this.$axios, {
       headers: {
-        Language: this.$i18n.locale,
+        lang: this.$i18n.locale,
       },
     });
 
@@ -35,14 +35,20 @@ export default {
         });
         this.$store.commit("getUserInfo", data?.data?.data);
         this.$store.commit("checkAuth");
-      } catch (e) {}
+      } catch (e) {
+        if (e.response.status == 401) {
+          await localStorage.removeItem("authToken");
+          this.$store.commit("checkAuth");
+          this.$router.push(this.localePath("/auth"));
+        }
+      }
     }
   },
 
   async fetch() {
     const translations = await translationsApi.getTranslations(this.$axios, {
       headers: {
-        Language: this.$i18n.locale,
+        lang: this.$i18n.locale,
       },
     });
 
@@ -59,7 +65,7 @@ export default {
     async currentLang(val) {
       const translations = await translationsApi.getTranslations(this.$axios, {
         headers: {
-          Language: this.$i18n.locale,
+          lang: this.$i18n.locale,
         },
       });
 
