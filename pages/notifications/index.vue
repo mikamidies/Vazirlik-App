@@ -69,7 +69,7 @@ export default {
         this.messages = messages?.data;
         this.totalPage = messages?.total;
       } catch (e) {
-        this.$router.push("/");
+        this.$router.push("/auth");
       }
     },
   },

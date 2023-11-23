@@ -211,7 +211,7 @@ export default {
     };
   },
   async mounted() {
-    if (!localStorage.getItem("authToken")) await this.$router.push("/");
+    if (!localStorage.getItem("authToken")) await this.$router.push("/auth");
     this.loading = true;
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
     const hotel = await hotelsApi.getHotelById(this.$axios, {
