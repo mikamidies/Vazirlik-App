@@ -8,7 +8,11 @@
         </h4>
         <div class="flex">
           <a :href="link" class="link">
-            <img src="@/assets/img/oneid.svg" alt="" />
+            <img
+              v-if="$store.state.imageShow"
+              src="@/assets/img/oneid.svg"
+              alt=""
+            />
             {{ $store.state.translations["sign_in"] }}
           </a>
         </div>

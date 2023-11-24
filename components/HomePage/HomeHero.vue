@@ -2,10 +2,20 @@
   <div class="wrap">
     <div class="container">
       <div class="cardo">
-        <img src="@/assets/img/vector.png" class="vector" alt="" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/vector.png"
+          class="vector"
+          alt=""
+        />
         <h4 class="title">{{ $store.state.translations["main_title"] }}</h4>
 
-        <img src="@/assets/img/main.jpg" alt="" class="cover" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/main.jpg"
+          alt=""
+          class="cover"
+        />
       </div>
     </div>
   </div>

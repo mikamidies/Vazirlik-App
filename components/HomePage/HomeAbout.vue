@@ -23,7 +23,12 @@
         </div>
       </div>
       <div class="right">
-        <img src="@/assets/img/about-2.png" alt="" class="pic" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/about-2.png"
+          alt=""
+          class="pic"
+        />
       </div>
     </div>
   </div>
@@ -44,7 +49,7 @@ export default {};
 }
 .title {
   color: var(--Blue-dark, #002856);
-  font-size: 32px;
+  font-size: var(--32);
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 38.4px */

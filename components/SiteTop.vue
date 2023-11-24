@@ -2,8 +2,18 @@
   <div class="wrap">
     <div class="container">
       <div class="cardo">
-        <img src="@/assets/img/main.jpg" alt="" class="cover" />
-        <img src="@/assets/img/vector-left.png" alt="" class="vector-left" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/main.jpg"
+          alt=""
+          class="cover"
+        />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/vector-left.png"
+          alt=""
+          class="vector-left"
+        />
         <div class="content">
           <h4 class="title">{{ title }}</h4>
           <div class="crumbs">
@@ -37,7 +47,12 @@
             </ol>
           </div>
         </div>
-        <img src="@/assets/img/vector-right.png" alt="" class="vector-right" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/vector-right.png"
+          alt=""
+          class="vector-right"
+        />
       </div>
     </div>
   </div>

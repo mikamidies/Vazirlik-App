@@ -67,6 +67,7 @@
         <div class="flexer">
           <div class="left">
             <img
+              v-if="$store.state.imageShow"
               :src="`https://api.hotels.ndc.uz/storage/${hotel.img}`"
               alt=""
               class="pic"

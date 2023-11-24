@@ -2,11 +2,21 @@
   <div class="wrap">
     <div class="container">
       <div class="cardo">
-        <img src="@/assets/img/vector-left.png" alt="" class="vector-left" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/vector-left.png"
+          alt=""
+          class="vector-left"
+        />
         <div class="container small">
           <div class="top">
             <h4 class="title">
-              <img src="@/assets/img/white.svg" alt="" class="brand" />
+              <img
+                v-if="$store.state.imageShow"
+                src="@/assets/img/white.svg"
+                alt=""
+                class="brand"
+              />
             </h4>
           </div>
           <div class="grid">
@@ -194,7 +204,12 @@
             </div>
           </div>
         </div>
-        <img src="@/assets/img/vector-right.png" alt="" class="vector-right" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/vector-right.png"
+          alt=""
+          class="vector-right"
+        />
       </div>
     </div>
   </div>

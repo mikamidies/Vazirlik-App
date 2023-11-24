@@ -1,7 +1,12 @@
 <template>
   <div class="master">
     <site-top :title="title">
-      <img src="@/assets/img/header.jpg" alt="" class="cover" />
+      <img
+        v-if="$store.state.imageShow"
+        src="@/assets/img/header.jpg"
+        alt=""
+        class="cover"
+      />
     </site-top>
 
     <div class="container">

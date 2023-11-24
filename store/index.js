@@ -3,6 +3,7 @@ export const state = () => ({
   translations: {},
   auth: false,
   user: {},
+  imageShow: true,
 });
 
 export const mutations = {
@@ -25,6 +26,10 @@ export const mutations = {
   },
   getUserInfo(state, payload) {
     state.user = payload;
+  },
+
+  imageAction(state, payload) {
+    state.imageShow = payload;
   },
 };
 

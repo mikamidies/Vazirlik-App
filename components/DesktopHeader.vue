@@ -3,7 +3,12 @@
     <div class="container">
       <div class="left">
         <NuxtLink :to="localePath('/')" class="title">
-          <img src="@/assets/img/brand.svg" alt="" class="brand" />
+          <img
+            v-if="$store.state.imageShow"
+            src="@/assets/img/brand.svg"
+            alt=""
+            class="brand"
+          />
         </NuxtLink>
       </div>
       <div class="mid">
@@ -125,7 +130,7 @@
             <div class="div">
               <p class="sup">Изображения</p>
               <div class="images">
-                <button @click="addImages" class="image">
+                <button @click="handleImages(true)" class="image">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -141,7 +146,7 @@
                     />
                   </svg>
                 </button>
-                <button @click="clearImages" class="imageless">
+                <button @click="handleImages(false)" class="imageless">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="23"
@@ -187,7 +192,7 @@
                     />
                   </svg>
                 </button>
-                <div class="value">100%</div>
+                <div class="value">{{ fonts }}%</div>
                 <button @click="increaseFont" class="increade">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -205,6 +210,11 @@
                     />
                   </svg>
                 </button>
+              </div>
+            </div>
+            <div class="div">
+              <div class="refresh" @click="$nuxt.$router.go()" href="/">
+                Tozalash
               </div>
             </div>
           </div>
@@ -314,7 +324,11 @@
             />
           </div>
           <div class="empty" v-show="empty == true">
-            <img src="@/assets/img/empty.svg" alt="" />
+            <img
+              v-if="$store.state.imageShow"
+              src="@/assets/img/empty.svg"
+              alt=""
+            />
             <p>{{ $store.state.translations["no_data"] }}</p>
           </div>
           <div class="items" v-show="hotels.length > 0">
@@ -394,29 +408,53 @@ export default {
       search: "",
       hotels: "",
       empty: false,
+      fonts: 0,
+      values: [12, 14, 16, 18, 20, 24, 32, 48],
+      vision: {
+        image: "flex",
+      },
     };
   },
   mounted() {
-    var allElements = document.querySelectorAll("*");
+    this.handleImages(localStorage.getItem("specialImage"));
 
-    var fontSizes = [];
-
-    allElements.forEach(function (element) {
-      var style = window.getComputedStyle(element);
-
-      var fontSize = style.getPropertyValue("font-size");
-
-      if (fontSizes.indexOf(fontSize) === -1) {
-        fontSizes.push(fontSize);
-      }
-    });
-
-    console.log(fontSizes);
+    console.log(localStorage.getItem("specialImage"));
   },
+  fetch() {},
   methods: {
-    increaseFont() {},
+    increaseFont() {
+      if (this.fonts < 200) {
+        this.fonts += 25;
 
-    decreaseFont() {},
+        var root = document.documentElement;
+
+        this.values.forEach((item) => {
+          var currentSize = parseFloat(
+            getComputedStyle(root).getPropertyValue(`--${item}`)
+          );
+
+          var newSize = currentSize + this.fonts / 100;
+          root.style.setProperty(`--${item}`, newSize + "px");
+        });
+      }
+    },
+
+    decreaseFont() {
+      if (this.fonts > 0) {
+        this.fonts -= 25;
+
+        var root = document.documentElement;
+
+        this.values.forEach((item) => {
+          var currentSize = parseFloat(
+            getComputedStyle(root).getPropertyValue(`--${item}`)
+          );
+
+          var newSize = currentSize - this.fonts / 100;
+          root.style.setProperty(`--${item}`, newSize + "px");
+        });
+      }
+    },
 
     filterMono() {
       const body = document.body;
@@ -430,21 +468,10 @@ export default {
       body.classList.remove("mono");
     },
 
-    clearImages() {
-      var images = document.getElementsByTagName("img");
-      var l = images.length;
-      for (var i = 0; i < l; i++) {
-        images[i].style.display = "none";
-      }
-    },
+    handleImages(type) {
+      this.$store.commit("imageAction", type);
 
-    addImages() {
-      var images = document.getElementsByTagName("img");
-      var l = images.length;
-
-      for (var i = 0; i < l; i++) {
-        images[i].style.display = "flex";
-      }
+      localStorage.setItem("specialImage", type);
     },
 
     onChange(e) {
@@ -489,12 +516,29 @@ export default {
 </script>
 
 <style scoped>
+.refresh {
+  text-align: center;
+  justify-content: center;
+  padding: 12px 32px;
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  background: var(--Agro-blue, #3c4bdc);
+  color: var(--White, #fff);
+  font-family: var(--medium);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 19.6px */
+  cursor: pointer;
+}
+
 .vision {
   position: relative;
 }
 .dropper {
   position: absolute;
-  top: 110%;
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 99;
@@ -505,6 +549,10 @@ export default {
   -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   display: none;
+}
+.vision:hover .dropper {
+  display: flex;
+  flex-direction: column;
 }
 .filter,
 .images,
