@@ -27,7 +27,7 @@
               </div>
               <div class="item">
                 <p class="sup">
-                  {{ $store.state.translations["hostel_address"] }}
+                  {{ $store.state.translations["address"] }}
                 </p>
                 <p class="name">
                   {{ hotel?.address || "----" }}
@@ -125,7 +125,7 @@
               </div>
               <div class="item">
                 <p class="sup">
-                  {{ $store.state.translations["hostel_address"] }}
+                  {{ $store.state.translations["address"] }}
                 </p>
                 <p class="name">
                   {{ hotel?.address || "----" }}

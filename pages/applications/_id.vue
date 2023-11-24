@@ -6,7 +6,10 @@
         <div class="input">
           <p class="sup">{{ $store.state.translations["app_type"] }}</p>
 
-          <a-select v-model="type" :placeholder="$store.state.translations[`app_type`]">
+          <a-select
+            v-model="type"
+            :placeholder="$store.state.translations[`value`]"
+          >
             <a-select-option
               v-for="option in options"
               :key="option.id"
@@ -60,7 +63,10 @@
             </div>
           </a-form-item>
           <a-form-item>
-            <div class="dropbox" :class="{ disable: fileList.cadastre.length > 0 }">
+            <div
+              class="dropbox"
+              :class="{ disable: fileList.cadastre.length > 0 }"
+            >
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'cadastre')"
                 :file-list="fileList.cadastre"
@@ -224,7 +230,13 @@
           </a-form-item> -->
         </div>
         <div class="link">
-          <button type="submit">
+          <button
+            v-show="
+              fileList.state_certificate.length != 0 &&
+              fileList.cadastre.length != 0
+            "
+            type="submit"
+          >
             {{ $store.state.translations["send_it"] }}
           </button>
         </div>
@@ -250,7 +262,7 @@ export default {
       type: "",
       options: [
         {
-          label: "Mehmon uyini Oilaviy Mehmon Uylari Yagona Reyestriga kiritish",
+          label: this.$store.state.translations["value"],
           value: "Davlat",
         },
       ],
@@ -266,7 +278,8 @@ export default {
   },
 
   mounted() {
-    if (!localStorage.getItem("authToken")) this.$router.push(this.localePath("/auth"));
+    if (!localStorage.getItem("authToken"))
+      this.$router.push(this.localePath("/auth"));
 
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
@@ -397,7 +410,11 @@ form :deep(.ant-select-selection) {
   justify-content: center;
   padding-left: 24px;
 }
-form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
+form
+  :deep(
+    .ant-select-selection__placeholder,
+    .ant-select-search__field__placeholder
+  ) {
   color: var(--Black, #020105);
   font-family: var(--medium);
   font-size: 18px;
@@ -425,6 +442,9 @@ form :deep(.dropbox.disable .ant-upload.ant-upload-drag) {
   pointer-events: none;
   opacity: 0.5;
 }
+form :deep(.ant-upload-list-item-card-actions) {
+  opacity: 1;
+}
 @media screen and (max-width: 1024px) {
   .container {
     padding: 40px 16px;
@@ -439,7 +459,11 @@ form :deep(.dropbox.disable .ant-upload.ant-upload-drag) {
     align-items: center;
   }
   form :deep(.ant-select-selection-selected-value),
-  form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
+  form
+    :deep(
+      .ant-select-selection__placeholder,
+      .ant-select-search__field__placeholder
+    ) {
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
