@@ -54,7 +54,7 @@ export default {};
 }
 .txt {
   color: var(--Black, #020105);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -62,7 +62,7 @@ export default {};
 }
 .second {
   color: var(--Black, #020105);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -81,7 +81,7 @@ export default {};
     display: block;
   }
   .title {
-    font-size: 20px;
+    font-size: var(--20);
     font-style: normal;
     font-weight: 600;
     line-height: 140%;

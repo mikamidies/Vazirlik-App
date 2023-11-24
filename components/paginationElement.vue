@@ -1,6 +1,10 @@
 <template>
   <div class="wrap">
-    <a-pagination @change="onChange" v-model.number="current" :total="totalPage" />
+    <a-pagination
+      @change="onChange"
+      v-model.number="current"
+      :total="totalPage"
+    />
   </div>
 </template>
 
@@ -64,7 +68,7 @@ export default {
   color: var(--Black, #020105);
   text-align: center;
   font-family: var(--semi);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 27px */

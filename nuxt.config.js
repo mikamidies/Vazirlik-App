@@ -19,6 +19,7 @@ export default {
     "@/plugins/antd-ui",
     { src: "@/plugins/ymapPlugin.js", mode: "client" },
     { src: "~plugins/v-mask.js", ssr: false },
+    { src: "@/plugins/bvi.js", ssr: false },
   ],
 
   components: true,

@@ -233,7 +233,7 @@ export default {};
   color: var(--White, var(--White, #fff));
   text-align: center;
   font-family: var(--decor);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 36px */
@@ -242,7 +242,7 @@ export default {};
 .title span {
   color: var(--White, var(--White, #fff));
   font-family: var(--decor);
-  font-size: 20px;
+  font-size: var(--20);
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 30px */
@@ -259,7 +259,7 @@ export default {};
 }
 .sup {
   color: #889fba;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -272,7 +272,7 @@ ul {
 }
 .link {
   color: var(--White, var(--White, #fff));
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -295,7 +295,7 @@ ul {
 }
 .con {
   color: var(--White, var(--White, #fff));
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -310,7 +310,7 @@ ul {
 .tel {
   color: var(--White, var(--White, #fff));
   font-family: var(--semi);
-  font-size: 20px;
+  font-size: var(--20);
   font-style: normal;
   font-weight: 600;
   line-height: 150%;
@@ -332,13 +332,13 @@ ul {
     display: none;
   }
   .title {
-    font-size: 14px;
+    font-size: var(--14);
     font-style: normal;
     font-weight: 600;
     line-height: 150%;
   }
   .title span {
-    font-size: 12px;
+    font-size: var(--12);
     font-style: normal;
     font-weight: 600;
     line-height: 150%;
@@ -349,7 +349,7 @@ ul {
     border-radius: 20px;
   }
   .sup {
-    font-size: 14px;
+    font-size: var(--14);
     font-style: normal;
     font-weight: 400;
     line-height: 150%;
@@ -358,7 +358,7 @@ ul {
   .link,
   .con,
   .tel {
-    font-size: 16px;
+    font-size: var(--16);
     font-style: normal;
     font-weight: 500;
     line-height: 150%;

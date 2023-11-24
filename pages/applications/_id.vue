@@ -23,7 +23,10 @@
           <a-form-item>
             <div
               class="dropbox"
-              :class="{ disable: fileList.state_certificate.length > 0 }"
+              :class="{
+                disable: fileList.state_certificate.length > 0,
+                error: error == true,
+              }"
             >
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'state_certificate')"
@@ -65,7 +68,10 @@
           <a-form-item>
             <div
               class="dropbox"
-              :class="{ disable: fileList.cadastre.length > 0 }"
+              :class="{
+                disable: fileList.cadastre.length > 0,
+                error: error == true,
+              }"
             >
               <a-upload-dragger
                 @change="($event) => handleChange($event, 'cadastre')"
@@ -104,139 +110,9 @@
               </a-upload-dragger>
             </div>
           </a-form-item>
-          <!-- <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.certificate.length > 0 }"
-            >
-              <a-upload-dragger
-                @change="($event) => handleChange($event, 'certificate')"
-                :file-list="fileList.certificate"
-                accept=".doc, .docx, .pdf"
-                name="file"
-                action="https://api.hotels.ndc.uz/api/files"
-                :headers="headers"
-              >
-                <p class="ant-upload-drag-icon">
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.4"
-                        d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
-                        fill="#3C4BDC"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
-                        fill="#3C4BDC"
-                      />
-                    </svg>
-                  </span>
-                </p>
-                <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
-                </p>
-              </a-upload-dragger>
-            </div>
-          </a-form-item>
-          <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.state_certificate.length > 0 }"
-            >
-              <a-upload-dragger
-                @change="($event) => handleChange($event, 'state_certificate')"
-                :file-list="fileList.state_certificate"
-                accept=".doc, .docx, .pdf"
-                name="file"
-                action="https://api.hotels.ndc.uz/api/files"
-                :headers="headers"
-              >
-                <p class="ant-upload-drag-icon">
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.4"
-                        d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
-                        fill="#3C4BDC"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
-                        fill="#3C4BDC"
-                      />
-                    </svg>
-                  </span>
-                </p>
-                <p class="ant-upload-text">Kadastr ko‘chirmasi</p>
-              </a-upload-dragger>
-            </div>
-          </a-form-item>
-          <a-form-item>
-            <div
-              class="dropbox"
-              :class="{ disable: fileList.cadastre.length > 0 }"
-            >
-              <a-upload-dragger
-                @change="($event) => handleChange($event, 'cadastre')"
-                :file-list="fileList.cadastre"
-                accept=".doc, .docx, .pdf"
-                name="file"
-                action="https://api.hotels.ndc.uz/api/files"
-                :headers="headers"
-              >
-                <p class="ant-upload-drag-icon">
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                    >
-                      <path
-                        opacity="0.4"
-                        d="M29.3337 25.3333V21.3333C29.3337 19.1242 27.5428 17.3333 25.3337 17.3333H24.0003C23.161 17.3333 22.3706 17.7285 21.867 18.4L20.267 20.5333C19.2598 21.8763 17.679 22.6666 16.0003 22.6666C14.3216 22.6666 12.7409 21.8763 11.7337 20.5333L10.1337 18.4C9.63005 17.7285 8.83968 17.3333 8.00033 17.3333H6.66699C4.45785 17.3333 2.66699 19.1242 2.66699 21.3333V25.3333C2.66699 27.5425 4.45785 29.3333 6.66699 29.3333H25.3337C27.5428 29.3333 29.3337 27.5425 29.3337 25.3333Z"
-                        fill="#3C4BDC"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M6.66634 17.3334H7.99967C8.83903 17.3334 9.6294 17.7285 10.133 18.4L11.733 20.5334C12.7402 21.8763 14.321 22.6667 15.9997 22.6667C17.6784 22.6667 19.2591 21.8763 20.2663 20.5334L21.8663 18.4C22.37 17.7285 23.1603 17.3334 23.9997 17.3334H25.333C25.8005 17.3334 26.2493 17.4136 26.6663 17.561V8.00002C26.6663 5.0545 24.2785 2.66669 21.333 2.66669H10.6663C7.72082 2.66669 5.33301 5.0545 5.33301 8.00002V17.561C5.75005 17.4136 6.19883 17.3334 6.66634 17.3334ZM16.9997 8.00002C16.9997 7.44774 16.552 7.00002 15.9997 7.00002C15.4474 7.00002 14.9997 7.44774 14.9997 8.00002V11H11.9997C11.4474 11 10.9997 11.4477 10.9997 12C10.9997 12.5523 11.4474 13 11.9997 13H14.9997V16C14.9997 16.5523 15.4474 17 15.9997 17C16.552 17 16.9997 16.5523 16.9997 16V13H19.9997C20.552 13 20.9997 12.5523 20.9997 12C20.9997 11.4477 20.552 11 19.9997 11H16.9997V8.00002Z"
-                        fill="#3C4BDC"
-                      />
-                    </svg>
-                  </span>
-                </p>
-                <p class="ant-upload-text">
-                  Davlat ro‘yxatidan o‘tganligi guvohnomasi
-                </p>
-              </a-upload-dragger>
-            </div>
-          </a-form-item> -->
         </div>
         <div class="link">
-          <button
-            v-show="
-              fileList.state_certificate.length != 0 &&
-              fileList.cadastre.length != 0
-            "
-            type="submit"
-          >
+          <button type="submit">
             {{ $store.state.translations["send_it"] }}
           </button>
         </div>
@@ -274,6 +150,7 @@ export default {
         cadastre: "",
       },
       headers: {},
+      error: false,
     };
   },
 
@@ -303,14 +180,33 @@ export default {
         cadastre: this.fileTypes.cadastre,
       };
 
-      const res = await applicationApi.sendApplication({
-        data: formData,
-        params: {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-          },
-        },
-      });
+      if (
+        this.fileList.state_certificate.length > 0 &&
+        this.fileList.cadastre.length > 0
+      ) {
+        try {
+          const res = await applicationApi.sendApplication({
+            data: formData,
+            params: {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+              },
+            },
+          });
+
+          this.$router.push(this.localePath("/applications"));
+        } catch (e) {
+          this.error = true;
+          this.$notification["error"]({
+            message: this.$store.state.translations["old_app"],
+          });
+        }
+      } else {
+        this.error = true;
+        this.$notification["error"]({
+          message: this.$store.state.translations["all_files"],
+        });
+      }
 
       this.type = "";
       this.fileTypes.fire_safety = "";
@@ -318,8 +214,6 @@ export default {
       this.fileTypes.certificate = "";
       this.fileTypes.state_certificate = "";
       this.fileTypes.cadastre = "";
-
-      this.$router.push(this.localePath("/applications"));
     },
   },
 };
@@ -344,7 +238,7 @@ form {
   border: 1px solid var(--Agro-Blue, #3c4bdc);
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -358,7 +252,7 @@ form {
 }
 .sup {
   color: var(--grey-80, #353437);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -387,7 +281,7 @@ form {
 .grid :deep(.ant-upload.ant-upload-drag p.ant-upload-text) {
   color: var(--Black, #020105);
   font-family: var(--medium);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
@@ -417,7 +311,7 @@ form
   ) {
   color: var(--Black, #020105);
   font-family: var(--medium);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 27px */
@@ -430,7 +324,7 @@ form
 form :deep(.ant-select-selection-selected-value) {
   color: var(--Black, #020105);
   font-family: var(--medium);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -441,9 +335,16 @@ form :deep(.ant-select-selection-selected-value) {
 form :deep(.dropbox.disable .ant-upload.ant-upload-drag) {
   pointer-events: none;
   opacity: 0.5;
+  border-color: #e1e3f5 !important;
+}
+form :deep(.dropbox.error .ant-upload.ant-upload-drag) {
+  border-color: red;
 }
 form :deep(.ant-upload-list-item-card-actions) {
   opacity: 1;
+}
+form :deep(.ant-upload-list-item-card-actions svg path) {
+  color: red !important;
 }
 @media screen and (max-width: 1024px) {
   .container {
@@ -464,7 +365,7 @@ form :deep(.ant-upload-list-item-card-actions) {
       .ant-select-selection__placeholder,
       .ant-select-search__field__placeholder
     ) {
-    font-size: 16px;
+    font-size: var(--16);
     font-style: normal;
     font-weight: 500;
     line-height: 150%;

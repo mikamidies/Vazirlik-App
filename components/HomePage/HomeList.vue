@@ -86,7 +86,7 @@ export default {
 .title {
   color: var(--Blue-dark, #002856);
   text-align: center;
-  font-size: 48px;
+  font-size: var(--48);
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 57.6px */
@@ -101,7 +101,7 @@ export default {
 }
 .link a {
   color: var(--Agro-Blue, #3c4bdc);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -121,7 +121,7 @@ export default {
   }
   .title {
     margin: 0 auto 24px auto;
-    font-size: 24px;
+    font-size: var(--24);
     font-style: normal;
     font-weight: 600;
     line-height: 130%;

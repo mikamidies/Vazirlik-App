@@ -1,7 +1,12 @@
 <template lang="html">
   <div class="loader">
     <a-spin>
-      <a-icon slot="indicator" type="loading" style="font-size: 24px" spin />
+      <a-icon
+        slot="indicator"
+        type="loading"
+        style="font-size: var(--24)"
+        spin
+      />
     </a-spin>
   </div>
 </template>

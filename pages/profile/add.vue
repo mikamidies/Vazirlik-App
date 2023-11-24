@@ -217,77 +217,77 @@ export default {
         name: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         website: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         email: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         region_id: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         legal_name: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         tin: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         director_surname: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         director_name: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         director_fathers_name: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         address: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
         phone_number: [
           {
             required: true,
-            message: "This field is required",
+            message: this.$store.state.translations["input_error"],
             trigger: "change",
           },
         ],
@@ -320,7 +320,8 @@ export default {
     };
   },
   async mounted() {
-    if (!localStorage.getItem("authToken")) await this.$router.push(this.localePath("/auth"));
+    if (!localStorage.getItem("authToken"))
+      await this.$router.push(this.localePath("/auth"));
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
   methods: {
@@ -398,7 +399,7 @@ export default {
 }
 .sup {
   color: var(--grey-80, #353437);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -411,14 +412,14 @@ export default {
   width: 100%;
   padding: 20px 24px;
   color: black;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
 }
 .item input::placeholder {
   color: #5d5d5f;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -438,7 +439,7 @@ form
     .ant-select-search__field__placeholder
   ) {
   color: #5d5d5f;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -456,7 +457,7 @@ form :deep(.ant-select-selection-selected-value) {
   color: var(--Black, #020105);
   font-family: var(--medium);
   color: #5d5d5f;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
@@ -479,7 +480,7 @@ form :deep(.ant-select-selection-selected-value) {
 .drag :deep(.ant-upload.ant-upload-drag p.ant-upload-text) {
   color: var(--Black, #020105);
   font-family: var(--medium);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
@@ -506,7 +507,7 @@ form :deep(.ant-select-selection-selected-value) {
 .cancel {
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -519,7 +520,7 @@ form :deep(.ant-select-selection-selected-value) {
 .confirm {
   color: var(--White, #fff);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -538,7 +539,7 @@ form :deep(.ant-select-selection-selected-value) {
     padding: 16px 16px 40px 16px;
   }
   .sup {
-    font-size: 16px;
+    font-size: var(--16);
     font-style: normal;
     font-weight: 400;
     line-height: 150%;

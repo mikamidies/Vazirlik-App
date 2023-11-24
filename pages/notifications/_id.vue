@@ -57,7 +57,7 @@ export default {
 .container h4 {
   color: var(--Blue-dark, #002856);
   font-family: var(--semi);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 33.6px */
@@ -78,7 +78,7 @@ export default {
 }
 .body :deep(p) {
   color: var(--grey-80, #353437);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
@@ -103,7 +103,7 @@ export default {
   padding: 18px 50px;
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */

@@ -1,6 +1,8 @@
 <template>
   <div class="master">
-    <SiteTop :title="title" />
+    <site-top :title="title">
+      <img src="@/assets/img/header.jpg" alt="" class="cover" />
+    </site-top>
 
     <div class="container">
       <div class="tabler">

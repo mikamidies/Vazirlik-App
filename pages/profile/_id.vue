@@ -288,7 +288,7 @@ export default {
 }
 .sup {
   color: var(--grey-80, #353437);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -301,7 +301,7 @@ export default {
   width: 100%;
   padding: 20px 24px;
   color: black;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -309,7 +309,7 @@ export default {
 }
 .item input::placeholder {
   color: #5d5d5f;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -328,7 +328,7 @@ export default {
     .ant-select-search__field__placeholder
   ) {
   color: #5d5d5f;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -346,7 +346,7 @@ export default {
   color: var(--Black, #020105);
   font-family: var(--medium);
   color: #5d5d5f;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%;
@@ -369,7 +369,7 @@ export default {
 .drag :deep(.ant-upload.ant-upload-drag p.ant-upload-text) {
   color: var(--Black, #020105);
   font-family: var(--medium);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 500;
   line-height: 150%; /* 24px */
@@ -396,7 +396,7 @@ export default {
 .cancel {
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -408,7 +408,7 @@ export default {
 .confirm {
   color: var(--White, #fff);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -426,7 +426,7 @@ export default {
     padding: 16px 16px 40px 16px;
   }
   .sup {
-    font-size: 16px;
+    font-size: var(--16);
     font-style: normal;
     font-weight: 400;
     line-height: 150%;

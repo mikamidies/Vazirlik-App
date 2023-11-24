@@ -2,6 +2,7 @@
   <div class="wrap">
     <div class="container">
       <div class="cardo">
+        <img src="@/assets/img/main.jpg" alt="" class="cover" />
         <img src="@/assets/img/vector-left.png" alt="" class="vector-left" />
         <div class="content">
           <h4 class="title">{{ title }}</h4>
@@ -44,20 +45,29 @@
 
 <script>
 export default {
-  props: ["title"],
+  props: ["title", "img"],
 };
 </script>
 
 <style scoped>
 .cardo {
-  background: url(@/assets/img/top.jpg) center no-repeat;
-  background-size: cover;
   border-radius: 32px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 313px;
+  background: #002856;
+  overflow: hidden;
+}
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
 }
 .cardo::after {
   content: "";
@@ -72,7 +82,7 @@ export default {
 .title {
   color: var(--White, var(--White, #fff));
   text-align: center;
-  font-size: 48px;
+  font-size: var(--48);
   font-style: normal;
   font-weight: 600;
   line-height: 120%;
@@ -109,7 +119,7 @@ export default {
 .last,
 .current {
   color: var(--White, var(--White, #fff));
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -123,7 +133,7 @@ export default {
     border-radius: 20px;
   }
   .title {
-    font-size: 24px;
+    font-size: var(--24);
     font-style: normal;
     font-weight: 600;
     line-height: 130%;
@@ -131,7 +141,7 @@ export default {
   }
   .last,
   .current {
-    font-size: 14px;
+    font-size: var(--14);
   }
   .crumbs ol {
     gap: 4px;
