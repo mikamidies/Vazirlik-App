@@ -18,4 +18,18 @@ export default {
       return res.data.data;
     } catch (e) {}
   },
+
+  async getTypes(axios, params) {
+    try {
+      let res;
+
+      if (axios) {
+        res = await axios.get("/client/application_types", {
+          ...params,
+        });
+      }
+
+      return res.data;
+    } catch (e) {}
+  },
 };

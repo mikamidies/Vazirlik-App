@@ -7,15 +7,15 @@
           <p class="sup">{{ $store.state.translations["app_type"] }}</p>
 
           <a-select
-            v-model="type"
+            v-model="application_type_id"
             :placeholder="$store.state.translations[`value`]"
           >
             <a-select-option
-              v-for="option in options"
+              v-for="option in appTypes.data"
               :key="option.id"
-              :value="option.value"
+              :value="option.id"
             >
-              {{ option.label }}
+              {{ option.name }}
             </a-select-option>
           </a-select>
         </div>
@@ -127,7 +127,7 @@ import applicationApi from "@/api/application.js";
 export default {
   data() {
     return {
-      title: "Yangi ariza",
+      title: this.$store.state.translations["new_app"],
       fileList: {
         fire_safety: [],
         sanitation: [],
@@ -135,13 +135,6 @@ export default {
         state_certificate: [],
         cadastre: [],
       },
-      type: "",
-      options: [
-        {
-          label: this.$store.state.translations["value"],
-          value: this.$store.state.translations["value"],
-        },
-      ],
       fileTypes: {
         fire_safety: "",
         sanitation: "",
@@ -151,10 +144,16 @@ export default {
       },
       headers: {},
       error: false,
+      appTypes: [],
+      application_type_id: "",
     };
   },
 
-  mounted() {
+  async mounted() {
+    const appTypes = await applicationApi.getTypes(this.$axios);
+
+    this.appTypes = appTypes;
+
     if (!localStorage.getItem("authToken"))
       this.$router.push(this.localePath("/auth"));
 
@@ -171,7 +170,7 @@ export default {
 
     async onSubmit() {
       const formData = {
-        type: this.type,
+        application_type_id: this.application_type_id,
         hotel_id: this.$route.params.id,
         fire_safety: this.fileTypes.fire_safety,
         sanitation: this.fileTypes.sanitation,
@@ -208,7 +207,7 @@ export default {
         });
       }
 
-      this.type = "";
+      this.application_type_id = "";
       this.fileTypes.fire_safety = "";
       this.fileTypes.sanitation = "";
       this.fileTypes.certificate = "";

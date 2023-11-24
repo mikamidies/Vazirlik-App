@@ -26,9 +26,6 @@ export default {};
 </script>
 
 <style scoped>
-.wrap {
-  /* margin-top: 24px; */
-}
 .cardo {
   background: #002856;
   border-radius: 32px;
