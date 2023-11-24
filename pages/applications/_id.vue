@@ -263,7 +263,7 @@ export default {
       options: [
         {
           label: this.$store.state.translations["value"],
-          value: "Davlat",
+          value: this.$store.state.translations["value"],
         },
       ],
       fileTypes: {
