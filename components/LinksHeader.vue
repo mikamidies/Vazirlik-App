@@ -97,7 +97,7 @@ export default {
   border: 1px solid var(--Grey, #5d5d5f);
   color: var(--Grey, #5d5d5f);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -176,7 +176,7 @@ export default {
   color: var(--Dark-blue, #002856);
   text-align: center;
   font-family: var(--medium);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 33.6px */
@@ -193,7 +193,7 @@ export default {
   padding: 18px 50px;
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -203,7 +203,7 @@ export default {
   padding: 18px 50px;
   color: white;
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%;

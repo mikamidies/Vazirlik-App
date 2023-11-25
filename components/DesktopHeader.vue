@@ -3,7 +3,12 @@
     <div class="container">
       <div class="left">
         <NuxtLink :to="localePath('/')" class="title">
-          <img src="@/assets/img/brand.svg" alt="" class="brand" />
+          <img
+            v-if="$store.state.imageShow"
+            src="@/assets/img/brand.svg"
+            alt=""
+            class="brand"
+          />
         </NuxtLink>
       </div>
       <div class="mid">
@@ -36,22 +41,188 @@
             />
           </svg>
         </button>
-        <button>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M18 2.25C17.5858 2.25 17.25 2.58579 17.25 3C17.25 3.41421 17.5858 3.75 18 3.75V2.25ZM6 3.75C6.41421 3.75 6.75 3.41421 6.75 3C6.75 2.58579 6.41421 2.25 6 2.25V3.75ZM9.25 17.5C9.25 19.0188 8.01878 20.25 6.5 20.25V21.75C8.84721 21.75 10.75 19.8472 10.75 17.5H9.25ZM6.5 20.25C4.98122 20.25 3.75 19.0188 3.75 17.5H2.25C2.25 19.8472 4.15279 21.75 6.5 21.75V20.25ZM3.75 17.5C3.75 15.9812 4.98122 14.75 6.5 14.75V13.25C4.15279 13.25 2.25 15.1528 2.25 17.5H3.75ZM6.5 14.75C8.01878 14.75 9.25 15.9812 9.25 17.5H10.75C10.75 15.1528 8.84721 13.25 6.5 13.25V14.75ZM20.25 17.5C20.25 19.0188 19.0188 20.25 17.5 20.25V21.75C19.8472 21.75 21.75 19.8472 21.75 17.5H20.25ZM17.5 20.25C15.9812 20.25 14.75 19.0188 14.75 17.5H13.25C13.25 19.8472 15.1528 21.75 17.5 21.75V20.25ZM14.75 17.5C14.75 15.9812 15.9812 14.75 17.5 14.75V13.25C15.1528 13.25 13.25 15.1528 13.25 17.5H14.75ZM17.5 14.75C19.0188 14.75 20.25 15.9812 20.25 17.5H21.75C21.75 15.1528 19.8472 13.25 17.5 13.25V14.75ZM10.75 18C10.75 17.3096 11.3096 16.75 12 16.75V15.25C10.4812 15.25 9.25 16.4812 9.25 18H10.75ZM12 16.75C12.6904 16.75 13.25 17.3096 13.25 18H14.75C14.75 16.4812 13.5188 15.25 12 15.25V16.75ZM18 3.75C19.2426 3.75 20.25 4.75736 20.25 6H21.75C21.75 3.92893 20.0711 2.25 18 2.25V3.75ZM20.25 6V17.5H21.75V6H20.25ZM6 2.25C3.92893 2.25 2.25 3.92893 2.25 6H3.75C3.75 4.75736 4.75736 3.75 6 3.75V2.25ZM2.25 6V17.5H3.75V6H2.25Z"
-              fill="#3C4BDC"
-            />
-          </svg>
-        </button>
+        <div class="vision">
+          <button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M18 2.25C17.5858 2.25 17.25 2.58579 17.25 3C17.25 3.41421 17.5858 3.75 18 3.75V2.25ZM6 3.75C6.41421 3.75 6.75 3.41421 6.75 3C6.75 2.58579 6.41421 2.25 6 2.25V3.75ZM9.25 17.5C9.25 19.0188 8.01878 20.25 6.5 20.25V21.75C8.84721 21.75 10.75 19.8472 10.75 17.5H9.25ZM6.5 20.25C4.98122 20.25 3.75 19.0188 3.75 17.5H2.25C2.25 19.8472 4.15279 21.75 6.5 21.75V20.25ZM3.75 17.5C3.75 15.9812 4.98122 14.75 6.5 14.75V13.25C4.15279 13.25 2.25 15.1528 2.25 17.5H3.75ZM6.5 14.75C8.01878 14.75 9.25 15.9812 9.25 17.5H10.75C10.75 15.1528 8.84721 13.25 6.5 13.25V14.75ZM20.25 17.5C20.25 19.0188 19.0188 20.25 17.5 20.25V21.75C19.8472 21.75 21.75 19.8472 21.75 17.5H20.25ZM17.5 20.25C15.9812 20.25 14.75 19.0188 14.75 17.5H13.25C13.25 19.8472 15.1528 21.75 17.5 21.75V20.25ZM14.75 17.5C14.75 15.9812 15.9812 14.75 17.5 14.75V13.25C15.1528 13.25 13.25 15.1528 13.25 17.5H14.75ZM17.5 14.75C19.0188 14.75 20.25 15.9812 20.25 17.5H21.75C21.75 15.1528 19.8472 13.25 17.5 13.25V14.75ZM10.75 18C10.75 17.3096 11.3096 16.75 12 16.75V15.25C10.4812 15.25 9.25 16.4812 9.25 18H10.75ZM12 16.75C12.6904 16.75 13.25 17.3096 13.25 18H14.75C14.75 16.4812 13.5188 15.25 12 15.25V16.75ZM18 3.75C19.2426 3.75 20.25 4.75736 20.25 6H21.75C21.75 3.92893 20.0711 2.25 18 2.25V3.75ZM20.25 6V17.5H21.75V6H20.25ZM6 2.25C3.92893 2.25 2.25 3.92893 2.25 6H3.75C3.75 4.75736 4.75736 3.75 6 3.75V2.25ZM2.25 6V17.5H3.75V6H2.25Z"
+                fill="#3C4BDC"
+              />
+            </svg>
+          </button>
+
+          <div class="dropper">
+            <div class="div">
+              <p class="sup">Фильтр</p>
+              <div class="filter">
+                <button @click="filterNormal" class="normal">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Huge-icon/editor/outline/font-rectangle">
+                      <path
+                        id="Rectangle 1040"
+                        d="M2 6C2 3.79086 3.79086 2 6 2H18C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6Z"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        id="Vector 2669"
+                        d="M9 14H15"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        id="Vector"
+                        d="M7 18L12 6L17 18"
+                        stroke="black"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                  </svg>
+                </button>
+                <button @click="filterMono" class="mono">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect width="24" height="24" fill="#595959" />
+                    <path
+                      d="M2 6C2 3.79086 3.79086 2 6 2H18C20.2091 2 22 3.79086 22 6V18C22 20.2091 20.2091 22 18 22H6C3.79086 22 2 20.2091 2 18V6Z"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9 14H15"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M7 18L12 6L17 18"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="div">
+              <p class="sup">Изображения</p>
+              <div class="images">
+                <button @click="handleImages(true)" class="image">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M22 14L19.061 11.8839C17.5338 10.7843 15.4467 10.898 14.0479 12.1569L9.95209 15.8431C8.55331 17.102 6.4662 17.2157 4.93901 16.1161L2 14M6 22H18C20.2091 22 22 20.2091 22 18V6C22 3.79086 20.2091 2 18 2H6C3.79086 2 2 3.79086 2 6V18C2 20.2091 3.79086 22 6 22ZM11 8.5C11 9.88071 9.88071 11 8.5 11C7.11929 11 6 9.88071 6 8.5C6 7.11929 7.11929 6 8.5 6C9.88071 6 11 7.11929 11 8.5Z"
+                      stroke="#28303F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+                <button @click="handleImages(false)" class="imageless">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="23"
+                    height="23"
+                    viewBox="0 0 23 23"
+                    fill="none"
+                  >
+                    <path
+                      d="M21 14L18.061 11.8839C16.5338 10.7843 14.4467 10.898 13.0479 12.1569L8.95209 15.8431C7.55331 17.102 5.4662 17.2157 3.93901 16.1161L1 14M5 22H17C19.2091 22 21 20.2091 21 18V6C21 3.79086 19.2091 2 17 2H5C2.79086 2 1 3.79086 1 6V18C1 20.2091 2.79086 22 5 22ZM10 8.5C10 9.88071 8.88071 11 7.5 11C6.11929 11 5 9.88071 5 8.5C5 7.11929 6.11929 6 7.5 6C8.88071 6 10 7.11929 10 8.5Z"
+                      stroke="#28303F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <line
+                      x1="0.707107"
+                      y1="1.29289"
+                      x2="21.7071"
+                      y2="22.2929"
+                      stroke="#28303F"
+                      stroke-width="2"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="div">
+              <p class="sup">Размер текста</p>
+              <div class="sizes">
+                <button @click="decreaseFont" class="decrease">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M18 12L6 12"
+                      stroke="#28303F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <div class="value">{{ fonts }}%</div>
+                <button @click="increaseFont" class="increade">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path
+                      d="M12 6V18M18 12L6 12"
+                      stroke="#28303F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="div">
+              <div class="refresh" @click="$nuxt.$router.go()" href="/">
+                Tozalash
+              </div>
+            </div>
+          </div>
+        </div>
         <button
-          @click="$router.push(localePath($store.state.auth ? '/profile' : '/auth'))"
+          @click="
+            $router.push(localePath($store.state.auth ? '/profile' : '/auth'))
+          "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +324,11 @@
             />
           </div>
           <div class="empty" v-show="empty == true">
-            <img src="@/assets/img/empty.svg" alt="" />
+            <img
+              v-if="$store.state.imageShow"
+              src="@/assets/img/empty.svg"
+              alt=""
+            />
             <p>{{ $store.state.translations["no_data"] }}</p>
           </div>
           <div class="items" v-show="hotels.length > 0">
@@ -233,9 +408,72 @@ export default {
       search: "",
       hotels: "",
       empty: false,
+      fonts: 0,
+      values: [12, 14, 16, 18, 20, 24, 32, 48],
+      vision: {
+        image: "flex",
+      },
     };
   },
+  mounted() {
+    this.handleImages(localStorage.getItem("specialImage"));
+
+    console.log(localStorage.getItem("specialImage"));
+  },
+  fetch() {},
   methods: {
+    increaseFont() {
+      if (this.fonts < 200) {
+        this.fonts += 25;
+
+        var root = document.documentElement;
+
+        this.values.forEach((item) => {
+          var currentSize = parseFloat(
+            getComputedStyle(root).getPropertyValue(`--${item}`)
+          );
+
+          var newSize = currentSize + this.fonts / 100;
+          root.style.setProperty(`--${item}`, newSize + "px");
+        });
+      }
+    },
+
+    decreaseFont() {
+      if (this.fonts > 0) {
+        this.fonts -= 25;
+
+        var root = document.documentElement;
+
+        this.values.forEach((item) => {
+          var currentSize = parseFloat(
+            getComputedStyle(root).getPropertyValue(`--${item}`)
+          );
+
+          var newSize = currentSize - this.fonts / 100;
+          root.style.setProperty(`--${item}`, newSize + "px");
+        });
+      }
+    },
+
+    filterMono() {
+      const body = document.body;
+
+      body.classList.add("mono");
+    },
+
+    filterNormal() {
+      const body = document.body;
+
+      body.classList.remove("mono");
+    },
+
+    handleImages(type) {
+      this.$store.commit("imageAction", type);
+
+      localStorage.setItem("specialImage", type);
+    },
+
     onChange(e) {
       console.log(e);
     },
@@ -278,6 +516,53 @@ export default {
 </script>
 
 <style scoped>
+.refresh {
+  text-align: center;
+  justify-content: center;
+  padding: 12px 32px;
+  display: flex;
+  width: 100%;
+  border-radius: 12px;
+  background: var(--Agro-blue, #3c4bdc);
+  color: var(--White, #fff);
+  font-family: var(--medium);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 19.6px */
+  cursor: pointer;
+}
+
+.vision {
+  position: relative;
+}
+.dropper {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  display: none;
+}
+.vision:hover .dropper {
+  display: flex;
+  flex-direction: column;
+}
+.filter,
+.images,
+.sizes {
+  display: flex;
+  align-items: center;
+  padding: 8px 0 16px 0;
+  gap: 8px;
+}
+
 .brand {
   width: 180px;
 }
@@ -290,7 +575,7 @@ export default {
 .title {
   color: var(--Blue-dark, #002856);
   font-family: var(--decor);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 36px */
@@ -299,7 +584,7 @@ export default {
 .title span {
   color: var(--White, var(--White, #fff));
   font-family: var(--decor);
-  font-size: 20px;
+  font-size: var(--20);
   font-style: normal;
   font-weight: 600;
   line-height: 150%; /* 30px */
@@ -311,7 +596,7 @@ export default {
 }
 .mid a {
   color: var(--Black, #020105);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -401,7 +686,7 @@ export default {
 }
 .input input {
   color: var(--Dark-blue, #002856);
-  font-size: 18px;
+  font-size: var(--18);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 27px */
@@ -432,7 +717,7 @@ export default {
   margin-bottom: 8px;
   color: var(--Blue-dark, #002856);
   font-family: var(--semi);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 33.6px */
@@ -443,14 +728,14 @@ export default {
   align-items: center;
   gap: 8px;
   color: #353437;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
 }
 .item a {
   color: #353437;
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 187.5% */
@@ -461,7 +746,7 @@ export default {
 }
 .item a span {
   color: var(--Agro-blue, #3c4bdc);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 30px; /* 187.5% */
@@ -486,7 +771,7 @@ export default {
   color: var(--Dark-blue, #002856);
   text-align: center;
   font-family: var(--medium);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 33.6px */
@@ -502,7 +787,8 @@ export default {
   pointer-events: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 999;
   background: white;
   padding: 12px;
@@ -533,7 +819,7 @@ export default {
     display: none;
   }
   .title {
-    font-size: 16px;
+    font-size: var(--16);
     font-style: normal;
     font-weight: 600;
     line-height: 150%;

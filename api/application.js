@@ -1,12 +1,9 @@
 export default {
   async sendApplication(payload) {
-    try {
-      const res = await $nuxt.$axios.post("/applications", payload.data, {
-        ...payload.params,
-      });
-      return res;
-    } catch (e) {
-    }
+    const res = await $nuxt.$axios.post("/applications", payload.data, {
+      ...payload.params,
+    });
+    return res;
   },
 
   async getApplications(axios, params) {
@@ -19,7 +16,20 @@ export default {
         });
       }
       return res.data.data;
-    } catch (e) {
-    }
+    } catch (e) {}
+  },
+
+  async getTypes(axios, params) {
+    try {
+      let res;
+
+      if (axios) {
+        res = await axios.get("/client/application_types", {
+          ...params,
+        });
+      }
+
+      return res.data;
+    } catch (e) {}
   },
 };

@@ -9,7 +9,10 @@
             <p class="name">{{ message?.title }}</p>
           </div>
           <div class="right">
-            <NuxtLink :to="localePath(`/notifications/${message?.id}`)" class="link">
+            <NuxtLink
+              :to="localePath(`/notifications/${message?.id}`)"
+              class="link"
+            >
               {{ moment(message?.created_at).format("DD.MM.YYYY - HH:MM") }}
               <span
                 ><svg
@@ -105,7 +108,7 @@ export default {
 }
 .left p {
   color: var(--Black, #020105);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 19.6px */
@@ -118,7 +121,7 @@ export default {
   justify-content: space-between;
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--medium);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 19.6px */

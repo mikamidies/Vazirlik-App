@@ -42,7 +42,7 @@
             </td>
             <td>
               <div class="button">
-                <button>
+                <button v-show="item?.status == `accepted`">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -71,11 +71,11 @@
       </div>
       <PaginationElement @getData="getApps" :totalPage="totalPage" />
 
-      <div class="link">
-        <NuxtLink :to="localePath('/applications/new')">
+      <!-- <div class="link">
+        <NuxtLink to="/applications/new">
           {{ $store.state.translations["new_app"] }}
         </NuxtLink>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -144,7 +144,7 @@ export default {
   border: 1px solid var(--Agro-Blue, #3c4bdc);
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */

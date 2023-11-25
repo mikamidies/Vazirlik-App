@@ -1,6 +1,13 @@
 <template>
   <div class="master">
-    <SiteTop :title="title" />
+    <site-top :title="title">
+      <img
+        v-if="$store.state.imageShow"
+        src="@/assets/img/header.jpg"
+        alt=""
+        class="cover"
+      />
+    </site-top>
 
     <div class="container">
       <div class="tabler">

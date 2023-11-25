@@ -8,7 +8,11 @@
         </h4>
         <div class="flex">
           <a :href="link" class="link">
-            <img src="@/assets/img/oneid.svg" alt="" />
+            <img
+              v-if="$store.state.imageShow"
+              src="@/assets/img/oneid.svg"
+              alt=""
+            />
             {{ $store.state.translations["sign_in"] }}
           </a>
         </div>
@@ -27,7 +31,8 @@ export default {
     };
   },
   mounted() {
-    if (localStorage.getItem("authToken")) this.$router.push(this.localePath("/profile"));
+    if (localStorage.getItem("authToken"))
+      this.$router.push(this.localePath("/profile"));
   },
   async fetch() {
     const linkData = await authApi.getLink(this.$axios);
@@ -46,7 +51,7 @@ export default {
   color: var(--Black, #020105);
   text-align: center;
   font-family: var(--medium);
-  font-size: 24px;
+  font-size: var(--24);
   font-style: normal;
   font-weight: 500;
   line-height: 140%; /* 33.6px */
@@ -59,7 +64,7 @@ export default {
   gap: 8px;
   color: var(--Agro-Blue, #3c4bdc);
   font-family: var(--semi);
-  font-size: 14px;
+  font-size: var(--14);
   font-style: normal;
   font-weight: 600;
   line-height: 140%; /* 19.6px */
@@ -73,7 +78,7 @@ export default {
     padding: 40px 16px;
   }
   .title {
-    font-size: 16px;
+    font-size: var(--16);
     font-style: normal;
     font-weight: 500;
     line-height: 150%;

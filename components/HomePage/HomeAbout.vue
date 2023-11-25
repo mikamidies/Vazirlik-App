@@ -23,7 +23,12 @@
         </div>
       </div>
       <div class="right">
-        <img src="@/assets/img/about-2.png" alt="" class="pic" />
+        <img
+          v-if="$store.state.imageShow"
+          src="@/assets/img/about-2.png"
+          alt=""
+          class="pic"
+        />
       </div>
     </div>
   </div>
@@ -40,11 +45,11 @@ export default {};
 .container {
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 6fr 4fr;
 }
 .title {
   color: var(--Blue-dark, #002856);
-  font-size: 32px;
+  font-size: var(--32);
   font-style: normal;
   font-weight: 600;
   line-height: 120%; /* 38.4px */
@@ -54,7 +59,7 @@ export default {};
 }
 .txt {
   color: var(--Black, #020105);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -62,7 +67,7 @@ export default {};
 }
 .second {
   color: var(--Black, #020105);
-  font-size: 16px;
+  font-size: var(--16);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 24px */
@@ -81,7 +86,7 @@ export default {};
     display: block;
   }
   .title {
-    font-size: 20px;
+    font-size: var(--20);
     font-style: normal;
     font-weight: 600;
     line-height: 140%;
