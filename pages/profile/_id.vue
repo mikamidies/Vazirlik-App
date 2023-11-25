@@ -160,7 +160,11 @@
           <button class="cancel" @click="$router.go(-1)">
             {{ $store.state.translations["cancel"] }}
           </button>
-          <button class="confirm">
+          <button
+            :class="{ disabled: fileList.length == 0 }"
+            class="confirm"
+            @click="submit"
+          >
             {{ $store.state.translations["save"] }}
           </button>
         </div>
@@ -211,7 +215,8 @@ export default {
     };
   },
   async mounted() {
-    if (!localStorage.getItem("authToken")) await this.$router.push(this.localePath("/auth"));
+    if (!localStorage.getItem("authToken"))
+      await this.$router.push(this.localePath("/auth"));
     this.loading = true;
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
     const hotel = await hotelsApi.getHotelById(this.$axios, {
@@ -242,22 +247,39 @@ export default {
     this.loading = false;
   },
   methods: {
-    sumbit() {
+    submit() {
       const data = {
-        ...this.form,
-        director_surname: this.form.director_name,
-        director_fathers_name: this.form.director_name,
+        img: this.form.img,
       };
-      this.$refs.ruleForm.validate((valid) => {
-        if (valid) {
-          this.__EDIT_HOTEL(data);
-        }
-      });
+      this.__PUT_HOTEL(data);
     },
+
     handleChange(info) {
       this.fileList = info.fileList;
-      if (info?.fileList[0]?.response)
-        this.form.img = info?.fileList[0]?.response;
+      if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
+    },
+    async __PUT_HOTEL(formData) {
+      try {
+        const hotel = await hotelsApi.putHotels(this.$axios, {
+          data: formData,
+          id: this.$route.params.id,
+          params: {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          },
+        });
+        this.$notification["success"]({
+          message: "Success",
+          description: "Muvaffaqiyatli o'zgartirildi",
+        });
+        this.$router.go(-1);
+      } catch (e) {
+        this.$notification["error"]({
+          message: "Error",
+          description: e.response.statusText,
+        });
+      }
     },
   },
   components: { Loader },
@@ -265,6 +287,10 @@ export default {
 </script>
 
 <style scoped>
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .container {
   padding: 40px 0 112px 0;
 }
@@ -322,10 +348,7 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
-:deep(
-    .ant-select-selection__placeholder,
-    .ant-select-search__field__placeholder
-  ) {
+:deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: #5d5d5f;
   font-size: 16px;
   font-style: normal;

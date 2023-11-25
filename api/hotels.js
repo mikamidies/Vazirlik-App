@@ -64,4 +64,11 @@ export default {
       res = await axios.post("/hotels", payload.data, { ...payload.params });
     }
   },
+  async putHotels(axios, payload) {
+    let res;
+
+    if (axios) {
+      res = await axios.put(`/hotels/${payload.id}`, payload.data, { ...payload.params });
+    }
+  },
 };
