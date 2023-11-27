@@ -65,7 +65,7 @@
 
       <div class="cardo" v-else>
         <div class="flexer">
-          <div class="left">
+          <div v-show="hotel.img != null" class="left">
             <img
               v-if="$store.state.imageShow"
               :src="`https://api.hotels.ndc.uz/storage/${hotel.img}`"
