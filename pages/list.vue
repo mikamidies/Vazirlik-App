@@ -70,7 +70,7 @@
         </table>
       </div>
 
-      <PaginationElement @getData="__GET_HOTELS" :totalPage="totalPage" />
+      <PaginationElement @getData="__GET_HOTELS" :totalPage="totalPage" v-if="totalPage > 20" />
     </div>
   </div>
 </template>
