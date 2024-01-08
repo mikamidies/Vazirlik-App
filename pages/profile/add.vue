@@ -3,12 +3,7 @@
     <SiteTop :title="title" />
     <div class="container">
       <div class="cardo">
-        <a-form-model
-          class="w-full"
-          :model="form"
-          ref="ruleForm"
-          :rules="rules"
-        >
+        <a-form-model class="w-full" :model="form" ref="ruleForm" :rules="rules">
           <div class="items">
             <div class="item">
               <a-form-model-item prop="name" class="form-item w-full mb-0">
@@ -23,10 +18,7 @@
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item
-                prop="phone_number"
-                class="form-item w-full mb-0"
-              >
+              <a-form-model-item prop="phone_number" class="form-item w-full mb-0">
                 <p class="sup">
                   {{ $store.state.translations["phone_num"] }}
                 </p>
@@ -39,7 +31,7 @@
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item prop="website" class="form-item w-full mb-0">
+              <a-form-model-item class="form-item w-full mb-0">
                 <p class="sup">
                   {{ $store.state.translations["website"] }}
                 </p>
@@ -51,10 +43,7 @@
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item
-                prop="phone_number1"
-                class="form-item w-full mb-0"
-              >
+              <a-form-model-item prop="phone_number1" class="form-item w-full mb-0">
                 <p class="sup">
                   {{ $store.state.translations["add_number"] }}
                 </p>
@@ -108,10 +97,7 @@
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item
-                prop="legal_name"
-                class="form-item w-full mb-0"
-              >
+              <a-form-model-item prop="legal_name" class="form-item w-full mb-0">
                 <p class="sup">{{ $store.state.translations["legal_name"] }}</p>
                 <input
                   type="text"
@@ -133,10 +119,7 @@
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item
-                prop="director_name"
-                class="form-item w-full mb-0"
-              >
+              <a-form-model-item prop="director_name" class="form-item w-full mb-0">
                 <p class="sup">
                   {{ $store.state.translations["hostel_owner"] }}
                 </p>
@@ -221,13 +204,7 @@ export default {
             trigger: "change",
           },
         ],
-        website: [
-          {
-            required: true,
-            message: this.$store.state.translations["input_error"],
-            trigger: "change",
-          },
-        ],
+
         email: [
           {
             required: true,
@@ -296,7 +273,7 @@ export default {
         name: "",
         phone_number: "",
         phone_number1: "",
-        website: "",
+        website: null,
         email: "",
         region_id: undefined,
         legal_name: "",
@@ -362,8 +339,7 @@ export default {
     },
     handleChange(info) {
       this.fileList = info.fileList;
-      if (info?.fileList[0]?.response)
-        this.form.img = info?.fileList[0]?.response;
+      if (info?.fileList[0]?.response) this.form.img = info?.fileList[0]?.response;
     },
   },
 };
@@ -433,11 +409,7 @@ form :deep(.ant-select-selection) {
   flex-direction: column;
   justify-content: center;
 }
-form
-  :deep(
-    .ant-select-selection__placeholder,
-    .ant-select-search__field__placeholder
-  ) {
+form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: #5d5d5f;
   font-size: var(--16);
   font-style: normal;
