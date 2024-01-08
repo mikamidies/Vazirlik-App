@@ -70,7 +70,6 @@
               class="dropbox"
               :class="{
                 disable: fileList.cadastre.length > 0,
-                error: error == true,
               }"
             >
               <a-upload-dragger
@@ -153,9 +152,9 @@ export default {
     const appTypes = await applicationApi.getTypes(this.$axios);
 
     this.appTypes = appTypes;
+    this.application_type_id = appTypes?.data[0]?.id;
 
-    if (!localStorage.getItem("authToken"))
-      this.$router.push(this.localePath("/auth"));
+    if (!localStorage.getItem("authToken")) this.$router.push(this.localePath("/auth"));
 
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
@@ -179,10 +178,7 @@ export default {
         cadastre: this.fileTypes.cadastre,
       };
 
-      if (
-        this.fileList.state_certificate.length > 0 &&
-        this.fileList.cadastre.length > 0
-      ) {
+      if (this.fileList.state_certificate.length > 0) {
         try {
           const res = await applicationApi.sendApplication({
             data: formData,
@@ -192,7 +188,9 @@ export default {
               },
             },
           });
-
+          this.$notification["success"]({
+            message: this.$store.state.translations["send_app1"],
+          });
           this.$router.push(this.localePath("/applications"));
         } catch (e) {
           this.error = true;
@@ -207,7 +205,7 @@ export default {
         });
       }
 
-      this.application_type_id = "";
+      // this.application_type_id = "";
       this.fileTypes.fire_safety = "";
       this.fileTypes.sanitation = "";
       this.fileTypes.certificate = "";
@@ -303,11 +301,7 @@ form :deep(.ant-select-selection) {
   justify-content: center;
   padding-left: 24px;
 }
-form
-  :deep(
-    .ant-select-selection__placeholder,
-    .ant-select-search__field__placeholder
-  ) {
+form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
   color: var(--Black, #020105);
   font-family: var(--medium);
   font-size: var(--18);
@@ -359,11 +353,7 @@ form :deep(.ant-upload-list-item-card-actions svg path) {
     align-items: center;
   }
   form :deep(.ant-select-selection-selected-value),
-  form
-    :deep(
-      .ant-select-selection__placeholder,
-      .ant-select-search__field__placeholder
-    ) {
+  form :deep(.ant-select-selection__placeholder, .ant-select-search__field__placeholder) {
     font-size: var(--16);
     font-style: normal;
     font-weight: 500;

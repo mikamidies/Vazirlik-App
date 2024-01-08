@@ -24,9 +24,17 @@
               <p v-show="item.status == `accepted`" class="status active">
                 {{ $store.state.translations["accepted"] }}
               </p>
-              <p v-show="item.status == `rejected`" class="status passive">
-                {{ $store.state.translations["rejected"] }}
-              </p>
+              <a-popover title="Rad etish sabablari">
+                <template slot="content">
+                  <p v-for="(reason, index) in item?.reject_reasons">
+                    {{ index + 1 }}.{{ reason?.name?.uz }}
+                  </p>
+                </template>
+                <p v-show="item.status == `rejected`" class="status passive">
+                  {{ $store.state.translations["rejected"] }}
+                </p>
+              </a-popover>
+
               <p v-show="item.status == `new`" class="status new">
                 {{ $store.state.translations["new"] }}
               </p>
@@ -42,7 +50,7 @@
             </td>
             <td>
               <div class="button">
-                <button v-show="item?.status == `accepted`">
+                <a :href="item?.certificate?.link" v-show="item?.status == `accepted`">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -63,7 +71,7 @@
                       stroke-linejoin="round"
                     />
                   </svg>
-                </button>
+                </a>
               </div>
             </td>
           </tr>

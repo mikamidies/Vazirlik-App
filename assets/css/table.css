@@ -59,6 +59,7 @@ table tr:nth-child(odd) {
   border-radius: 62px;
   padding: 6px 22px;
   max-width: 120px;
+  cursor: pointer;
   margin: 0 auto;
 }
 .status.waiting {
