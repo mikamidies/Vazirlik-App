@@ -40,7 +40,9 @@
               </p>
             </td>
             <td>
-              <p class="weak">{{ item.created_at }}</p>
+              <p class="weak">
+                {{ moment(item.created_at).format("YYYY-MM-DD HH:mm:ss") }}
+              </p>
             </td>
             <td>
               <p class="weak">{{ item.closed_at }}</p>
@@ -90,7 +92,7 @@
 
 <script>
 import applicationApi from "@/api/application";
-
+import moment from "moment";
 export default {
   data() {
     return {
@@ -109,6 +111,7 @@ export default {
   },
 
   methods: {
+    moment,
     async getApps() {
       try {
         const applications = await applicationApi.getApplications(this.$axios, {
