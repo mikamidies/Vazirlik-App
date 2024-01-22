@@ -194,9 +194,15 @@ export default {
           this.$router.push(this.localePath("/applications"));
         } catch (e) {
           this.error = true;
-          this.$notification["error"]({
-            message: this.$store.state.translations["old_app"],
-          });
+          if (e.response.status == 400) {
+            this.$notification["error"]({
+              message: e.response.data.message,
+            });
+          } else {
+            this.$notification["error"]({
+              message: e.response.statusText,
+            });
+          }
         }
       } else {
         this.error = true;
