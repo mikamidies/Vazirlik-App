@@ -112,18 +112,14 @@
           </p>
         </div>
       </div>
-      <div class="map" style="height: 700px">
+      <div class="map">
         <yandex-map
           v-if="coords.length > 0"
           :coords="coords"
           :zoom="10"
-          style="height: 700px"
+          class="map-context"
         >
-          <ymap-marker
-            :coords="coords"
-            marker-id="123"
-            hint-content="some hint"
-          />
+          <ymap-marker :coords="coords" marker-id="123" hint-content="some hint" />
         </yandex-map>
       </div>
     </div>
@@ -168,6 +164,9 @@ export default {
 </script>
 
 <style scoped>
+.map-context {
+  height: 700px;
+}
 .container {
   padding: 72px 0 112px 0;
 }
@@ -253,6 +252,10 @@ export default {
   .map iframe {
     height: 366px;
     border-radius: 20px;
+  }
+  .map,
+  .map-context {
+    height: 366px;
   }
 }
 </style>
