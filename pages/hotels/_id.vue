@@ -5,11 +5,11 @@
       <div class="items">
         <div class="item">
           <p class="sup">{{ $store.state.translations["hostel_owner"] }}</p>
-          <p class="text">{{ hotel.director_name }}</p>
+          <p class="text">{{ hotel.director_name || emptyText }}</p>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["legal_name"] }}</p>
-          <p class="text">{{ hotel.legal_name }}</p>
+          <p class="text">{{ hotel.legal_name || emptyText }}</p>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["phone_numbers"] }}</p>
@@ -32,7 +32,13 @@
                 />
               </svg>
             </span>
-            {{ hotel.phone_number }} {{ hotel.phone_number2 }}
+
+            <span v-if="hotel.phone_number || hotel.phone_number2">
+              +{{ hotel.phone_number }} +{{ hotel.phone_number2 }}
+            </span>
+            <span v-else>
+              {{ emptyText }}
+            </span>
           </p>
         </div>
         <div class="item">
@@ -46,7 +52,7 @@
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["registry_date"] }}</p>
-          <p class="text">{{ hotel.entry_date }}</p>
+          <p class="text">{{ hotel.entry_date || emptyText }}</p>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["email"] }}</p>
@@ -77,17 +83,17 @@
                 />
               </svg>
             </span>
-            {{ hotel.email }}
+            {{ hotel.email || emptyText }}
           </p>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["registry_num"] }}</p>
-          <p class="text">{{ hotel.register_number }}</p>
+          <p class="text">{{ hotel.register_number || emptyText }}</p>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["hostel_address"] }}</p>
           <p class="text">
-            {{ hotel.address }}
+            {{ hotel.address || emptyText }}
           </p>
         </div>
         <div class="item">
@@ -108,7 +114,7 @@
                 />
               </svg>
             </span>
-            {{ hotel.website }}
+            {{ hotel.website || emptyText }}
           </p>
         </div>
       </div>
@@ -135,6 +141,7 @@ export default {
       title: "Kontaktlar",
       hotel: {},
       coords: [],
+      emptyText: "----",
     };
   },
 
