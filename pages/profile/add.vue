@@ -31,7 +31,7 @@
               </a-form-model-item>
             </div>
             <div class="item">
-              <a-form-model-item class="form-item w-full mb-0">
+              <a-form-model-item class="form-item w-full mb-0" prop="website">
                 <p class="sup">
                   {{ $store.state.translations["website"] }}
                 </p>
@@ -197,6 +197,11 @@ export default {
       headers: {},
       title: "Mehmon uyi qo‘shish",
       rules: {
+        website: [
+          { required: true, message: 'Website link is required' },
+          { type: 'url', message: 'Invalid website link format' },
+          { validator: this.validateWebsite }
+        ],
         name: [
           {
             required: true,
@@ -302,6 +307,12 @@ export default {
     this.headers.authorization = `Bearer ${localStorage.getItem("authToken")}`;
   },
   methods: {
+    validateWebsite(rule, value) {
+      if (value && !value.startsWith('https://')) {
+        return Promise.reject('Please enter a valid website link starting with "https://"');
+      }
+      return Promise.resolve();
+    },
     sumbit() {
       const data = {
         ...this.form,
