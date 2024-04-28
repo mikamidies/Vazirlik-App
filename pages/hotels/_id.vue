@@ -43,12 +43,18 @@
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["hostel_status"] }}</p>
-          <p v-show="hotel.status == 1" class="text">
-            {{ $store.state.translations["active"] }}
-          </p>
-          <p v-show="hotel.status == 0" class="text">
-            {{ $store.state.translations["passive"] }}
-          </p>
+          <span v-if="hotel?.deregistration_date !== null" class="text">
+          {{
+            $store.state.translations["register_out"]
+          }}</span>
+          <span v-else>
+            <p v-show="hotel.status == 1" class="text">
+              {{ $store.state.translations["active"] }}
+            </p>
+            <p v-show="hotel.status == 0" class="text">
+              {{ $store.state.translations["passive"] }}
+            </p>
+          </span>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["registry_date"] }}</p>

@@ -28,12 +28,17 @@
               </p>
             </td>
             <td>
-              <p v-show="item.status == 1" class="status active">
-                {{ $store.state.translations["active"] }}
-              </p>
-              <p v-show="item.status == 0" class="status passive">
-                {{ $store.state.translations["passive"] }}
-              </p>
+              <span v-if="item?.deregistration_date !== null" class="status passive"
+                >{{ $store.state.translations["register_out"] }}</span
+              >
+              <span v-else>
+                <p v-show="item.status == 1" class="status active">
+                  {{ $store.state.translations["active"] }}
+                </p>
+                <p v-show="item.status == 0" class="status passive">
+                  {{ $store.state.translations["passive"] }}
+                </p>
+              </span>
             </td>
             <td>
               <NuxtLink :to="localePath(`/hotels/${item.id}`)">
