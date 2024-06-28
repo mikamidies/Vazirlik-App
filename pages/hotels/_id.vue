@@ -94,7 +94,7 @@
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["registry_num"] }}</p>
-          <p class="text">{{ hotel.register_number || emptyText }}</p>
+          <p class="text">{{ hotel.formatted_register_number || emptyText }}</p>
         </div>
         <div class="item">
           <p class="sup">{{ $store.state.translations["hostel_address"] }}</p>

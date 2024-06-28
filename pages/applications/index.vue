@@ -48,7 +48,7 @@
               <p class="weak">{{ item.closed_at }}</p>
             </td>
             <td>
-              <p class="strong">{{ item?.register_number || "—" }}</p>
+              <p class="strong">{{ item?.formatted_register_number || "—" }}</p>
             </td>
             <td>
               <div class="button">

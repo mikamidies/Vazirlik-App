@@ -22,7 +22,7 @@
           </tr>
           <tr v-for="item in hotels?.data" :key="item.id">
             <td>
-              <p class="strong">{{ item?.register_number || "—" }}</p>
+              <p class="strong">{{ item?.formatted_register_number || "—" }}</p>
             </td>
             <td>
               <p class="strong">{{ item.name }}</p>
