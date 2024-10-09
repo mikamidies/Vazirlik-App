@@ -5,6 +5,7 @@
       <div class="tabler">
         <table>
           <tr>
+            <th>№</th>
             <th>{{ $store.state.translations["registry_num"] }}</th>
             <th>{{ $store.state.translations["hostel_name"] }}</th>
             <th>{{ $store.state.translations["hostel_region"] }}</th>
@@ -12,7 +13,10 @@
             <th>{{ $store.state.translations["hostel_status"] }}</th>
             <th>{{ $store.state.translations["hostel_phone"] }}</th>
           </tr>
-          <tr v-for="item in hotels?.data" :key="item.id">
+          <tr v-for="(item, index) in hotels?.data" :key="item.id">
+            <td>
+              <p class="strong">{{ index + 1 }}</p>
+            </td>
             <td>
               <p class="strong">{{ item?.formatted_register_number || "—" }}</p>
             </td>
