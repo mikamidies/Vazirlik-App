@@ -7,7 +7,7 @@
           {{ $store.state.translations["oneid_txt"] }}
         </h4>
         <div class="flex">
-          <a :href="'https://my.gov.uz/oz/service/960'" class="link">
+          <a :href="'https://my.gov.uz/oz/service/960'" target="_blank" class="link">
             <img
               v-if="$store.state.imageShow"
               src="@/assets/img/oneid.svg"
