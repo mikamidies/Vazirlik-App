@@ -23,11 +23,11 @@ export default {
   async mounted() {
     if (
       !Object.keys(this.$route.query).includes("page") ||
-      !Object.keys(this.$route.query).includes("page_size")
+      !Object.keys(this.$route.query).includes("per_page")
     ) {
       await this.$router.replace({
         path: this.$route.path,
-        query: { page: this.params.page, page_size: this.params.pageSize },
+        query: { page: this.params.page, per_page: this.params.pageSize },
       });
     }
     this.current = Number(this.$route.query.page);
