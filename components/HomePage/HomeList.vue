@@ -1,7 +1,17 @@
 <template>
   <div class="wrap">
     <div class="container">
+      <div class="title-box">
       <h4 class="title">{{ $store.state.translations["list_title"] }}</h4>
+      <div class="link">
+        <a href="https://api.hotels.ndc.uz/storage/files/list.xlsx" class="!p-0">
+          <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.75 9L9 11.25M9 11.25L11.25 9M9 11.25L9 2.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M5.625 6.75V6.75C3.76104 6.75 2.25 8.26104 2.25 10.125L2.25 11.75C2.25 13.9591 4.04086 15.75 6.25 15.75L11.75 15.75C13.9591 15.75 15.75 13.9591 15.75 11.75L15.75 10.125C15.75 8.26104 14.239 6.75 12.375 6.75V6.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          </a>
+      </div>
+    </div>
       <div class="tabler">
         <table>
           <tr>
@@ -89,6 +99,19 @@ export default {
 
 <style scoped>
 @import url(@/assets/css/table.css);
+.title-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+.title-box a {
+    position: absolute;
+    right: 40px;
+    bottom: 28px;
+    padding: 12px 24px !important;
+}
 .wrap {
   padding-bottom: 112px;
 }
