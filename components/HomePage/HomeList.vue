@@ -15,7 +15,7 @@
       <div class="tabler">
         <table>
           <tr>
-            <th>№</th>
+             <th>№</th>
             <th>{{ $store.state.translations["registry_num"] }}</th>
             <th>{{ $store.state.translations["hostel_name"] }}</th>
             <th>{{ $store.state.translations["hostel_region"] }}</th>
